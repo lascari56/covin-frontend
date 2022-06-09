@@ -6,9 +6,9 @@ import * as S from './sidebar.styled'
 
 import {sections} from "./sidebar.data"
 
-export default function SidebarView({full, activeRoute}) {
+export default function SidebarView({className, full, activeRoute}) {
   return (
-    <S.Container full={full}>
+    <S.Container full={full} className={className}>
       {sections?.map((section, sectionIndex) => (
         <S.Group key={section.id}>
           {section.items.map(item => (
