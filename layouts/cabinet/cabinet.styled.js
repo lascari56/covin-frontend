@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import CabinetSidebar from "./components/sidebar"
+
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -11,4 +13,11 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex: 1;
+
+  margin-left: ${props => props.full ? responsiveSize(232) : responsiveSize(76)};
+`
+
+export const Sidebar = styled(CabinetSidebar)`
+  position: absolute;
+  left: 0px;
 `

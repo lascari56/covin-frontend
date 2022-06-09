@@ -7,6 +7,7 @@ export const Container = styled.div`
   width: ${responsiveSize(75)};
 
   border-right: 1px solid #DFE7F0;
+  background-color: #fff;
 
   ${props => props.full && `width: ${responsiveSize(232)};`}
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CabinetTopLine from "./components/top-line"
-import CabinetSidebar from "./components/sidebar"
+
 
 import * as S from "./cabinet.styled"
 
@@ -10,8 +10,8 @@ export default function CabinetView({children, isFull}) {
     <S.Container>
       <CabinetTopLine />
 
-      <S.Content>
-        <CabinetSidebar full={isFull} />
+      <S.Content full={isFull}>
+        <S.Sidebar full={isFull} />
 
         {children}
       </S.Content>
