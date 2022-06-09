@@ -22,8 +22,8 @@ const LotCardView = ({ className, data }) => {
 
           <S.Wrapper>
             {meta.map((item, index) => (
-              <S.Column>
-                <LotCardInfo data={data} options={item} key={index} />
+              <S.Column key={index}>
+                <LotCardInfo data={data} options={item} />
               </S.Column>
             ))}
 
