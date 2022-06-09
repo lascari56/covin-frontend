@@ -34,9 +34,9 @@ const LotCardView = ({ className, data }) => {
             </S.Column>
 
             <S.Column>
-              <S.Meta type={data?.type} label="Current Bid" value="1 000 $" />
+              <S.Meta type={data?.type} label="Current Bid" value={`${data?.price_new} $`} />
 
-              <S.Meta type={data?.type} label="Reserve" value="11 600 $" />
+              <S.Meta type={data?.type} label="Reserve" value={`${data?.cost_priced} $`} />
             </S.Column>
           </S.Wrapper>
 
