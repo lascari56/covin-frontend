@@ -1,0 +1,1 @@
+export {default} from './page-top-line-email.view'

@@ -1,0 +1,1 @@
+export {default} from "./lots-filters-header.view"
