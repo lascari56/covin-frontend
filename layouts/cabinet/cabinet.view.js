@@ -5,13 +5,13 @@ import CabinetSidebar from "./components/sidebar"
 
 import * as S from "./cabinet.styled"
 
-export default function CabinetView({children}) {
+export default function CabinetView({children, isFull}) {
   return (
     <S.Container>
       <CabinetTopLine />
 
       <S.Content>
-        <CabinetSidebar full={false} />
+        <CabinetSidebar full={isFull} />
 
         {children}
       </S.Content>

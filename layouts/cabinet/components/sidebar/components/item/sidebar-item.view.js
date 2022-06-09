@@ -10,7 +10,7 @@ export default function SidebarItemView({data, theme, full, active}) {
       <S.Container full={full} active={active}>
         <S.Icon src={data?.icon}/>
 
-        {!!full && <S.Title theme={theme}>{data?.title}</S.Title>}
+        <S.Title theme={theme} full={full}>{data?.title}</S.Title>
 
         <S.Indicator active={active} />
       </S.Container>

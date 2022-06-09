@@ -1,1 +1,1 @@
-export {default} from "./cabinet.view"
+export {default} from "./cabinet.container"

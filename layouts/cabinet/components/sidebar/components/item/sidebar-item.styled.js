@@ -27,10 +27,16 @@ export const Title = styled.span`
   font-size: ${responsiveSize(14)};
   line-height: ${responsiveSize(16)};
   letter-spacing: 0.02em;
+  white-space: nowrap;
+
+  opacity: 1;
+  transition: opacity 0.4s;
 
   ${props => props.theme === 'gray' && 'color: #292929;'}
 
   ${props => props.theme === 'blue' && 'color: #216DD1;'}
+
+  ${props => !props.full && `opacity: 0;`}
 `
 
 
