@@ -30,7 +30,7 @@ export const Title = styled.span`
   white-space: nowrap;
 
   opacity: 1;
-  transition: opacity 0.4s;
+  transition: opacity 0.35s;
 
   ${props => props.theme === 'gray' && 'color: #292929;'}
 
