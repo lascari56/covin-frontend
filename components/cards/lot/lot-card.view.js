@@ -4,7 +4,7 @@ import LotCardHeader from './components/header'
 import LotCardActions from './components/actions'
 import LotCardInfo from './components/info'
 import LotCardCommentary from './components/commentary'
-
+import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
@@ -18,7 +18,7 @@ const LotCardView = ({ className, data }) => {
       <S.Body type={data?.type}>
         <S.Content>
           
-          <S.Slider data={data} />
+          <LotCardSlider data={data} />
 
           <S.Wrapper>
             {meta.map((item, index) => (
