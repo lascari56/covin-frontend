@@ -1,1 +1,1 @@
-export {default} from "./filter-checkbox.view"
+export {default} from "./filter-checkbox.container"

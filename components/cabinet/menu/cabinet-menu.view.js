@@ -4,18 +4,20 @@ import CabinetMenuItem from "./components/item"
 
 import * as S from './cabinet-menu.styled'
 
-export default function CabinetMenuView() {
+const items = [
+  {label: "Lot Finder", value: "lots"},
+  {label: "Buy Now Tracking", value: "tracking"},
+  {label: "Templates", value: "templates"},
+  {label: "Bookmarks", value: "bookmarks"},
+  {label: "Notification settings", value: "settings"},
+]
+
+export default function CabinetMenuView({active}) {
   return (
     <S.Container>
-      <CabinetMenuItem active title="Lot Finder" />
-
-      <CabinetMenuItem title="Buy Now Tracking" />
-
-      <CabinetMenuItem title="Templates" />
-
-      <CabinetMenuItem title="Bookmarks" />
-
-      <CabinetMenuItem title="Notification settings" />
+      {items?.map(item => (
+        <CabinetMenuItem active={active === item.value} title={item.label} key={item.value} />
+      ))}
     </S.Container>
   )
 }

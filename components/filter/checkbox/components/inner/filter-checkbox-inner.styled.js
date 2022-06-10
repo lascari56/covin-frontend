@@ -8,4 +8,9 @@ export const Container = styled.div`
 
   border: 1px solid #EBECEE;
   border-radius: 2px;
+
+  ${props => props.active && `
+    background: #216DD1;
+    border-color: #216DD1;
+  `}
 `

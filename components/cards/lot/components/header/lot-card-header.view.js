@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import React from 'react'
+
+import Moment from 'react-moment';
 
 import * as S from './lot-card-header.styled'
 
@@ -16,11 +17,13 @@ export default function LotCardHeaderView({data}) {
         {data?.type === "hide" && <S.Hide>(hide)</S.Hide>}
       </S.Title>
 
-      <S.BuyButton theme="green" size="small" title="Buy It Now for 58 623 $" />
+      <S.BuyButton theme="green" size="small" title={`Buy It Now for ${data?.cost_priced} $`} />
 
       <S.CalendarIcon src="/images/calendar.svg/"/>
 
-      <S.Date>13 Feb, 07:29 PM</S.Date>
+      <S.Date>
+        <Moment date={data?.auction_date} format="DD MMM, hh:mm A" />
+      </S.Date>
     </S.Container>
   )
 }

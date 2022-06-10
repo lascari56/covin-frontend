@@ -5,7 +5,6 @@ import { responsiveSize } from "@utils/responsive";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  height: ${responsiveSize(16)};
 `
 
 export const Left = styled.div`
@@ -19,10 +18,13 @@ export const Left = styled.div`
 export const Icon = styled.img``
 
 export const Title = styled.span`
+  width: 100%;
+
   margin-left: ${responsiveSize(8)};
 
-  font-size: ${responsiveSize(14)};
-  line-height: ${responsiveSize(16)};
+  /* font-size: ${responsiveSize(14)}; */
+  font-size: ${responsiveSize(13)};
+  line-height: ${responsiveSize(15)};
   letter-spacing: 0.02em;
 
   color: #292929;

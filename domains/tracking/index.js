@@ -1,1 +1,1 @@
-export {default} from "./tracking.view"
+export { default } from "./lots.containers";

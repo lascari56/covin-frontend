@@ -2,8 +2,8 @@ import React from 'react'
 
 import * as S from "./filter-checkbox-inner.styled"
 
-export default function FilterCheckboxInnerView({...props}) {
+export default function FilterCheckboxInnerView({active, ...props}) {
   return (
-    <S.Container {...props} />
+    <S.Container active={active} {...props} />
   )
 }

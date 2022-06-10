@@ -6,14 +6,34 @@ import LotsFiltersHeader from "./components/header"
 
 import * as S from "./lots-filters.styled"
 
-const LotsFiltersView = () => {
+const make =  [
+  {value: "100 S Quat", count: 1},
+  {value: "100 Wagon", count: 1},
+  {value: "100 S Quat", count: 1},
+  {value: "100 S Quat", count: 1},
+  {value: "100 S Quat", count: 1},
+  {value: "100 S Quat", count: 1},
+  {value: "100 S Quat", count: 1},
+  {value: "100 S Quat", count: 1},
+]
+
+const LotsFiltersView = ({formik}) => {
   return (
     <S.Container>
       <LotsFiltersHeader />
 
-      <S.Search size="big" />
+      <S.Search
+        size="big"
+        value={formik.values.search}
+        onChange={value => formik.setFieldValue('name', value)}
+      />
 
-      <FilterCheckbox title="Make" />
+      <FilterCheckbox
+        title="Make"
+        value={formik.values.make}
+        options={make}
+        onChange={value => formik.setFieldValue('make', value)}
+      />
 
       <FilterCheckbox title="Model" />
 
