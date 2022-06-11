@@ -11,7 +11,7 @@ import * as S from "./lots.styled"
 
 const LotsView = ({lots, page, pageCount, onChangePage}) => {
   return (
-    <LayoutLots LeftComponent={<LotsFilters />} TopComponent={<CabinetMenu active="lots" />}>
+    <LayoutLots LeftComponent={<LotsFilters data={lots?.filters} />} TopComponent={<CabinetMenu active="lots" />}>
       {lots?.data?.map(item => <S.Card data={item} key={item?.id} />)}
 
       <Padination value={page} total={lots.total} pageCount={pageCount} onChange={onChangePage}>
