@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
+  position: relative;
+
   padding: 0px ${responsiveSize(20)};
 `
 
@@ -34,5 +36,20 @@ export const Image = styled.div`
 
   &:not(:last-child) {
     margin-right: ${responsiveSize(6)};
+  }
+`
+
+export const View360 = styled.img`
+  position: absolute;
+  left: ${responsiveSize(30)};
+  bottom: ${responsiveSize(10)};
+  height: ${responsiveSize(20)};
+  width: ${responsiveSize(32)};
+
+  cursor: pointer;
+  transition: all 0.4s;
+
+  &:hover {
+    transform: scale(0.9);
   }
 `

@@ -11,8 +11,8 @@ export default function LotsFiltersContainer({onSubmit, ...props}) {
   const formik = useFormik({
     initialValues: {
       search: '',
-      make: null,
-      model: null,
+      make: [],
+      model: [],
     },
     validationSchema,
     onSubmit,

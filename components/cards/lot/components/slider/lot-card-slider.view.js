@@ -50,6 +50,8 @@ export default function LotCardSliderМiew({className, data}) {
           </S.Action>
         </div>
       </div>
+
+      <S.View360 src="/images/360.svg" />
     </S.Container>
   )
 }

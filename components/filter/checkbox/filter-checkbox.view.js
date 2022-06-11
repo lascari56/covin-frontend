@@ -7,13 +7,13 @@ import FilterCheckboxHeader from "./components/header"
 
 import * as S from "./filter-checkbox.styled"
 
-export default function FilterCheckboxView({ title, options, value, values, onChange, onAll }) {
+export default function FilterCheckboxView({ title, options, value, isAll, values, search, onChangeSearch, onChange, onChangeAll }) {
   return (
     <FilterGroup title={title}>
-      <FilterCheckboxHeader value={value} onAll={onAll} />
+      <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} />
 
       <S.Container>
-        <S.Search isIcon={false} />
+        <S.Search isIcon={false} value={search} onChange={onChangeSearch} />
 
         <S.Content>
           {options?.map(item => (
