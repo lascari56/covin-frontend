@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Padination, Button} from "@components"
+import {Padination, Button, Loader} from "@components"
 import {CabinetMenu } from "@components/cabinet";
 
 import LotsFilters from "./components/filters"
@@ -22,6 +22,8 @@ const LotsView = ({lots, page, pageCount, loading, onChangePage}) => {
             </Padination>
           </>
         )}
+
+        {loading && <Loader />}
       </S.Container>
     </LayoutLots>
   );
