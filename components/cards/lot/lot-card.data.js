@@ -19,8 +19,9 @@ export const meta = [
   ],
   [
     {
-      key: "odobrand",
-      icon: "/images/odometr.svg"
+      key: "odometer",
+      icon: "/images/odometr.svg",
+      
     },
     {
       key: "status",

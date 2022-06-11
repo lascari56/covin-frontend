@@ -24,6 +24,6 @@ export async function getStaticProps({params}) {
   const lots = await api.service('cars?full=true').find({})
 
   return {
-    props: {lots: {data: lots?.data}}
+    props: {lots: {...lots}}
   };
 }
