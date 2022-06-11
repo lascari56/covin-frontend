@@ -7,7 +7,7 @@ import * as S from "./filter-checkbox-header.styled"
 export default function FilterCheckboxHeaderView({value, onAll}) {
   return (
     <S.Container>
-      <S.All onPress={onAll}>
+      <S.All onClick={onAll}>
         <FilterCheckboxInner active={value === "all"} />
 
         <S.AllLabel>Select all</S.AllLabel>

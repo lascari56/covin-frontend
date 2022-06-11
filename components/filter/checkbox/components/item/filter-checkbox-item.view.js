@@ -4,10 +4,10 @@ import FilterCheckboxInner from "../inner"
 
 import * as S from "./filter-checkbox-item.styled"
 
-export default function filterCheckboxItemView({data}) {
+export default function filterCheckboxItemView({data, active, onClick}) {
   return (
-    <S.Container>
-      <FilterCheckboxInner />
+    <S.Container onClick={onClick}>
+      <FilterCheckboxInner active={active} />
 
       <S.Label>{data?.value}</S.Label>
 

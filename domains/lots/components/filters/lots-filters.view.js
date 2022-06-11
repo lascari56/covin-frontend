@@ -9,12 +9,12 @@ import * as S from "./lots-filters.styled"
 const make =  [
   {value: "100 S Quat", count: 1},
   {value: "100 Wagon", count: 1},
-  {value: "100 S Quat", count: 1},
-  {value: "100 S Quat", count: 1},
-  {value: "100 S Quat", count: 1},
-  {value: "100 S Quat", count: 1},
-  {value: "100 S Quat", count: 1},
-  {value: "100 S Quat", count: 1},
+  {value: "90 S", count: 1},
+  {value: "A3", count: 1},
+  {value: "A3 2", count: 1},
+  {value: "A3 2.0", count: 1},
+  {value: "A3 2.0 Pre", count: 1},
+  {value: "A3 2.0 Spo", count: 1},
 ]
 
 const LotsFiltersView = ({formik}) => {
@@ -37,38 +37,27 @@ const LotsFiltersView = ({formik}) => {
 
       <FilterCheckbox title="Model" />
 
-      <FilterGroup title="Series">
-      </FilterGroup>
+      <FilterCheckbox title="Series" />
 
-      <FilterGroup title="Odometr">
-      </FilterGroup>
+      <FilterCheckbox title="Odometr" />
 
-      <FilterGroup title="Location">
-      </FilterGroup>
+      <FilterCheckbox title="Location" />
 
-      <FilterGroup title="Status">
-      </FilterGroup>
+      <FilterCheckbox title="Status" />
 
-      <FilterGroup title="Vehicle Condition Type">
-      </FilterGroup>
+      <FilterCheckbox title="Vehicle Condition Type" />
 
-      <FilterGroup title="Keys">
-      </FilterGroup>
+      <FilterCheckbox title="Keys" />
 
-      <FilterGroup title="Fuel Type">
-      </FilterGroup>
+      <FilterCheckbox title="Fuel Type" />
 
-      <FilterGroup title="Drive Train">
-      </FilterGroup>
+      <FilterCheckbox title="Drive Train" />
 
-      <FilterGroup title="Engine Type">
-      </FilterGroup>
+      <FilterCheckbox title="Engine Type" />
 
-      <FilterGroup title="Title / Sale Document">
-      </FilterGroup>
+      <FilterCheckbox title="Title / Sale Document" />
 
-      <FilterGroup title="Seller">
-      </FilterGroup>
+      <FilterCheckbox title="Seller" />
 
       <S.Footer>
         <S.Action theme="outline" title="Save New Order" />
