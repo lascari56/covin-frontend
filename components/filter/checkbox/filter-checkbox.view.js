@@ -29,7 +29,7 @@ function FilterCheckboxView({
         
         <S.Content>
           {options?.map(item => (
-            <FilterCheckboxItem data={item} active={values[item.value]} onClick={() => onChange(item.value)} />
+            <FilterCheckboxItem data={item} active={values[item.value]} key={item.value} onClick={() => onChange(item.value)} />
           ))}
         </S.Content>
       </S.Container>
