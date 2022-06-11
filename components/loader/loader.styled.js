@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Rings } from  'react-loader-spinner'
+
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -11,4 +13,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+
+  z-index: 1;
+
+  /* background-color: rgba(0, 0, 0, 0.1); */
+`
+
+export const Loader = styled(Rings)`
+  position: static;
 `

@@ -19,7 +19,7 @@ export const Body = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  flex: 1;
+  flex-grow: 1;
   margin-left: ${props => props.full ? responsiveSize(232) : responsiveSize(76)};
 `
 

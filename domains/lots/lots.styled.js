@@ -5,7 +5,8 @@ import {LotCard} from '@components/cards';
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
-  flex-grow: 1;
+  min-height: 100%;
+  position: relative;
 `
 
 export const Card = styled(LotCard)`
