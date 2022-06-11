@@ -5,7 +5,7 @@ import {api} from '../../utils/api.util';
 import LotsView from './lots.view';
 
 export default function СontactsContainer({navigation, ...props}) {
-  const [lots, setLots] = useState(props.lots);
+  const [lots, setLots] = useState(null);
   const [page, setPage] = useState(0);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
@@ -13,14 +13,8 @@ export default function СontactsContainer({navigation, ...props}) {
   const didMount = React.useRef(false);
 
   useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-
-      return;
-    }
-
-    handleGetLots();
-  }, [page]);
+    handleLoadLots()
+  }, []);
 
   useEffect(() => {
     if (!didMount.current) {
@@ -30,12 +24,11 @@ export default function СontactsContainer({navigation, ...props}) {
     }
 
     handleGetLots();
-  }, [filters]);
+  }, [filters, page]);
 
   const pageCount = useMemo(() => {
     return Math.ceil(lots?.total / lots?.limit);
   }, [lots?.total, lots?.limit]);
-
 
   const hnadlehangePage = async (value) => {
     setPage(value);
@@ -61,6 +54,14 @@ export default function СontactsContainer({navigation, ...props}) {
     setLots({...lots, ...res})
     setLoading(false)
   };
+
+  const handleLoadLots = async () => {
+    const res = await api.service('cars?full=true').find({});
+
+    setLots({...res})
+    setLoading(false)
+  };
+  
 
   return (
     <LotsView
