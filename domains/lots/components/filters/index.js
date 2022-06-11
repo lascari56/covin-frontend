@@ -1,1 +1,1 @@
-export {default} from "./lots-filters.view"
+export {default} from "./lots-filters.container"

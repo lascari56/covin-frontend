@@ -4,13 +4,11 @@ import LotCardHeader from './components/header'
 import LotCardActions from './components/actions'
 import LotCardInfo from './components/info'
 import LotCardCommentary from './components/commentary'
-
+import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
-import {meta} from "./lot-card.data"
-
-const LotCardView = ({ className, data }) => {
+const LotCardView = ({ className, data, renderMeta }) => {
   return (
    <S.Container className={className}>
      <LotCardHeader data={data} />
@@ -18,12 +16,12 @@ const LotCardView = ({ className, data }) => {
       <S.Body type={data?.type}>
         <S.Content>
           
-          <S.Slider data={data} />
+          <LotCardSlider data={data} />
 
           <S.Wrapper>
-            {meta.map((item, index) => (
+            {renderMeta.map((item, index) => (
               <S.Column key={index}>
-                <LotCardInfo data={data} options={item} />
+                <LotCardInfo data={item} />
               </S.Column>
             ))}
 

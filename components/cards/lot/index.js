@@ -1,1 +1,1 @@
-export { default } from "./lot-card.view";
+export { default } from "./lot-card.container";

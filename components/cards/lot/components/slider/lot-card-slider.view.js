@@ -9,9 +9,9 @@ import Splide from '@splidejs/splide';
 export default function LotCardSliderМiew({className, data}) {
   const sliderRef = createRef();
 
-  const items = useMemo(() => {
-    return data?.link_img_hd[0].split(";;");
-  }, []);
+  // const items = useMemo(() => {
+  //   return data?.link_img_hd[0].split(";;");
+  // }, []);
 
   useEffect(() => {
     const spliderEl = new Splide(sliderRef.current, {
@@ -32,7 +32,7 @@ export default function LotCardSliderМiew({className, data}) {
       <div className="splide" ref={sliderRef}>
         <div className="splide__track">
           <ul className="splide__list">
-            {items?.map((item, index) => (
+            {data?.link_img_hd?.map((item, index) => (
               <li className="splide__slide" key={index}>
                 <S.Image image={item} />
               </li>
@@ -50,6 +50,8 @@ export default function LotCardSliderМiew({className, data}) {
           </S.Action>
         </div>
       </div>
+
+      <S.View360 src="/images/360.svg" />
     </S.Container>
   )
 }

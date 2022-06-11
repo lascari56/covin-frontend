@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Button from "@components/button"
 
-import LotCardSlider from './components/slider'
+
 import LotCardMeta from './components/meta'
 
 import { responsiveSize } from "@utils/responsive";
@@ -28,10 +28,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${responsiveSize(20)} 0px;
-`
-
-export const Slider = styled(LotCardSlider)`
-  margin-bottom: ${responsiveSize(20)};
 `
 
 export const Wrapper = styled.div`
