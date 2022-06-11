@@ -47,7 +47,7 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   const handleGetLots = async () => {
-    if (loading) return;
+    // if (loading) return;
   
     setLoading(true)
 
