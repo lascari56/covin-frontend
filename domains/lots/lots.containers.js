@@ -1,44 +1,42 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {useDispatch} from 'react-redux';
-
-// import {selectLots} from '@store/lotReducers/lotReducer.selector';
-import {
-  getLots,
-} from '@store/lotReducers/lotReducer.thunk';
 
 import {api} from '../../utils/api.util';
 
 import LotsView from './lots.view';
 
 export default function СontactsContainer({navigation, ...props}) {
-  // const dispatch = useDispatch();
-
   const [page, setPage] = useState(0);
-  const [lots, setLots] = useState(props.lots);
-
-  // const lots = useSelector(selectLots);
+  const [lots, setLots] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const pageCount = useMemo(() => {
-    return Math.ceil(lots.total / lots.limit);
-  }, [lots]);
+    return Math.ceil(lots?.total / lots?.limit);
+  }, [lots?.total, lots?.limit]);
 
   useEffect(() => {
-    handleGetLots();
-  }, [page]);
+    handleLoadLots();
+  }, []);
 
-  const handleGetLots = async () => {
-    console.log("page", page);
-  
+  const handleLoadLots = async () => {
+    const res = await api.service('cars?full=true').find({});
+
+    setLots({...res})
+    setLoading(false)
+  }
+
+  const handleGetLots = async (value) => {
+    setPage(value)
+    setLoading(true)
+
     const res = await api.service('cars').find({
       query: {
-        $skip: page * 10,
+        $skip: value * 10,
         read: false
       }
     });
 
     setLots({...lots, ...res})
-
-    console.log("res", res);
+    setLoading(false)
   };
 
   return (
@@ -47,7 +45,8 @@ export default function СontactsContainer({navigation, ...props}) {
       lots={lots}
       page={page}
       pageCount={pageCount}
-      onChangePage={setPage}
+      loading={loading}
+      onChangePage={handleGetLots}
     />
   );
 }

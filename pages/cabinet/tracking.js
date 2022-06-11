@@ -20,10 +20,10 @@ TrackingScreen.getLayout = function getLayout(page) {
 
 export default TrackingScreen;
 
-export async function getStaticProps({params}) {
-  const lots = await api.service('cars').find({})
+// export async function getStaticProps({params}) {
+//   const lots = await api.service('cars').find({})
   
-  return {
-    props: {lots}
-  };
-}
+//   return {
+//     props: {lots}
+//   };
+// }
