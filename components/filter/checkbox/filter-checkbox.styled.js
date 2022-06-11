@@ -8,7 +8,7 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-  max-height: ${responsiveSize(210)};
+  max-height: ${responsiveSize(276)};
   padding: ${responsiveSize(6.5)} 0px;
 
   overflow-y: scroll;

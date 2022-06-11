@@ -2,7 +2,7 @@ import React, {useMemo, useState} from 'react'
 
 import FilterCheckboxView from "./filter-checkbox.view"
 
-export default function FilterCheckboxContainer({value, onChange, ...props}) {
+export default function FilterCheckboxContainer({value, options, onChange, ...props}) {
   const [search, setSearch] = useState("")
 
   const values = useMemo(() => {
@@ -13,10 +13,22 @@ export default function FilterCheckboxContainer({value, onChange, ...props}) {
     return res;
   }, [value])
 
-
   const isAll = useMemo(() => {
-    return props.options?.length === value?.length
-  }, [props.options?.length])
+    return options?.length === value?.length
+  }, [options?.length, value?.length])
+
+  const renderOptions = useMemo(() => {
+    if (!search) {
+      return options
+    }
+
+    return options?.filter(item => {
+      const _value = item?.value?.toLowerCase();
+      const _search = search?.toLowerCase()
+
+      return _value?.indexOf(_search) !== -1
+    })
+  }, [search, options])
 
   const handleChangeAll = () => {
     if (isAll) {
@@ -42,13 +54,20 @@ export default function FilterCheckboxContainer({value, onChange, ...props}) {
     onChange(_value)
   }
 
+  
+
+  const handleChangeSearch = (event) => {
+    setSearch(event.target.value)
+  }
+
   return (
     <FilterCheckboxView
       {...props}
+      options={renderOptions}
       values={values}
       search={search}
       isAll={isAll}
-      onChangeSearch={setSearch}
+      onChangeSearch={handleChangeSearch}
       onChangeAll={handleChangeAll}
       onChange={handleChange}
     />

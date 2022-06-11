@@ -17,7 +17,7 @@ const make =  [
   {value: "A3 2.0 Spo", count: 1},
 ]
 
-const LotsFiltersView = ({formik}) => {
+const LotsFiltersView = ({formik, filters}) => {
   return (
     <S.Container>
       <LotsFiltersHeader />
@@ -31,33 +31,99 @@ const LotsFiltersView = ({formik}) => {
       <FilterCheckbox
         title="Make"
         value={formik.values.make}
-        options={make}
+        options={filters?.make}
         onChange={value => formik.setFieldValue('make', value)}
       />
 
-      <FilterCheckbox title="Model" />
+      <FilterCheckbox
+        title="Model"
+        value={formik.values.model}
+        options={filters?.model}
+        onChange={value => formik.setFieldValue('model', value)}
+      />
 
-      <FilterCheckbox title="Series" />
+      <FilterCheckbox
+        title="Series"
+        value={formik.values.series}
+        options={filters?.series}
+        onChange={value => formik.setFieldValue('series', value)}
+      />
+
+      <FilterCheckbox title="Year" />
 
       <FilterCheckbox title="Odometr" />
 
-      <FilterCheckbox title="Location" />
+      <FilterCheckbox
+        title="Loss"
+        value={formik.values.loss}
+        options={filters?.loss}
+        onChange={value => formik.setFieldValue('loss', value)}
+      />
 
-      <FilterCheckbox title="Status" />
+      <FilterCheckbox title="Damage" />
 
-      <FilterCheckbox title="Vehicle Condition Type" />
+      <FilterCheckbox
+        isSearch={false}
+        title="Drive"
+        value={formik.values.keys}
+        options={filters?.keys}
+        onChange={value => formik.setFieldValue('keys', value)}
+      />
 
-      <FilterCheckbox title="Keys" />
+      <FilterCheckbox
+        isSearch={false}
+        title="Status"
+        value={formik.values.status}
+        options={filters?.status}
+        onChange={value => formik.setFieldValue('status', value)}
+      />
 
-      <FilterCheckbox title="Fuel Type" />
+      <FilterCheckbox
+        isSearch={false}
+        title="Keys"
+        value={formik.values.keys}
+        options={filters?.keys}
+        onChange={value => formik.setFieldValue('keys', value)}
+      />
 
-      <FilterCheckbox title="Drive Train" />
+      <FilterCheckbox
+        isSearch={false}
+        title="Transmission"
+        value={formik.values.transmission}
+        options={filters?.transmission}
+        onChange={value => formik.setFieldValue('transmission', value)}
+      />
 
-      <FilterCheckbox title="Engine Type" />
+      <FilterCheckbox
+        title="Engine Type"
+        value={formik.values.engine}
+        options={filters?.engine}
+        onChange={value => formik.setFieldValue('engine', value)}
+      />
 
-      <FilterCheckbox title="Title / Sale Document" />
+      <FilterCheckbox
+        isSearch={false}
+        title="Fuel Type"
+        value={formik.values.fuel}
+        options={filters?.fuel}
+        onChange={value => formik.setFieldValue('fuel', value)}
+      />
 
-      <FilterCheckbox title="Seller" />
+      <FilterCheckbox title="Сost repair" />
+
+      <FilterCheckbox
+        title="Location"
+        value={formik.values.location}
+        options={filters?.location}
+        onChange={value => formik.setFieldValue('location', value)}
+      />
+
+      <FilterCheckbox
+        title="Document"
+        value={formik.values.document}
+        options={filters?.document}
+        onChange={value => formik.setFieldValue('document', value)}
+      />
 
       <S.Footer>
         <S.Action theme="outline" title="Save New Order" />
