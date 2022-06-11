@@ -10,11 +10,13 @@ export default function CabinetView({children, isFull}) {
     <S.Container>
       <CabinetTopLine />
 
-      <S.Content full={isFull}>
+      <S.Body>
         <S.Sidebar full={isFull} />
 
-        {children}
-      </S.Content>
+        <S.Content full={isFull}>
+          {children}
+        </S.Content>
+      </S.Body>
     </S.Container>
   )
 }

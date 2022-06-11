@@ -10,8 +10,14 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Content = styled.div`
+export const Body = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   position: relative;
+`
+
+export const Content = styled.div`
   display: flex;
   flex: 1;
   margin-left: ${props => props.full ? responsiveSize(232) : responsiveSize(76)};
@@ -20,5 +26,7 @@ export const Content = styled.div`
 export const Sidebar = styled(CabinetSidebar)`
   position: absolute;
   top: 0px;
-  left: ${responsiveSize(-76)}};
+  left: 0px;
+
+  z-index: 1;
 `
