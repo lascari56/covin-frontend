@@ -1,11 +1,15 @@
 import React from 'react'
 
+import Link from 'next/link'
+
 import * as S from "./menu-item.styled"
 
-export default function MenuItemView({title, active}) {
+export default function MenuItemView({data, active}) {
   return (
-    <S.Container active={active}>
-      <S.Title active={active}>{title}</S.Title>
-    </S.Container>
+    <Link href={data?.route} passHref>
+      <S.Container active={active}>
+        <S.Title active={active}>{data?.label}</S.Title>
+      </S.Container>
+    </Link>
   )
 }
