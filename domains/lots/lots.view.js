@@ -9,9 +9,9 @@ import LayoutLots from "@layouts/lots"
 
 import * as S from "./lots.styled"
 
-const LotsView = ({lots, page, pageCount, onChangePage}) => {
+const LotsView = ({lots, page, pageCount, onFilter, onChangePage}) => {
   return (
-    <LayoutLots LeftComponent={<LotsFilters data={lots?.filters} />} TopComponent={<CabinetMenu active="lots" />}>
+    <LayoutLots LeftComponent={<LotsFilters data={lots?.filters} onFilter={onFilter} />} TopComponent={<CabinetMenu active="lots" />}>
       {lots?.data?.map(item => <S.Card data={item} key={item?.id} />)}
 
       <Padination value={page} total={lots.total} pageCount={pageCount} onChange={onChangePage}>

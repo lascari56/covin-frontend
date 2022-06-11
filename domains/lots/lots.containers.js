@@ -1,44 +1,59 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {useDispatch} from 'react-redux';
-
-// import {selectLots} from '@store/lotReducers/lotReducer.selector';
-import {
-  getLots,
-} from '@store/lotReducers/lotReducer.thunk';
 
 import {api} from '../../utils/api.util';
 
 import LotsView from './lots.view';
 
 export default function СontactsContainer({navigation, ...props}) {
-  // const dispatch = useDispatch();
-
-  const [page, setPage] = useState(0);
   const [lots, setLots] = useState(props.lots);
+  const [page, setPage] = useState(0);
+  const [filters, setFilters] = useState({});
 
-  // const lots = useSelector(selectLots);
+  const didMount = React.useRef(false);
+
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+
+      return;
+    }
+
+    handleGetLots();
+  }, [page]);
+
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+
+      return;
+    }
+
+    handleGetLots();
+  }, [filters]);
 
   const pageCount = useMemo(() => {
     return Math.ceil(lots.total / lots.limit);
   }, [lots]);
 
-  useEffect(() => {
-    handleGetLots();
-  }, [page]);
+
+  const hnadlehangePage = async (value) => {
+    setPage(value);
+  };
+
+  const handleFilter = async (value) => {
+    setPage(0);
+    setFilters(value);
+  };
 
   const handleGetLots = async () => {
-    console.log("page", page);
-  
     const res = await api.service('cars').find({
       query: {
         $skip: page * 10,
-        read: false
+        ...filters,
       }
     });
 
     setLots({...lots, ...res})
-
-    console.log("res", res);
   };
 
   return (
@@ -47,7 +62,8 @@ export default function СontactsContainer({navigation, ...props}) {
       lots={lots}
       page={page}
       pageCount={pageCount}
-      onChangePage={setPage}
+      onFilter={handleFilter}
+      onChangePage={hnadlehangePage}
     />
   );
 }

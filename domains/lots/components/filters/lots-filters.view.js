@@ -128,7 +128,7 @@ const LotsFiltersView = ({formik, filters}) => {
       <S.Footer>
         <S.Action theme="outline" title="Save New Order" />
 
-        <S.Action title="OK" />
+        <S.Action title="OK" onClick={formik.handleSubmit} />
       </S.Footer>
     </S.Container>
   );

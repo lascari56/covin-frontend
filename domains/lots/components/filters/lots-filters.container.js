@@ -11,7 +11,7 @@ const convertToCkeckbox = (data) => {
   return Object?.keys(data)?.map(key => ({ value: key, count: data[key] }))
 }
 
-export default function LotsFiltersContainer({data, onSubmit, ...props}) {
+export default function LotsFiltersContainer({data, onFilter, ...props}) {
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -33,7 +33,7 @@ export default function LotsFiltersContainer({data, onSubmit, ...props}) {
       document: []
     },
     validationSchema,
-    onSubmit,
+    onSubmit: onFilter,
   });
 
   const filters = useMemo(() => {
