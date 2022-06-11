@@ -37,29 +37,26 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
   });
 
   const filters = useMemo(() => {
-    console.log(JSON.stringify(data))
-
     const res = {};
-    
-    res.make = convertToCkeckbox(data?.make)
-    res.model = convertToCkeckbox(data?.model)
-    res.series = convertToCkeckbox(data?.series)
 
-    res.loss = convertToCkeckbox(data?.loss)
+    if (data) {
+      res.make = convertToCkeckbox(data?.make)
+      res.model = convertToCkeckbox(data?.model)
+      res.series = convertToCkeckbox(data?.series)
 
-    // res.damage = convertToCkeckbox({...})
+      res.loss = convertToCkeckbox(data?.loss)
+      
+      res.status = convertToCkeckbox(data?.status)
+      res.keys = convertToCkeckbox(data?.keys)
+      res.drive = convertToCkeckbox(data?.drive)
 
-    
-    res.status = convertToCkeckbox(data?.status)
-    res.keys = convertToCkeckbox(data?.keys)
-    res.drive = convertToCkeckbox(data?.drive)
-
-    res.transmission = convertToCkeckbox(data?.transmission)
-    res.fuel = convertToCkeckbox(data?.fuel)
-    res.engine = convertToCkeckbox(data?.engine)
-    
-    res.location = convertToCkeckbox(data?.location)
-    res.document = convertToCkeckbox(data?.document)
+      res.transmission = convertToCkeckbox(data?.transmission)
+      res.fuel = convertToCkeckbox(data?.fuel)
+      res.engine = convertToCkeckbox(data?.engine)
+      
+      res.location = convertToCkeckbox(data?.location)
+      res.document = convertToCkeckbox(data?.document)
+    }
 
     return res
   }, [data])

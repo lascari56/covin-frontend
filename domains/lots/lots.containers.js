@@ -8,6 +8,7 @@ export default function СontactsContainer({navigation, ...props}) {
   const [lots, setLots] = useState(props.lots);
   const [page, setPage] = useState(0);
   const [filters, setFilters] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const didMount = React.useRef(false);
 
@@ -32,8 +33,8 @@ export default function СontactsContainer({navigation, ...props}) {
   }, [filters]);
 
   const pageCount = useMemo(() => {
-    return Math.ceil(lots.total / lots.limit);
-  }, [lots]);
+    return Math.ceil(lots?.total / lots?.limit);
+  }, [lots?.total, lots?.limit]);
 
 
   const hnadlehangePage = async (value) => {
@@ -46,6 +47,10 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   const handleGetLots = async () => {
+    if (loading) return;
+  
+    setLoading(true)
+
     const res = await api.service('cars').find({
       query: {
         $skip: page * 10,
@@ -54,6 +59,7 @@ export default function СontactsContainer({navigation, ...props}) {
     });
 
     setLots({...lots, ...res})
+    setLoading(false)
   };
 
   return (
@@ -62,6 +68,7 @@ export default function СontactsContainer({navigation, ...props}) {
       lots={lots}
       page={page}
       pageCount={pageCount}
+      loading={loading}
       onFilter={handleFilter}
       onChangePage={hnadlehangePage}
     />

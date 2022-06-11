@@ -20,10 +20,10 @@ LotsScreen.getLayout = function getLayout(page) {
 
 export default LotsScreen;
 
-export async function getStaticProps({params}) {
-  const lots = await api.service('cars?full=true').find({})
+// export async function getStaticProps({params}) {
+//   const lots = await api.service('cars?full=true').find({})
 
-  return {
-    props: {lots}
-  };
-}
+//   return {
+//     props: {lots}
+//   };
+// }
