@@ -9,7 +9,7 @@ import LayoutLots from "@layouts/lots"
 
 import * as S from "./lots.styled"
 
-const LotsView = ({lots, page, pageCount, loading, onChangePage}) => {
+const LotsView = ({lots, page, pageCount, loading, onFilter, onChangePage}) => {
   return (
     <LayoutLots LeftComponent={<LotsFilters data={lots?.filters} onFilter={onFilter} />} TopComponent={<CabinetMenu active="lots" />}>
       <S.Container>
