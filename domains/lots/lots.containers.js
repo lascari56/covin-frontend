@@ -4,6 +4,10 @@ import {api} from '../../utils/api.util';
 
 import LotsView from './lots.view';
 
+import {useFormik} from 'formik';
+
+import {animateScroll} from 'react-scroll';
+
 export default function СontactsContainer({navigation, ...props}) {
   const [lots, setLots] = useState(null);
   const [page, setPage] = useState(0);
@@ -11,6 +15,17 @@ export default function СontactsContainer({navigation, ...props}) {
   const [loading, setLoading] = useState(true);
 
   const didMount = React.useRef(false);
+
+  const formikMeta = useFormik({
+    initialValues: {
+      search: '',
+      speed: "miles",
+      time: "+02:00"
+    },
+    onSubmit: () => {
+      
+    },
+  });
 
   useEffect(() => {
     handleLoadLots()
@@ -30,13 +45,17 @@ export default function СontactsContainer({navigation, ...props}) {
     return Math.ceil(lots?.total / lots?.limit);
   }, [lots?.total, lots?.limit]);
 
-  const hnadlehangePage = async (value) => {
+  const hnadleHangePage = async (value) => {
     setPage(value);
+
+    animateScroll.scrollToTop()
   };
 
   const handleFilter = async (value) => {
     setPage(0);
     setFilters(value);
+
+    animateScroll.scrollToTop()
   };
 
   const handleGetLots = async () => {
@@ -70,8 +89,9 @@ export default function СontactsContainer({navigation, ...props}) {
       page={page}
       pageCount={pageCount}
       loading={loading}
+      formikMeta={formikMeta}
       onFilter={handleFilter}
-      onChangePage={hnadlehangePage}
+      onChangePage={hnadleHangePage}
     />
   );
 }

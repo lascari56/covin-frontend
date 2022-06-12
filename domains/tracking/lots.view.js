@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Padination, Button} from "@components"
+import {Padination, Button, Loader} from "@components"
 import {CabinetMenu } from "@components/cabinet";
 
 import LotsFilters from "./components/filters"
@@ -9,16 +9,24 @@ import LayoutLots from "@layouts/lots"
 
 import * as S from "./lots.styled"
 
-const LotsView = ({lots}) => {
+const LotsView = ({lots, loading, page, pageCount, formikMeta, onChangePage}) => {
   return (
     <LayoutLots LeftComponent={<LotsFilters />} TopComponent={<CabinetMenu active="tracking" />}>
-      <S.Meta />
+      <S.Container>
+        {!!lots && (
+          <>
+            <S.Meta formik={formikMeta} />
 
-      {lots?.data?.map(item => <S.Card data={item} key={item?.id} />)}
+            {lots?.data?.map(item => <S.Card data={item} speedUnit={formikMeta.values.speed} key={item?.id} />)}
 
-      <Padination>
-        <Button title="Show 10 more" />
-      </Padination>
+            <Padination value={page} total={lots?.total} pageCount={pageCount} onChange={onChangePage}>
+              <Button title="Show 10 more" />
+            </Padination>
+          </>
+        )}
+
+        {loading && <Loader isBackground={lots?.data?.length} />}
+      </S.Container>
     </LayoutLots>
   );
 };

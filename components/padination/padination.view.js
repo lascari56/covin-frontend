@@ -11,6 +11,7 @@ export default function PadinationView({children, value, total, pageCount, onCha
     <S.Container>
       <ReactPaginate
         className="pagination"
+        activeLinkClassName="active"
         breakLabel="..."
         // nextLabel="next >"
         onPageChange={(value) => onChange(value.selected)}

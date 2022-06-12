@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FilterGroup, FilterCheckbox } from 'components/filter';
+import { FilterGroup, FilterCheckbox, FilterRange } from 'components/filter';
 
 import LotsFiltersHeader from "./components/header"
 
@@ -45,16 +45,21 @@ const LotsFiltersView = ({formik, filters, onReset}) => {
 
       <FilterCheckbox title="Year" />
 
-      <FilterCheckbox title="Odometr" />
+      <FilterRange
+        title="Odometr"
+        value={formik.values.odometr}
+        onChange={value => formik.setFieldValue('odometr', value)}
+      />
 
       <FilterCheckbox
         title="Loss"
         value={formik.values.loss}
         options={filters?.loss}
         onChange={value => formik.setFieldValue('loss', value)}
+        onChangeTemplate={() => {}}
       />
 
-      <FilterCheckbox title="Damage" />
+      <FilterCheckbox title="Damage" onChangeTemplate={() => {}}/>
 
       <FilterCheckbox
         isSearch={false}
@@ -103,13 +108,18 @@ const LotsFiltersView = ({formik, filters, onReset}) => {
         onChange={value => formik.setFieldValue('fuel', value)}
       />
 
-      <FilterCheckbox title="Сost repair" />
+      <FilterRange
+        title="Сost repair"
+        value={formik.values.cost_repair}
+        onChange={value => formik.setFieldValue('cost_repair', value)}
+      />
 
       <FilterCheckbox
         title="Location"
         value={formik.values.location}
         options={filters?.location}
         onChange={value => formik.setFieldValue('location', value)}
+        onChangeTemplate={() => {}}
       />
 
       <FilterCheckbox
@@ -117,6 +127,7 @@ const LotsFiltersView = ({formik, filters, onReset}) => {
         value={formik.values.document}
         options={filters?.document}
         onChange={value => formik.setFieldValue('document', value)}
+        onChangeTemplate={() => {}}
       />
 
       <S.Footer>

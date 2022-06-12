@@ -8,7 +8,7 @@ import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
-const LotCardView = ({ className, data, renderMeta }) => {
+const LotCardView = ({ className, data, renderMeta, links }) => {
   return (
    <S.Container className={className}>
      <LotCardHeader data={data} />
@@ -26,7 +26,7 @@ const LotCardView = ({ className, data, renderMeta }) => {
             ))}
 
             <S.Column>
-              <S.ActionButton theme="outline" title="Open Lot" />
+              <S.ActionButton theme="outline" title="Open Lot" to={links?.lot_link} target="_blank" />
 
               <S.ActionButton title="Buy Carfax" />
             </S.Column>

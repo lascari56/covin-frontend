@@ -4,14 +4,8 @@ import * as S from './lot-card-slider.styled'
 
 import Splide from '@splidejs/splide';
 
-// const items = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}]
-
 export default function LotCardSliderМiew({className, data}) {
   const sliderRef = createRef();
-
-  // const items = useMemo(() => {
-  //   return data?.link_img_hd[0].split(";;");
-  // }, []);
 
   useEffect(() => {
     const spliderEl = new Splide(sliderRef.current, {
@@ -50,8 +44,13 @@ export default function LotCardSliderМiew({className, data}) {
           </S.Action>
         </div>
       </div>
-
-      <S.View360 src="/images/360.svg" />
+      
+      {!!data?.image_360 && (
+        <S.Link360 href={data?.image_360} target="_blank">
+          <S.Icon360 src="/images/360.svg" />
+        </S.Link360>
+      )}
+      
     </S.Container>
   )
 }
