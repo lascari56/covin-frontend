@@ -12,6 +12,8 @@ import * as S from "./lots.styled"
 const LotsView = ({lots}) => {
   return (
     <LayoutLots LeftComponent={<LotsFilters />} TopComponent={<CabinetMenu active="tracking" />}>
+      <S.Meta />
+
       {lots?.data?.map(item => <S.Card data={item} key={item?.id} />)}
 
       <Padination>

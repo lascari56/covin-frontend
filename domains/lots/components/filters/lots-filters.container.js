@@ -61,7 +61,12 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
     return res
   }, [data])
 
+  const handlerReset = () => {
+    formik.resetForm()
+    formik.submitForm()
+  }
+
   return (
-    <LotsFiltersView {...props} formik={formik} filters={filters} />
+    <LotsFiltersView {...props} formik={formik} filters={filters} onReset={handlerReset} />
   )
 }

@@ -17,16 +17,10 @@ const make =  [
   {value: "A3 2.0 Spo", count: 1},
 ]
 
-const LotsFiltersView = ({formik, filters}) => {
+const LotsFiltersView = ({formik, filters, onReset}) => {
   return (
     <S.Container>
-      <LotsFiltersHeader />
-
-      <S.Search
-        size="big"
-        value={formik.values.search}
-        onChange={value => formik.setFieldValue('name', value)}
-      />
+      <LotsFiltersHeader onReset={onReset} />
 
       <FilterCheckbox
         title="Make"

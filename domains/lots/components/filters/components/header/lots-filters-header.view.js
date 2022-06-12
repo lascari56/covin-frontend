@@ -2,12 +2,12 @@ import React from 'react';
 
 import * as S from "./lots-filters-header.styled"
 
-const LotsFiltersHeaderView = () => {
+const LotsFiltersHeaderView = ({onReset}) => {
   return (
     <S.Container>
       <S.Title>Filters</S.Title>
 
-      <S.Reset>Reset all</S.Reset>
+      <S.Reset onClick={onReset}>Reset all</S.Reset>
     </S.Container>
   );
 }
