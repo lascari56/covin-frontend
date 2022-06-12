@@ -1,25 +1,43 @@
-import React, {useEffect} from 'react';
-// import {useSelector, useDispatch} from 'react-redux';
-
-// import {selectLots} from '@store/lotReducers/lotReducer.selector';
-// import {
-//   getLots,
-// } from '@store/lotReducers/lotReducer.thunk';
+import React, {useEffect, useState} from 'react';
 
 import LotsView from './lots.view';
 
+import {useFormik} from 'formik';
+
+import {api} from '../../utils/api.util';
+
 export default function СontactsContainer({navigation, ...props}) {
-  // const dispatch = useDispatch();
+  const [lots, setLots] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // const lots = useSelector(selectLots);
+  const formikMeta = useFormik({
+    initialValues: {
+      search: '',
+      speed: "miles",
+      time: "+02:00"
+    },
+    onSubmit: () => {
+      
+    },
+  });
 
-  // useEffect(() => {
-  //   dispatch(getLots());
-  // }, []);
+  useEffect(() => {
+    handleLoadLots()
+  }, []);
+
+  const handleLoadLots = async () => {
+    const res = await api.service('cars?full=true').find({});
+
+    setLots({...res})
+    setLoading(false)
+  };
 
   return (
     <LotsView
       {...props}
+      lots={lots}
+      loading={loading}
+      formikMeta={formikMeta}
     />
   );
 }

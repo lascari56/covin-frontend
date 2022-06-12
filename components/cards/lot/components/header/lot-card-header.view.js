@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 
 import * as S from './lot-card-header.styled'
 
-export default function LotCardHeaderView({data}) {
+export default function LotCardHeaderView({data, date}) {
   return (
     <S.Container type={data?.type}>
       <S.Logo src="/images/company-logo.png"/>
@@ -17,13 +17,15 @@ export default function LotCardHeaderView({data}) {
         {data?.type === "hide" && <S.Hide>(hide)</S.Hide>}
       </S.Title>
 
-      <S.BuyButton theme="green" size="small" title={`Buy It Now for ${data?.cost_priced} $`} />
+      {!!data?.cost_priced && <S.BuyButton theme="green" size="small" title={`Buy It Now for ${data?.cost_priced} $`} />}
 
-      <S.CalendarIcon src="/images/calendar.svg/"/>
-
-      <S.Date>
-        <Moment date={data?.auction_date} format="DD MMM, hh:mm A" />
-      </S.Date>
+      {!!date && (
+        <>
+          <S.CalendarIcon src="/images/calendar.svg/"/>
+          
+          <S.Date>{date}</S.Date>
+        </>
+      )}
     </S.Container>
   )
 }

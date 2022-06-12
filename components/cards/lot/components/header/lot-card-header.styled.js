@@ -6,6 +6,7 @@ import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
   padding: ${responsiveSize(9)} ${responsiveSize(20)};
+  min-height: ${responsiveSize(48)};
 
   display: flex;
   align-items: center;
@@ -22,6 +23,7 @@ export const Logo = styled.img`
 `
 
 export const Title = styled.span`
+  flex: 1;
   margin-left: ${responsiveSize(10)};
   
   font-weight: 500;

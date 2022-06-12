@@ -39,10 +39,13 @@ export const Image = styled.div`
   }
 `
 
-export const View360 = styled.img`
+export const Link360 = styled.a`
   position: absolute;
   left: ${responsiveSize(30)};
   bottom: ${responsiveSize(10)};
+`
+
+export const Icon360 = styled.img`
   height: ${responsiveSize(20)};
   width: ${responsiveSize(32)};
 

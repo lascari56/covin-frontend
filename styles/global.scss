@@ -71,7 +71,7 @@ input {
   display: flex;
   align-items: center;
 
-  li {
+  a {
     padding: 10px;
 
     font-size: 14px;
@@ -81,6 +81,11 @@ input {
 
     user-select: none;
     cursor: pointer;
+  }
+
+  .active {
+    color: #216DD1;
+    font-weight: 600;
   }
 }
 

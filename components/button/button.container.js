@@ -6,12 +6,16 @@ import ButtonView from "./button.view"
 
 import { useRouter } from 'next/router'
 
-function ButtonContainer({to, scroll, onClick, ...props}) {
+function ButtonContainer({to, scroll, target, onClick, ...props}) {
   const router = useRouter()
 
   const handferClick = () => {
     if (to) {
-      router.push(to, router.pathname, {scroll})
+      if (target === "_blank") {
+        window.open (to, '_ blank')
+      } else {
+        router.push(to, router.pathname, {scroll, target})
+      }
     } else if (onClick) {
       onClick()
     }

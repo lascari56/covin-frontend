@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
 
   cursor: pointer;
-  transition: all 0.4s;
+  transition: opacity 0.4s;
 
   &:hover {
     opacity: 0.6;

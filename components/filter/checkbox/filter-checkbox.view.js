@@ -18,11 +18,12 @@ function FilterCheckboxView({
   search, 
   onChangeSearch, 
   onChange, 
-  onChangeAll
+  onChangeAll,
+  onChangeTemplate
  }) {
   return (
     <FilterGroup title={title}>
-      <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} />
+      {(isAll || !!onChangeTemplate) && <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />}
 
       <S.Container>
         {isSearch && <S.Search isIcon={false} value={search} onChange={onChangeSearch} />}
