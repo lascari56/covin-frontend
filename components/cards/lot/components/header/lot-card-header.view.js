@@ -6,8 +6,10 @@ import * as S from './lot-card-header.styled'
 
 export default function LotCardHeaderView({data, date}) {
   return (
+
+    
     <S.Container type={data?.type}>
-      <S.Logo src="/images/company-logo.png"/>
+      <S.Logo src={data?.site === "1" ? "/images/copart-logo.png" : "/images/iaai-logo.png"} site={data?.site} />
 
       <S.Title type={data?.type}>
         {data?.year} {data?.make} {data?.model} {data?.series}
@@ -17,12 +19,12 @@ export default function LotCardHeaderView({data, date}) {
         {data?.type === "hide" && <S.Hide>(hide)</S.Hide>}
       </S.Title>
 
-      {!!data?.cost_priced && <S.BuyButton theme="green" size="small" title={`Buy It Now for ${data?.cost_priced} $`} />}
+      {!!data?.price_new && <S.BuyButton theme="green" size="small" title={`Buy It Now for ${data?.price_new} $`} />}
 
       {!!date && (
         <>
           <S.CalendarIcon src="/images/calendar.svg/"/>
-          
+
           <S.Date>{date}</S.Date>
         </>
       )}

@@ -7,31 +7,31 @@ export const sections = [
         key: "carfax",
         route: "/cabinet/carfax",
         title: "Carfax",
-        icon: "/images/carfax.svg"
+        icon: "carfax"
       },
       {
         key: "autocheck",
         route: "/cabinet/autocheck",
         title: "Autocheck",
-        icon: "/images/autocheck.svg"
+        icon: "autocheck"
       },
       {
         key: "sticker",
         route: "/cabinet/sticker",
         title: "Sticker",
-        icon: "/images/sticker.svg"
+        icon: "sticker"
       },
       {
         key: "finder",
         route: "/cabinet/lots",
         title: "Lot Finder",
-        icon: "/images/lot-finder.svg"
+        icon: "lots"
       },
       {
         key: "tracking",
         route: "/cabinet/tracking",
         title: "BuyNow Tracking",
-        icon: "/images/buy-now-tracking.svg"
+        icon: "tracking"
       }
     ]
   },
@@ -43,25 +43,25 @@ export const sections = [
         key: "payments",
         route: "/cabinet/payments",
         title: "Payments",
-        icon: "/images/payments.svg"
+        icon: "payments"
       },
       {
         key: "settings",
         route: "/cabinet/settings",
         title: "Settings",
-        icon: "/images/settings.svg"
+        icon: "settings"
       },
       {
         key: "news",
         route: "/cabinet/news",
         title: "News",
-        icon: "/images/news.svg"
+        icon: "news"
       },
       {
         key: "support",
         route: "/cabinet/support",
         title: "Support",
-        icon: "/images/support.svg"
+        icon: "support"
       }
     ]
   }
