@@ -8,7 +8,7 @@ export default function LotCardHeaderView({data, date}) {
       <S.Logo src={data?.site === "1" ? "/images/copart-logo.png" : "/images/iaai-logo.png"} site={data?.site} />
 
       <S.Title type={data?.type}>
-        {data?.year} {data?.make} {data?.model} {data?.series}
+        {data?.title}
 
         <S.Link><a href="#">(view all photo)</a></S.Link>
 
