@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import TrackingFiltersCardIcon from "./components/icon"
 
 import { responsiveSize } from "@utils/responsive";
 
@@ -24,4 +25,16 @@ export const Title = styled.h6`
   font-size: ${responsiveSize(14)};
   line-height: 150%;
   letter-spacing: 0.02em;
+`
+
+export const Footer = styled.div`
+  display: flex;
+  align-items: center;
+  padding-top: ${responsiveSize(15)};
+`
+
+export const Icon = styled(TrackingFiltersCardIcon)`
+  &:not(:last-child) {
+    margin-right: ${responsiveSize(4)};
+  }
 `

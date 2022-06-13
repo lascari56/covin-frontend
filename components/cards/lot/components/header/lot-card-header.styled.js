@@ -6,6 +6,7 @@ import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
   padding: ${responsiveSize(9)} ${responsiveSize(20)};
+  min-height: ${responsiveSize(48)};
 
   display: flex;
   align-items: center;
@@ -17,16 +18,24 @@ export const Container = styled.div`
 `
 
 export const Logo = styled.img`
-  width: ${responsiveSize(32)};
-  height: ${responsiveSize(18)};
+  ${props => props.site === "1" && `
+    width: ${responsiveSize(49)};
+    height: ${responsiveSize(18)};
+  `}
+
+  ${props => props.site === "2" && `
+    width: ${responsiveSize(32)};
+    height: ${responsiveSize(18)};
+  `}
 `
 
 export const Title = styled.span`
+  flex: 1;
   margin-left: ${responsiveSize(10)};
   
   font-weight: 500;
   font-size: ${responsiveSize(16)};
-  line-height: ${responsiveSize(19)};
+  line-height: ${responsiveSize(18)};
   letter-spacing: 0.02em;
 
   color: #000000;
@@ -40,7 +49,7 @@ export const Link = styled.span`
   margin-left: ${responsiveSize(4)};
 
   font-size: ${responsiveSize(12)};
-  line-height: ${responsiveSize(19)};
+  line-height: ${responsiveSize(18)};
   letter-spacing: 0.02em;
   text-decoration-line: underline;
   color: #1A6CEB;

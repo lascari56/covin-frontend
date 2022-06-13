@@ -1,1 +1,1 @@
-export {default} from "./filter-range.view"
+export {default} from "./filter-range.container"

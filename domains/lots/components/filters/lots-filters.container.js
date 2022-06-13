@@ -3,9 +3,6 @@ import React, { useMemo } from 'react'
 import LotsFiltersView from "./lots-filters.view"
 
 import {useFormik} from 'formik';
-import * as yup from 'yup';
-
-const validationSchema = yup.object().shape({});
 
 const convertToCkeckbox = (data) => {
   return Object?.keys(data)?.map(key => ({ value: key, count: data[key] }))
@@ -19,7 +16,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       model: [],
       series: [],
       year: [],
-      ordometr: [],
+      odometr: [],
       loss: [],
       damage: [],
       drive: [],
@@ -32,7 +29,6 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       location: [],
       document: []
     },
-    validationSchema,
     onSubmit: onFilter,
   });
 
@@ -61,7 +57,12 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
     return res
   }, [data])
 
+  const handlerReset = () => {
+    formik.resetForm()
+    formik.submitForm()
+  }
+
   return (
-    <LotsFiltersView {...props} formik={formik} filters={filters} />
+    <LotsFiltersView {...props} formik={formik} filters={filters} onReset={handlerReset} />
   )
 }

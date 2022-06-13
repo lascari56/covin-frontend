@@ -19,7 +19,7 @@ export const Container = styled.div`
   ${props => props.active && `background: #F1F6FC;`}
 `
 
-export const Icon = styled.img``
+// export const Icon = styled.img``
 
 export const Title = styled.span`
   margin-left: ${responsiveSize(12)};

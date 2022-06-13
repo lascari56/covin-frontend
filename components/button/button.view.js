@@ -5,7 +5,7 @@ import * as S from "./button.styled"
 
 function ButtonView({ className, title, size, to, theme, onClick}) {
   return (
-    <S.Container  className={className} to={to} size={size} theme={theme} onClick={onClick}>
+    <S.Container className={className} to={to} size={size} theme={theme} onClick={onClick}>
       <S.Title size={size} theme={theme}>{title}</S.Title>
     </S.Container>
   )
