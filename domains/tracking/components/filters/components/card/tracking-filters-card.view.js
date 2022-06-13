@@ -12,6 +12,16 @@ export default function TrackingFiltersCardView({className}) {
 
         <FormSwitch />
       </S.Header>
+
+      <S.Footer>
+        <S.Icon name="copy" />
+
+        <S.Icon name="copy" />
+
+        <S.Icon name="notification" />
+
+        <S.Icon name="delete"/>
+      </S.Footer>
     </S.Container>
   )
 }

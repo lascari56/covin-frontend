@@ -1,3 +1,4 @@
 import LotCard from './lot';
+import NoticationCard from './notication';
 
-export {LotCard};
+export {LotCard, NoticationCard};

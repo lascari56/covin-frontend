@@ -12,6 +12,9 @@ export const Inner = styled.select`
   height: ${responsiveSize(42)};
   padding: 0px ${responsiveSize(32)} 0px ${responsiveSize(10)};
 
+  font-size: ${responsiveSize(14)};
+  line-height: ${responsiveSize(16)};
+
   border: 1px solid #DFE7F0;
   border-radius: ${responsiveSize(4)};
   background-color: transparent;

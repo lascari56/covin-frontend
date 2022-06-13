@@ -13,6 +13,8 @@ const LotCardView = ({ className, data, renderMeta, links }) => {
    <S.Container className={className}>
      <LotCardHeader data={data} />
 
+     {/* <p>{JSON.stringify(data)}</p> */}
+
       <S.Body type={data?.type}>
         <S.Content>
           

@@ -4,7 +4,7 @@ import * as S from './lot-card-slider.styled'
 
 import Splide from '@splidejs/splide';
 
-export default function LotCardSliderМiew({className, data}) {
+export default function LotCardSliderМiew({className, data, items}) {
   const sliderRef = createRef();
 
   useEffect(() => {
@@ -19,14 +19,14 @@ export default function LotCardSliderМiew({className, data}) {
     return () => {
       spliderEl.destroy()
     }
-  }, [])
+  }, [items])
 
   return (
     <S.Container className={className}>
       <div className="splide" ref={sliderRef}>
         <div className="splide__track">
           <ul className="splide__list">
-            {data?.link_img_hd?.map((item, index) => (
+            {items?.map((item, index) => (
               <li className="splide__slide" key={index}>
                 <S.Image image={item} />
               </li>
