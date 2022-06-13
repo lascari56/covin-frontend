@@ -10,7 +10,7 @@ export default function LotCardHeaderView({data}) {
       <S.Logo src="/images/company-logo.png"/>
 
       <S.Title type={data?.type}>
-        {data?.year} {data?.make} {data?.model} {data?.series}
+        {data?.title}
 
         <S.Link><a href="#">(view all photo)</a></S.Link>
 
