@@ -5,7 +5,7 @@ import * as S from "./notication-card.styled"
 const NoticationCardView = ({className}) => {
   return (
     <S.Container className={className}>
-      hello
+      <S.Title>Send notification if:</S.Title>
     </S.Container>
   );
 }

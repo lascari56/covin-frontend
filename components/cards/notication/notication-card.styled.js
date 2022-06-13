@@ -9,6 +9,7 @@ export const Container = styled.div`
   border: 1px solid #DFE7F0;
   border-radius: ${responsiveSize(3)};
 `
+
 export const Title = styled.h4`
   font-size: ${responsiveSize(14)};
   line-height: 150%;

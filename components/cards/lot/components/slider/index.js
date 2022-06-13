@@ -1,1 +1,1 @@
-export {default} from './lot-card-slider.view'
+export {default} from './lot-card-slider.container'
