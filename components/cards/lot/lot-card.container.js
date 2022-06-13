@@ -37,7 +37,7 @@ export default function LotCardContainer({speedUnit, ...props}) {
 
 
   const links = useMemo(() => {
-    const lot_link = props.data?.site === "1" ? `https://www.copart.com/lot/${props.data?.lot_id}` : `https://www.iaai.com/vehicledetails/${props.data?.lot_id}`;
+    const lot_link = props.data?.site === "1" ? `https://www.copart.com/lot/${props.data?.lot_id}` : `https://www.iaai.com/vehicledetails/${props.data?.item_id}`;
 
     return {
       lot_link

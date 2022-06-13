@@ -1,4 +1,6 @@
-import EditSVG from './images/edit';
+import CopySVG from './images/copy';
+import NotificationSVG from './images/notification';
+import DeleteSVG from './images/delete';
 import CarfaxSVG from './images/carfax';
 import AutocheckSVG from './images/autocheck';
 import StickerSVG from './images/sticker';
@@ -10,7 +12,9 @@ import NewsSVG from './images/news';
 import SupportSVG from './images/support';
 
 export const icons = {
-  edit: EditSVG,
+  copy: CopySVG,
+  notification: NotificationSVG,
+  delete: DeleteSVG,
   carfax: CarfaxSVG,
   autocheck: AutocheckSVG,
   sticker: StickerSVG,

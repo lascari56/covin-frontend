@@ -1,13 +1,9 @@
 import React from 'react'
 
-import Moment from 'react-moment';
-
 import * as S from './lot-card-header.styled'
 
 export default function LotCardHeaderView({data, date}) {
   return (
-
-    
     <S.Container type={data?.type}>
       <S.Logo src={data?.site === "1" ? "/images/copart-logo.png" : "/images/iaai-logo.png"} site={data?.site} />
 
@@ -25,7 +21,7 @@ export default function LotCardHeaderView({data, date}) {
         <>
           <S.CalendarIcon src="/images/calendar.svg/"/>
 
-          <S.Date>{date}</S.Date>
+          <S.Date>{data?.auction_date} - {date}</S.Date>
         </>
       )}
     </S.Container>
