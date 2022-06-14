@@ -4,8 +4,12 @@ import LotsFiltersView from "./lots-filters.view"
 
 import {useFormik} from 'formik';
 
-const convertToCkeckbox = (data) => {
-  return Object?.keys(data)?.map(key => ({ value: key, label: key, count: data[key] }))
+const convertToCkeckbox = (data, keys) => {
+  return Object?.keys(data)?.map(key => {
+    let label = keys ? keys[key] : key;
+
+    return { value: key, label, count: data[key] }
+  })
 }
 
 export default function LotsFiltersContainer({data, onFilter, ...props}) {
@@ -27,7 +31,8 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       fuel: [],
       cost_repair: [],
       location: [],
-      document: []
+      document: [],
+      site: [],
     },
     onSubmit: onFilter,
   });
@@ -52,6 +57,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       
       res.location = convertToCkeckbox(data?.location)
       res.document = convertToCkeckbox(data?.document)
+      res.site = convertToCkeckbox(data?.site, {"1": "Copart", "2": "IAAI"})
     }
 
     return res

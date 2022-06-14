@@ -120,6 +120,14 @@ const LotsFiltersView = ({formik, filters, onReset}) => {
         onChangeTemplate={() => {}}
       />
 
+      <FilterCheckbox
+        isSearch={false}
+        title="Site"
+        value={formik.values.site}
+        options={filters?.site}
+        onChange={value => formik.setFieldValue('site', value)}
+      />
+
       <S.Footer>
         <S.Action theme="outline" title="Save New Order" />
 
