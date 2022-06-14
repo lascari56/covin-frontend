@@ -1,24 +1,28 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  token: null,
+  units: {
+    speed: "miles"
+  },
 };
 
 const commonSlice = createSlice({
   name: 'common',
   initialState,
   reducers: {
-    saveToken: (state, {payload}) => {
-      state.token = payload;
+    saveUnits: (state, {payload}) => {
+      state.units = {
+        ...state.units,
+        [payload.key]: payload.value
+      };
     },
     clean: state => {
-      state.user = initialState.user;
-      state.token = initialState.token;
+      state.units = initialState.units;
     },
   },
   extraReducers: {
   },
 });
 
-export const {clean, saveToken} = commonSlice.actions;
+export const {clean, saveUnits} = commonSlice.actions;
 export default commonSlice;

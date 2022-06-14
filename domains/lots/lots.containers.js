@@ -6,6 +6,11 @@ import LotsView from './lots.view';
 
 import {useFormik} from 'formik';
 
+import {useSelector, useDispatch} from 'react-redux';
+
+import {selectUnits} from '@store/commonReducers/commonReducer.selector';
+import {saveUnits} from '@store/commonReducers/commonReducer.slice';
+
 import {animateScroll} from 'react-scroll';
 
 const sortOptions = {
@@ -24,6 +29,8 @@ const sortOptions = {
 };
 
 export default function СontactsContainer({navigation, ...props}) {
+  const dispatch = useDispatch();
+
   const [lots, setLots] = useState(null);
   const [page, setPage] = useState(0);
   const [filters, setFilters] = useState({});
@@ -31,11 +38,12 @@ export default function СontactsContainer({navigation, ...props}) {
 
   const didMount = React.useRef(false);
 
+  const units = useSelector(selectUnits);
+
   const formikMeta = useFormik({
     initialValues: {
       search: '',
-      speed: "miles",
-      time: "+02:00",
+      speed: units.speed,
       sort: "auction_date"
     },
     onSubmit: () => {
@@ -48,26 +56,16 @@ export default function СontactsContainer({navigation, ...props}) {
   }, []);
 
   useEffect(() => {
-    // if (!didMount.current) {
-    //   didMount.current = true;
-
-    //   return;
-    // }
-
-    
-    
     if (didMount.current) {
       handleGetLots();
     }
-
-    
   }, [filters, page, formikMeta?.values?.sort]);
 
-  // useEffect(() => {
-  //   if (didMount.current) {
-  //     animateScroll.scrollToTop()
-  //   }
-  // }, [lots?.data])
+  useEffect(() => {
+    if (formikMeta.values.speed !== units.speed) {
+      dispatch(saveUnits({ key: "speed", value: formikMeta.values.speed }))
+    }
+  }, [formikMeta.values.speed])
 
   const pageCount = useMemo(() => {
     return Math.ceil(lots?.total / lots?.limit);
@@ -96,8 +94,6 @@ export default function СontactsContainer({navigation, ...props}) {
         ...filters,
       }
     });
-
-    
 
     setLots({...lots, ...res})
     setLoading(false)
