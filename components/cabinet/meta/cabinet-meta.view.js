@@ -10,7 +10,7 @@ import * as S from "./cabinet-meta.styled"
 
 const speedOptions = [
   {label: "Miles", value: "miles"},
-  {label: "Km", value: "kilometers"}
+  {label: "Km", value: "km"}
 ]
 
 const sortOptions = [
