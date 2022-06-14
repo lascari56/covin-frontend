@@ -22,7 +22,10 @@ const sortOptions = [
 const CabinetMetaView = ({className, formik}) => {
   return (
     <S.Container className={className}>
-      <S.Search />
+      <S.Search 
+        value={formik?.values?.search}
+        onChange={value => formik.setFieldValue('search', value)}
+      />
 
       <S.Select
         label="Speed"

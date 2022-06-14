@@ -61,7 +61,7 @@ export default function СontactsContainer({navigation, ...props}) {
     }
 
     
-  }, [filters, page, formikMeta?.values?.sort]);
+  }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search]);
 
   // useEffect(() => {
   //   if (didMount.current) {
@@ -114,7 +114,7 @@ export default function СontactsContainer({navigation, ...props}) {
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        // title: { $search: 's' },
+        title: { $search: formikMeta?.values?.search },
       }
     });
 
