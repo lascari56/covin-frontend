@@ -32,8 +32,8 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
     }
   }
 
-  const handleChangeSearch = (event) => {
-    setSearch(event.target.value)
+  const handleChangeSearch = (value) => {
+    setSearch(value)
   }
 
   return (
