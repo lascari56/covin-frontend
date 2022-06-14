@@ -66,6 +66,9 @@ export default function СontactsContainer({navigation, ...props}) {
     const res = await api.service('cars').find({
       query: {
         $skip: page * 10,
+        $sort: {
+          createdAt: -1
+        },
         ...filters,
       }
     });
