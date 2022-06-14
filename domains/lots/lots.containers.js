@@ -10,7 +10,7 @@ import {animateScroll} from 'react-scroll';
 
 const sortOptions = {
   auction_date: {
-    key: "auction_date",
+    key: "auction_date_api",
     value: 1
   },
   date_adding_new: {
