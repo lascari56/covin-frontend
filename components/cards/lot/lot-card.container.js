@@ -19,10 +19,8 @@ export default function LotCardContainer({speedUnit, ...props}) {
           const unit = speedUnit === "kilometers" ? "km" : "ml";
 
           value = `${_value} ${unit}`;
-        } else if (item.key === 'vin') {
-          value = `${value.slice(0, -6)}******`;
         } 
-
+      
         resColumn.push({
           icon: item.icon,
           value
@@ -37,7 +35,7 @@ export default function LotCardContainer({speedUnit, ...props}) {
 
 
   const links = useMemo(() => {
-    const lot_link = props.data?.site === "1" ? `https://www.copart.com/lot/${props.data?.lot_id}` : `https://www.iaai.com/vehicledetails/${props.data?.lot_id}`;
+    const lot_link = props.data?.site === "1" ? `https://www.copart.com/lot/${props.data?.lot_id}` : `https://www.iaai.com/vehicledetails/${props.data?.item_id}`;
 
     return {
       lot_link

@@ -2,14 +2,14 @@ import React from 'react';
 
 import * as S from "./form-select.styled"
 
-const FormSSelectView = ({className, options, label, placeholder, value, onChange}) => {
+const FormSSelectView = ({className, options, label, placeholder, value, size, onChange}) => {
   return (
-    <S.Container className={className}>
+    <S.Container className={className} size={size}>
       <S.Arrow src="/images/arrow.svg" />
 
       {!!label && <S.Label>{label}</S.Label>}
 
-      <S.Inner value={value} onChange={(event) => onChange(event.target.value)}>
+      <S.Inner value={value} size={size} onChange={(event) => onChange(event.target.value)}>
         {!!placeholder && <option value="">{placeholder}</option>}
 
         {options?.map(item => (

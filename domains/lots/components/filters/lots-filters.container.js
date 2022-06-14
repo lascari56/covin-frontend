@@ -5,7 +5,7 @@ import LotsFiltersView from "./lots-filters.view"
 import {useFormik} from 'formik';
 
 const convertToCkeckbox = (data) => {
-  return Object?.keys(data)?.map(key => ({ value: key, count: data[key] }))
+  return Object?.keys(data)?.map(key => ({ value: key, label: key, count: data[key] }))
 }
 
 export default function LotsFiltersContainer({data, onFilter, ...props}) {

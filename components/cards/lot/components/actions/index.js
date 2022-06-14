@@ -1,1 +1,1 @@
-export {default} from './lot-card-actions.view'
+export {default} from './lot-card-actions.container'

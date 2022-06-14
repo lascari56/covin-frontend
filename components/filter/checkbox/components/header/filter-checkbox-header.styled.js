@@ -1,28 +1,29 @@
 import styled from "styled-components";
 
+import {FormCheckboxItem} from "@components/form/checkbox"
+
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   height: ${responsiveSize(42)};
-  padding: 0px ${responsiveSize(7)};
+  /* padding: 0px ${responsiveSize(7)} 0px 0px; */
 
   border-bottom: 1px solid #DFE7F0;
 `
 
-export const All = styled.div`
+export const CheckboxItem = styled(FormCheckboxItem)`
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 0px ${responsiveSize(8)};
+  flex: 1;
+  padding: 0px ${responsiveSize(8)} 0px ${responsiveSize(15)};
 
   cursor: pointer;
 `
 
 export const AllLabel = styled.span`
-  margin-left: ${responsiveSize(8)};
-
   font-weight: 300;
   font-size: ${responsiveSize(12)};
   line-height: ${responsiveSize(14)};
@@ -31,18 +32,18 @@ export const AllLabel = styled.span`
 `
 
 export const Content = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  flex-shrink: 0;
 `
 
 export const Item = styled.div`
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0px ${responsiveSize(6)};
+  
 
   cursor: pointer;
   transition: all 0.4s;

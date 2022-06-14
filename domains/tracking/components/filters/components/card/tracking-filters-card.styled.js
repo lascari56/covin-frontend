@@ -37,4 +37,8 @@ export const Icon = styled(TrackingFiltersCardIcon)`
   &:not(:last-child) {
     margin-right: ${responsiveSize(4)};
   }
+
+  &:last-child {
+    margin-left: auto;
+  }
 `

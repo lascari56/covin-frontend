@@ -1,21 +1,10 @@
 import React from 'react';
 
-import { FilterGroup, FilterCheckbox, FilterRange } from 'components/filter';
+import { FilterCheckbox, FilterRange } from 'components/filter';
 
 import LotsFiltersHeader from "./components/header"
 
 import * as S from "./lots-filters.styled"
-
-const make =  [
-  {value: "100 S Quat", count: 1},
-  {value: "100 Wagon", count: 1},
-  {value: "90 S", count: 1},
-  {value: "A3", count: 1},
-  {value: "A3 2", count: 1},
-  {value: "A3 2.0", count: 1},
-  {value: "A3 2.0 Pre", count: 1},
-  {value: "A3 2.0 Spo", count: 1},
-]
 
 const LotsFiltersView = ({formik, filters, onReset}) => {
   return (
@@ -23,6 +12,7 @@ const LotsFiltersView = ({formik, filters, onReset}) => {
       <LotsFiltersHeader onReset={onReset} />
 
       <FilterCheckbox
+        initialShow
         title="Make"
         value={formik.values.make}
         options={filters?.make}
