@@ -8,7 +8,7 @@ export const Container = styled.div`
 `
 
 export const Left = styled.div`
-  width: ${responsiveSize(29)};
+  width: ${responsiveSize(25)};
   min-width: ${responsiveSize(16)};
   display: flex;
   align-items: center;
@@ -20,11 +20,11 @@ export const Icon = styled.img``
 export const Title = styled.span`
   width: 100%;
 
-  margin-left: ${responsiveSize(8)};
+  margin-left: ${responsiveSize(4)};
 
   /* font-size: ${responsiveSize(14)}; */
-  font-size: ${responsiveSize(13)};
-  line-height: ${responsiveSize(15)};
+  font-size: ${responsiveSize(12)};
+  line-height: ${responsiveSize(14)};
   letter-spacing: 0.02em;
 
   color: #292929;

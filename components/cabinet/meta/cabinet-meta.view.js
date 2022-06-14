@@ -10,12 +10,13 @@ import * as S from "./cabinet-meta.styled"
 
 const speedOptions = [
   {label: "Miles", value: "miles"},
-  {label: "Kilometers", value: "kilometers"}
+  {label: "Km", value: "kilometers"}
 ]
 
 const sortOptions = [
   {label: "Auction date", value: "auction_date"},
-  {label: "Date of adding", value: "date_adding"},
+  {label: "Date of adding (new first)", value: "date_adding_new"},
+  {label: "Date of adding (old first)", value: "date_adding_old"},
 ]
 
 const CabinetMetaView = ({className, formik}) => {

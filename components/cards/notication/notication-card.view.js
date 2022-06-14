@@ -26,7 +26,7 @@ const NoticationCardView = ({className}) => {
       </S.Header>
 
       <S.Content>
-        <FormCheckbox options={appearOptions} onChange={() => {}} />
+        <FormCheckbox value={["auction"]} options={appearOptions} onChange={() => {}} />
 
         <S.Group>
           <FormCheckboxItem

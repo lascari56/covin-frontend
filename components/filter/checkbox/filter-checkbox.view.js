@@ -11,7 +11,6 @@ import FilterCheckboxHeader from "./components/header"
 import * as S from "./filter-checkbox.styled"
 
 function FilterCheckboxView({ 
-  title, 
   value,
   options, 
   isSearch, 
@@ -20,11 +19,14 @@ function FilterCheckboxView({
   onChangeSearch, 
   onChange, 
   onChangeAll,
-  onChangeTemplate
+  onChangeTemplate,
+  ...props
  }) {
   return (
-    <FilterGroup title={title}>
-      {(isAll || !!onChangeTemplate) && <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />}
+    <FilterGroup {...props}>
+      {/* {(isAll || !!onChangeTemplate) &&  */}
+      <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
+      {/* } */}
 
       <S.Container>
         {isSearch && <S.Search isIcon={false} value={search} onChange={onChangeSearch} />}
@@ -38,7 +40,8 @@ function FilterCheckboxView({
 }
 
 FilterCheckboxView.defaultProps = {
-  isSearch: true
+  isSearch: true,
+  isAll: true
 }
 
 export default FilterCheckboxView;

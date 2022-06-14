@@ -32,14 +32,23 @@ export default function СontactsContainer({navigation, ...props}) {
   }, []);
 
   useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
+    // if (!didMount.current) {
+    //   didMount.current = true;
 
-      return;
+    //   return;
+    // }
+    if (didMount.current) {
+      handleGetLots();
     }
 
-    handleGetLots();
+    
   }, [filters, page]);
+
+  // useEffect(() => {
+  //   if (didMount.current) {
+  //     animateScroll.scrollToTop()
+  //   }
+  // }, [lots?.data])
 
   const pageCount = useMemo(() => {
     return Math.ceil(lots?.total / lots?.limit);
@@ -48,14 +57,14 @@ export default function СontactsContainer({navigation, ...props}) {
   const hnadleHangePage = async (value) => {
     setPage(value);
 
-    animateScroll.scrollToTop()
+    // animateScroll.scrollToTop()
   };
 
   const handleFilter = async (value) => {
     setPage(0);
     setFilters(value);
 
-    animateScroll.scrollToTop()
+    // animateScroll.scrollToTop()
   };
 
   const handleGetLots = async () => {
@@ -79,6 +88,7 @@ export default function СontactsContainer({navigation, ...props}) {
 
     setLots({...res})
     setLoading(false)
+    didMount.current = true;
   };
   
 

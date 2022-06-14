@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import ArrowSvg from "./images/arrow"
+
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`

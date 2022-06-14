@@ -17,14 +17,9 @@ export default function LotCardHeaderView({data, date}) {
 
       {!!data?.price_new && <S.BuyButton theme="green" size="small" title={`Buy It Now for ${data?.price_new} $`} />}
 
-      {!!date && (
-        <>
-          <S.CalendarIcon src="/images/calendar.svg/"/>
+      <S.CalendarIcon src="/images/calendar.svg/"/>
 
-          {/* {data?.auction_date} -  */}
-          <S.Date>{date}</S.Date>
-        </>
-      )}
+      <S.Date>{data?.auction_date_api || "Future"}</S.Date>
     </S.Container>
   )
 }

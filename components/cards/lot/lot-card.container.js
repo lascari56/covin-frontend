@@ -19,10 +19,8 @@ export default function LotCardContainer({speedUnit, ...props}) {
           const unit = speedUnit === "kilometers" ? "km" : "ml";
 
           value = `${_value} ${unit}`;
-        } else if (item.key === 'vin') {
-          value = `${value.slice(0, -6)}******`;
         } 
-
+      
         resColumn.push({
           icon: item.icon,
           value
