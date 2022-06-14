@@ -53,6 +53,9 @@ export default function СontactsContainer({navigation, ...props}) {
 
     //   return;
     // }
+
+    
+    
     if (didMount.current) {
       handleGetLots();
     }
@@ -72,15 +75,11 @@ export default function СontactsContainer({navigation, ...props}) {
 
   const hnadleHangePage = async (value) => {
     setPage(value);
-
-    // animateScroll.scrollToTop()
   };
 
   const handleFilter = async (value) => {
     setPage(0);
     setFilters(value);
-
-    // animateScroll.scrollToTop()
   };
 
   const handleGetLots = async () => {
@@ -98,8 +97,14 @@ export default function СontactsContainer({navigation, ...props}) {
       }
     });
 
+    
+
     setLots({...lots, ...res})
     setLoading(false)
+
+    requestAnimationFrame(() => {
+      animateScroll.scrollToTop()
+    })
   };
 
   const handleLoadLots = async () => {
@@ -118,6 +123,9 @@ export default function СontactsContainer({navigation, ...props}) {
     didMount.current = true;
   };
   
+  const handlePageMore = () => {
+    setPage(page + 1)
+  }
 
   return (
     <LotsView
@@ -129,6 +137,7 @@ export default function СontactsContainer({navigation, ...props}) {
       formikMeta={formikMeta}
       onFilter={handleFilter}
       onChangePage={hnadleHangePage}
+      onPageMore={handlePageMore}
     />
   );
 }

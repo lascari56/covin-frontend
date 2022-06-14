@@ -48,8 +48,10 @@ export const Container = styled.div`
   `}
 
   ${props => props.theme === "violet" && `
-      background: #E3EAFF;
-    `}
+    background: #E3EAFF;
+  `}
+
+  ${props => props.disabled && `opacity: 0.5;`}
 `
 
 export const Title = styled.span`

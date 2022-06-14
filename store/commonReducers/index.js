@@ -1,5 +1,5 @@
-import authSlice from './authReducer.slice';
+import commonSlice from './commonReducer.slice';
 
-const {name: authName, reducer: authReducer} = authSlice;
+const {name: commonName, reducer: commonReducer} = commonSlice;
 
-export {authName, authReducer};
+export {commonName, commonReducer};

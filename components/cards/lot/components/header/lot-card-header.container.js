@@ -2,16 +2,14 @@ import React, { useMemo } from 'react';
 
 import LotCardHeaderView from "./lot-card-header.view"
 
-import moment from "moment"
+import moment from "moment-timezone"
 
 const LotCardHeaderContainer = ({...props}) => {
   const date = useMemo(() => {
-    if (props.data?.auction_date) {
-      return moment(props.data?.auction_date).format("DD MMM, HH:mm")
-      // return moment.unix(props.data?.auction_date).utc().format("DD MMM, hh:mm A")
-      // return moment(props.data?.auction_date).format("DD MMM, hh:mm A")
+    if (props.data?.auction_date_api) {
+      return moment.tz(props.data?.auction_date_api, 'Etc/GMT').tz(moment.tz.guess()).format("DD MMM, HH:mm")
     }
-  }, [props.data?.auction_date])
+  }, [props.data?.auction_date_api])
 
   return (
     <LotCardHeaderView {...props} date={date} />

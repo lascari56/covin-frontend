@@ -9,7 +9,7 @@ import LayoutLots from "@layouts/lots"
 
 import * as S from "./lots.styled"
 
-const LotsView = ({lots, page, pageCount, loading, formikMeta, onFilter, onChangePage}) => {
+const LotsView = ({lots, page, pageCount, loading, formikMeta, onFilter, onChangePage, onPageMore}) => {
   return (
     <LayoutLots 
       LeftComponent={<LotsFilters data={lots?.filters} onFilter={onFilter} />}
@@ -22,8 +22,10 @@ const LotsView = ({lots, page, pageCount, loading, formikMeta, onFilter, onChang
 
             {lots?.data?.map(item => <S.Card data={item} speedUnit={formikMeta.values.speed} key={item?.id} />)}
 
+            {/* <p>{JSON.stringify(pageCount)} - {page}</p> */}
+
             <Padination value={page} total={lots?.total} pageCount={pageCount} onChange={onChangePage}>
-              <Button title="Show 10 more" />
+              <Button title="Show 10 more" disabled={page >= pageCount - 1} onClick={onPageMore} />
             </Padination>
           </>
         )}

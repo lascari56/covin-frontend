@@ -1,5 +1,6 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
 
+import {commonName, commonReducer} from './commonReducers';
 import {authName, authReducer} from './authReducers';
 import {lotName, lotReducer} from './lotReducers';
 
@@ -8,6 +9,13 @@ import {getPersistConfig} from 'redux-deep-persist';
 
 import storage from 'redux-persist/lib/storage'
 // import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const persistLotConfig = getPersistConfig({
+  key: 'common',
+  storage,
+  blacklist: [],
+  rootReducer: commonReducer,
+});
 
 const persistAuthConfig = getPersistConfig({
   key: 'auth',
@@ -19,7 +27,7 @@ const persistAuthConfig = getPersistConfig({
   rootReducer: authReducer,
 });
 
-const persistLotConfig = getPersistConfig({
+const persistCommonConfig = getPersistConfig({
   key: 'lot',
   storage,
   blacklist: [
@@ -30,6 +38,7 @@ const persistLotConfig = getPersistConfig({
 });
 
 const rootReducer = combineReducers({
+  [commonName]: persistReducer(persistCommonConfig, commonReducer),
   [authName]: persistReducer(persistAuthConfig, authReducer),
   [lotName]: persistReducer(persistLotConfig, lotReducer),
 });
