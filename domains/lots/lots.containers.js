@@ -93,6 +93,7 @@ export default function СontactsContainer({navigation, ...props}) {
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
+        // title: { $search: formikMeta?.values?.search },
         ...filters,
       }
     });
@@ -112,7 +113,6 @@ export default function СontactsContainer({navigation, ...props}) {
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        title: { $search: formikMeta?.values?.search },
       }
     });
 
