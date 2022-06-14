@@ -8,6 +8,21 @@ import {useFormik} from 'formik';
 
 import {animateScroll} from 'react-scroll';
 
+const sortOptions = {
+  auction_date: {
+    key: "auction_date",
+    value: 1
+  },
+  date_adding_new: {
+    key: "createdAt",
+    value: 1
+  },
+  date_adding_old: {
+    key: "createdAt",
+    value: -1
+  }
+};
+
 export default function СontactsContainer({navigation, ...props}) {
   const [lots, setLots] = useState(null);
   const [page, setPage] = useState(0);
@@ -20,7 +35,8 @@ export default function СontactsContainer({navigation, ...props}) {
     initialValues: {
       search: '',
       speed: "miles",
-      time: "+02:00"
+      time: "+02:00",
+      sort: "auction_date"
     },
     onSubmit: () => {
       
@@ -42,7 +58,7 @@ export default function СontactsContainer({navigation, ...props}) {
     }
 
     
-  }, [filters, page]);
+  }, [filters, page, formikMeta?.values?.sort]);
 
   // useEffect(() => {
   //   if (didMount.current) {
@@ -76,7 +92,7 @@ export default function СontactsContainer({navigation, ...props}) {
       query: {
         $skip: page * 10,
         $sort: {
-          createdAt: -1
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
         ...filters,
       }
@@ -87,7 +103,15 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   const handleLoadLots = async () => {
-    const res = await api.service('cars?full=true').find({});
+    const res = await api.service('cars').find({
+      query: {
+        full: true,
+        $sort: {
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        },
+        // title: { $search: 's' },
+      }
+    });
 
     setLots({...res})
     setLoading(false)
