@@ -9,17 +9,17 @@ export default function SettingPersonalInfoView({className}) {
     <CabinetCard className={className} title="Personal info" icon="/images/user2.svg">
       <S.Content>
         <S.Group title="Personal" description="Your name, e-mail and phone">
-          <S.Input placeholder="Email"/>
+          <S.Input size="big" placeholder="Email"/>
 
-          <S.Input placeholder="Name"/>
+          <S.Input size="big" placeholder="Name"/>
 
-          <S.Input placeholder="Phone"/>
+          <S.Input size="big" placeholder="Phone"/>
         </S.Group>
 
         <S.Group title="Password" description="Your password settings">
-          <S.Input placeholder="New password"/>
+          <S.Input size="big" placeholder="New password"/>
 
-          <S.Input placeholder="Confirm password"/>
+          <S.Input size="big" placeholder="Confirm password"/>
         </S.Group>
       </S.Content>
 

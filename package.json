@@ -17,6 +17,7 @@
     "feathers-rest": "^1.8.1",
     "formik": "^2.2.9",
     "moment": "^2.29.3",
+    "moment-timezone": "^0.5.34",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
@@ -31,6 +32,7 @@
     "sass": "^1.52.1",
     "sirv": "^2.0.2",
     "styled-components": "^5.3.5",
+    "use-debounce": "^8.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {

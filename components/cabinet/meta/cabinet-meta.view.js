@@ -10,21 +10,26 @@ import * as S from "./cabinet-meta.styled"
 
 const speedOptions = [
   {label: "Miles", value: "miles"},
-  {label: "Kilometers", value: "kilometers"}
+  {label: "Km", value: "km"}
 ]
 
 const sortOptions = [
   {label: "Auction date", value: "auction_date"},
-  {label: "Date of adding", value: "date_adding"},
+  {label: "Date of adding (new first)", value: "date_adding_new"},
+  {label: "Date of adding (old first)", value: "date_adding_old"},
 ]
 
 const CabinetMetaView = ({className, formik}) => {
   return (
     <S.Container className={className}>
-      <S.Search />
+      <S.Search 
+        value={formik?.values?.search}
+        onChange={value => formik.setFieldValue('search', value)}
+      />
 
       <S.Select
         label="Speed"
+        size="big"
         options={speedOptions}
         value={formik?.values?.speed}
         onChange={value => formik.setFieldValue('speed', value)}
@@ -39,6 +44,7 @@ const CabinetMetaView = ({className, formik}) => {
 
       <S.Select 
         label="Sort by"
+        size="big"
         options={sortOptions}
         value={formik?.values?.sort}
         onChange={value => formik.setFieldValue('sort', value)}

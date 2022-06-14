@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const Label = styled.span`
   margin-left: ${responsiveSize(7)};
 
-  font-weight: 300;
+  font-weight: ${props => props.active ? 400 : 300};
   font-size: ${responsiveSize(13)};
   line-height: ${responsiveSize(15)};
 `
@@ -28,8 +28,10 @@ export const Label = styled.span`
 export const Count = styled.span`
   margin-left: ${responsiveSize(5)};
   
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 15px;
+  font-weight: inherit;
   color: #216DD1;
+`
+
+export const Left = styled.div`
+  margin-left: ${responsiveSize(7)};
 `

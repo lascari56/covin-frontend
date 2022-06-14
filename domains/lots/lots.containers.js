@@ -6,9 +6,31 @@ import LotsView from './lots.view';
 
 import {useFormik} from 'formik';
 
+import {useSelector, useDispatch} from 'react-redux';
+
+import {selectUnits} from '@store/commonReducers/commonReducer.selector';
+import {saveUnits} from '@store/commonReducers/commonReducer.slice';
+
 import {animateScroll} from 'react-scroll';
 
+const sortOptions = {
+  auction_date: {
+    key: "auction_date_api",
+    value: 1
+  },
+  date_adding_new: {
+    key: "createdAt",
+    value: 1
+  },
+  date_adding_old: {
+    key: "createdAt",
+    value: -1
+  }
+};
+
 export default function СontactsContainer({navigation, ...props}) {
+  const dispatch = useDispatch();
+
   const [lots, setLots] = useState(null);
   const [page, setPage] = useState(0);
   const [filters, setFilters] = useState({});
@@ -16,11 +38,13 @@ export default function СontactsContainer({navigation, ...props}) {
 
   const didMount = React.useRef(false);
 
+  const units = useSelector(selectUnits);
+
   const formikMeta = useFormik({
     initialValues: {
       search: '',
-      speed: "miles",
-      time: "+02:00"
+      speed: units.speed,
+      sort: "auction_date"
     },
     onSubmit: () => {
       
@@ -32,14 +56,18 @@ export default function СontactsContainer({navigation, ...props}) {
   }, []);
 
   useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-
-      return;
+    if (didMount.current) {
+      handleGetLots();
     }
 
-    handleGetLots();
-  }, [filters, page]);
+    
+  }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search]);
+
+  useEffect(() => {
+    if (formikMeta.values.speed !== units.speed) {
+      dispatch(saveUnits({ key: "speed", value: formikMeta.values.speed }))
+    }
+  }, [formikMeta.values.speed])
 
   const pageCount = useMemo(() => {
     return Math.ceil(lots?.total / lots?.limit);
@@ -47,15 +75,11 @@ export default function СontactsContainer({navigation, ...props}) {
 
   const hnadleHangePage = async (value) => {
     setPage(value);
-
-    animateScroll.scrollToTop()
   };
 
   const handleFilter = async (value) => {
     setPage(0);
     setFilters(value);
-
-    animateScroll.scrollToTop()
   };
 
   const handleGetLots = async () => {
@@ -66,21 +90,40 @@ export default function СontactsContainer({navigation, ...props}) {
     const res = await api.service('cars').find({
       query: {
         $skip: page * 10,
+        $sort: {
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        },
+        title: { $search: formikMeta?.values?.search },
         ...filters,
       }
     });
 
     setLots({...lots, ...res})
     setLoading(false)
+
+    requestAnimationFrame(() => {
+      animateScroll.scrollToTop()
+    })
   };
 
   const handleLoadLots = async () => {
-    const res = await api.service('cars?full=true').find({});
+    const res = await api.service('cars').find({
+      query: {
+        full: true,
+        $sort: {
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        },
+      }
+    });
 
     setLots({...res})
     setLoading(false)
+    didMount.current = true;
   };
   
+  const handlePageMore = () => {
+    setPage(page + 1)
+  }
 
   return (
     <LotsView
@@ -92,6 +135,7 @@ export default function СontactsContainer({navigation, ...props}) {
       formikMeta={formikMeta}
       onFilter={handleFilter}
       onChangePage={hnadleHangePage}
+      onPageMore={handlePageMore}
     />
   );
 }

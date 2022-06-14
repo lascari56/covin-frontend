@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import LotCardActionsNotification from "@components/cards/notication"
+
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -11,20 +13,15 @@ export const Container = styled.div`
   border-left: #DFE7F0 1px solid;
 `
 
-export const Icon = styled.img``
-
 export const Item = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+`
 
-  width: ${responsiveSize(60)};
-  height: ${responsiveSize(60)};
+export const Notification = styled(LotCardActionsNotification)`
+  position: absolute;
+  right: 100%;
+  bottom: 0px;
+  min-width: ${responsiveSize(338)};
 
-  cursor: pointer;
-  
-  &:hover {
-    transform: rotate(360deg);
-    transition: all 0.4s;
-  }
+  z-index: 1;
 `
