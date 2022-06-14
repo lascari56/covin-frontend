@@ -31,3 +31,7 @@ export const Count = styled.span`
   font-weight: inherit;
   color: #216DD1;
 `
+
+export const Left = styled.div`
+  margin-left: ${responsiveSize(7)};
+`

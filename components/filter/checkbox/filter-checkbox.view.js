@@ -31,9 +31,6 @@ function FilterCheckboxView({
         
         <S.Content>
           <FormCheckbox value={value} options={options} onChange={onChange} />
-          {/* {options?.map(item => (
-            <FilterCheckboxItem data={item} active={values[item.value]} key={item.value} onClick={() => onChange(item.value)} />
-          ))} */}
         </S.Content>
       </S.Container>
     </FilterGroup>

@@ -26,7 +26,7 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
     if (isAll) {
       props.onChange([])
     } else {
-      const res = props?.options?.map(item => item.value);
+      const res = options?.map(item => item.value);
 
       props.onChange(res)
     }
