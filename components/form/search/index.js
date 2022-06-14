@@ -1,1 +1,1 @@
-export {default} from "./form-search.view"
+export {default} from "./form-search.container"

@@ -32,6 +32,7 @@
     "sass": "^1.52.1",
     "sirv": "^2.0.2",
     "styled-components": "^5.3.5",
+    "use-debounce": "^8.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
