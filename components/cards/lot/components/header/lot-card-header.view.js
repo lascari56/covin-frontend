@@ -21,7 +21,8 @@ export default function LotCardHeaderView({data, date}) {
         <>
           <S.CalendarIcon src="/images/calendar.svg/"/>
 
-          <S.Date>{data?.auction_date} - {date}</S.Date>
+          {/* {data?.auction_date} -  */}
+          <S.Date>{date}</S.Date>
         </>
       )}
     </S.Container>

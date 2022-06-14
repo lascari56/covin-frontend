@@ -25,6 +25,7 @@ const CabinetMetaView = ({className, formik}) => {
 
       <S.Select
         label="Speed"
+        size="big"
         options={speedOptions}
         value={formik?.values?.speed}
         onChange={value => formik.setFieldValue('speed', value)}
@@ -39,6 +40,7 @@ const CabinetMetaView = ({className, formik}) => {
 
       <S.Select 
         label="Sort by"
+        size="big"
         options={sortOptions}
         value={formik?.values?.sort}
         onChange={value => formik.setFieldValue('sort', value)}

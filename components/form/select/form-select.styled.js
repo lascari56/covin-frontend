@@ -9,11 +9,12 @@ export const Container = styled.div`
 `
 
 export const Inner = styled.select`
-  height: ${responsiveSize(42)};
-  padding: 0px ${responsiveSize(32)} 0px ${responsiveSize(10)};
+  height: ${responsiveSize(32)};
+  padding: 0px ${responsiveSize(27)} 0px ${responsiveSize(10)};
 
   font-size: ${responsiveSize(14)};
   line-height: ${responsiveSize(16)};
+  font-weight: 300;
 
   border: 1px solid #DFE7F0;
   border-radius: ${responsiveSize(4)};
@@ -21,6 +22,13 @@ export const Inner = styled.select`
 
   outline: none;
   appearance: none;
+
+  ${props => props.size === "big" && `
+    height: ${responsiveSize(42)};
+    padding: 0px ${responsiveSize(32)} 0px ${responsiveSize(10)};
+
+    font-weight: 400;
+  `}
 `
 
 export const Arrow = styled.img`

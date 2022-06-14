@@ -1,7 +1,8 @@
-import FormSearch from "./components/search"
-import FormGroup from "./components/group"
-import FormInput from "./components/input"
-import FormSwitch from "./components/switch"
-import FormSelect from "./components/select"
+import FormSearch from "./search"
+import FormGroup from "./group"
+import FormInput from "./input"
+import FormSwitch from "./switch"
+import FormSelect from "./select"
+import FormCheckbox from "./checkbox"
 
-export {FormSearch, FormGroup, FormInput, FormSwitch, FormSelect}
+export {FormSearch, FormGroup, FormInput, FormSwitch, FormSelect, FormCheckbox}
