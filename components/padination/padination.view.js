@@ -13,6 +13,7 @@ export default function PadinationView({children, value, total, pageCount, onCha
         className="pagination"
         activeLinkClassName="active"
         breakLabel="..."
+        forcePage={value}
         // nextLabel="next >"
         onPageChange={(value) => onChange(value.selected)}
         pageRangeDisplayed={2}
