@@ -8,7 +8,7 @@ const convertToCkeckbox = (data, keys) => {
   return Object?.keys(data)?.map(key => {
     let label = keys ? keys[key] : key;
 
-    return { value: key, label, count: data[key] }
+    return { value: key, label, count: data[key].count }
   })
 }
 
@@ -40,6 +40,8 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
   const filters = useMemo(() => {
     const res = {};
 
+    console.log(JSON.stringify(data))
+
     if (data) {
       res.make = convertToCkeckbox(data?.make)
       res.model = convertToCkeckbox(data?.model)
@@ -63,12 +65,26 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
     return res
   }, [data])
 
+  const renderFilters = useMemo(() => {
+    const _filters = {...filters}
+
+    if (formik.values.make.length) {
+      _filters.model = filters.model?.filter(item => {
+        // data?.model[item?.key]
+
+        return true
+      })
+    }
+
+    return _filters
+  }, [filters, formik.values.make])
+
   const handlerReset = () => {
     formik.resetForm()
     formik.submitForm()
   }
 
   return (
-    <LotsFiltersView {...props} formik={formik} filters={filters} onReset={handlerReset} />
+    <LotsFiltersView {...props} formik={formik} filters={renderFilters} onReset={handlerReset} />
   )
 }
