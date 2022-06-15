@@ -15,6 +15,7 @@ const speedOptions = [
 
 const sortOptions = [
   {label: "Auction date", value: "auction_date"},
+  {label: "Alphabet", value: "alphabet"},
   {label: "Date of adding (new first)", value: "date_adding_new"},
   {label: "Date of adding (old first)", value: "date_adding_old"},
 ]
