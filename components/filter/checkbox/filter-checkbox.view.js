@@ -23,10 +23,8 @@ function FilterCheckboxView({
   ...props
  }) {
   return (
-    <FilterGroup {...props}>
-      {/* {(isAll || !!onChangeTemplate) &&  */}
+    <FilterGroup {...props} disabled={!options?.length}>
       <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
-      {/* } */}
 
       <S.Container>
         {isSearch && <S.Search isIcon={false} value={search} onChange={onChangeSearch} />}

@@ -45,7 +45,7 @@ const LotCardView = ({ className, data, renderMeta, links }) => {
         <LotCardActions/>
       </S.Body>
       
-      {data?.commentary && <LotCardCommentary />}
+      {!!data?.commentary && <LotCardCommentary />}
    </S.Container>
   );
 };

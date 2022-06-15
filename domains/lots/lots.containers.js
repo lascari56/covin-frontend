@@ -25,7 +25,11 @@ const sortOptions = {
   date_adding_old: {
     key: "createdAt",
     value: -1
-  }
+  },
+  alphabet: {
+    key: "make",
+    value: 1
+  },
 };
 
 export default function СontactsContainer({navigation, ...props}) {

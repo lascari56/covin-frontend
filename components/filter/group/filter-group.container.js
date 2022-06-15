@@ -5,7 +5,13 @@ import FilterGroupView from "./filter-group.view"
 export default function FilterGroupContainer({initialShow, ...props}) {
   const [show, setShow] = useState(!!initialShow)
 
+  const handleChangeShow = () => {
+    if (props.disabled !== true) {
+      setShow(!show)
+    }
+  }
+
   return (
-    <FilterGroupView {...props} show={show} onChange={setShow} />
+    <FilterGroupView {...props} show={show} onChangeShow={handleChangeShow} />
   )
 }

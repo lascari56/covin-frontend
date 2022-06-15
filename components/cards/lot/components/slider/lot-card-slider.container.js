@@ -9,7 +9,6 @@ const LotCardSliderContainer = ({...props}) => {
         if (props?.data.site === "1") {
           return item?.replace("hrs", "ful")
         } else {
-          console.log(item)
           return `${item?.split("&")[0]}&width=338&height=250`
         }
       })
