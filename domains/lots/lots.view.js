@@ -12,7 +12,7 @@ import * as S from "./lots.styled"
 const LotsView = ({lots, page, pageCount, loading, formikMeta, onFilter, onChangePage, onPageMore}) => {
   return (
     <LayoutLots 
-      LeftComponent={<LotsFilters data={lots?.filters} onFilter={onFilter} />}
+      LeftComponent={<LotsFilters data={lots?.filters} loading={loading} onFilter={onFilter} />}
       TopComponent={<CabinetMenu active="lots" />}
     >
       <S.Container>

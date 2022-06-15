@@ -12,7 +12,8 @@ export default function FormCheckboxItemView({className, label, count, active, L
       {!!LeftComponent && <S.Left>{LeftComponent}</S.Left>}
 
       <S.Label active={active}>
-        {label}
+        {label === "null" ? "Unknown" : label}
+        {/* {label} */}
 
         {count !== undefined && <S.Count>({count})</S.Count>}
       </S.Label>
