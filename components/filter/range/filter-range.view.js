@@ -6,9 +6,9 @@ import FilterGroup from "../group"
 
 import * as S from "./filter-range.styled"
 
-const FilterRangeView = ({title, value, onChange}) => {
+const FilterRangeView = ({value, onChange, ...props}) => {
   return (
-    <FilterGroup title={title}>
+    <FilterGroup {...props}>
       <S.Container>
         <FormInput 
           theme="white"
