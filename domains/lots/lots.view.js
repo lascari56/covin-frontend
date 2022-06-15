@@ -20,7 +20,7 @@ const LotsView = ({lots, page, pageCount, loading, formikMeta, onFilter, onChang
           <>
             <S.Meta formik={formikMeta} />
 
-            {lots?.data?.map(item => <S.Card data={item} speedUnit={formikMeta.values.speed} key={item?.id} />)}
+            {lots?.data?.map(item => <S.Card data={item} speedUnit={formikMeta.values.speed} key={item?._id} />)}
 
             {/* <p>{JSON.stringify(pageCount)} - {page}</p> */}
 

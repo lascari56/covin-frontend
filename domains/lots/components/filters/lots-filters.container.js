@@ -4,6 +4,8 @@ import LotsFiltersView from "./lots-filters.view"
 
 import {useFormik} from 'formik';
 
+import {find} from "lodash"
+
 const convertToCkeckbox = (data, keys) => {
   return Object?.keys(data)?.map(key => {
     let label = keys ? keys[key] : key;
@@ -40,12 +42,12 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
   const filters = useMemo(() => {
     const res = {};
 
-    console.log(JSON.stringify(data))
+    // console.log(JSON.stringify(data))
 
     if (data) {
       res.make = convertToCkeckbox(data?.make)
-      res.model = convertToCkeckbox(data?.model)
-      res.series = convertToCkeckbox(data?.series)
+      // res.model = convertToCkeckbox(data?.model)
+      // res.series = convertToCkeckbox(data?.series)
 
       res.loss = convertToCkeckbox(data?.loss)
       
@@ -68,16 +70,24 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
   const renderFilters = useMemo(() => {
     const _filters = {...filters}
 
-    if (formik.values.make.length) {
-      _filters.model = filters.model?.filter(item => {
-        // data?.model[item?.key]
+    // if (formik.values.make.length) {
+    //   _filters.model = filters.model?.filter(item => {
+    //     const _item = data?.model[item.value];
 
-        return true
-      })
-    }
+    //     return formik.values.make?.indexOf(_item.make) !== -1
+    //   })
+    // }
+
+    // if (formik.values.model.length) {
+    //   _filters.series = filters.series?.filter(item => {
+    //     const _item = data?.series[item.value];
+
+    //     return formik.values.series?.indexOf(_item.model) !== -1
+    //   })
+    // }
 
     return _filters
-  }, [filters, formik.values.make])
+  },)
 
   const handlerReset = () => {
     formik.resetForm()

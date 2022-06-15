@@ -15,12 +15,19 @@ export const Header = styled.div`
 
   border-bottom: 1px solid #EBEBEB;
 
-  cursor: pointer;
+  
+  ${props => !props.disabled && `
+    cursor: pointer;
+  `}
 `
 
 export const Title = styled.h6`
   font-size: ${responsiveSize(14)};
   line-height: ${responsiveSize(16)};
+
+  ${props => props.disabled && `
+    opacity: 0.4;
+  `}
 `
 
 export const Arrow = styled.img`

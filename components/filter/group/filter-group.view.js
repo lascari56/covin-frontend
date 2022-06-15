@@ -1,17 +1,19 @@
+import PropTypes from 'prop-types';
+
 import React from 'react'
 
 import * as S from "./filter-group.styled"
 
-export default function FilterGroupView({title, children, show, onChange}) {
+function FilterGroupView({title, children, show, disabled, onChangeShow}) {
   return (
     <S.Container>
-      <S.Header onClick={() => onChange(!show)}>
-        <S.Title>{title}</S.Title>
+      <S.Header disabled={disabled} onClick={onChangeShow}>
+        <S.Title disabled={disabled}>{title}</S.Title>
 
-        <S.Arrow src="/images/arrow.svg" active={show} />
+        <S.Arrow src="/images/arrow.svg" active={show && !disabled} />
       </S.Header>
       
-      {show && (
+      {show && !disabled && (
         <S.Content>
           {children}
         </S.Content>
@@ -19,3 +21,9 @@ export default function FilterGroupView({title, children, show, onChange}) {
     </S.Container>
   )
 }
+
+FilterGroupView.defaultProps = {
+  disabled: false
+}
+
+export default FilterGroupView;
