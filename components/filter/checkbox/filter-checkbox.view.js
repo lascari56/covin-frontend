@@ -15,6 +15,7 @@ function FilterCheckboxView({
   options, 
   isSearch, 
   isAll, 
+  isEmpty,
   search, 
   disabled,
   onChangeSearch, 
@@ -24,15 +25,16 @@ function FilterCheckboxView({
   ...props
  }) {
   return (
-    <FilterGroup {...props} disabled={disabled || !options?.length}>
+    <FilterGroup {...props} disabled={disabled || isEmpty}>
       <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
 
       <S.Container>
-        {isSearch && <S.Search isIcon={false} value={search} onChange={onChangeSearch} />}
+        {isSearch && <S.Search isIcon={false} empty={!!options?.length} value={search} onChange={onChangeSearch} />}
         
         <S.Content>
           <FormCheckbox value={value} options={options} onChange={onChange} />
         </S.Content>
+        
       </S.Container>
     </FilterGroup>
   )
