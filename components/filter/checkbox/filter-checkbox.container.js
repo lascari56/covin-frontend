@@ -5,10 +5,6 @@ import FilterCheckboxView from "./filter-checkbox.view"
 export default function FilterCheckboxContainer({value, options, ...props}) {
   const [search, setSearch] = useState("")
 
-  const isAll = useMemo(() => {
-    return options?.length === value?.length
-  }, [options?.length, value?.length])
-
   const renderOptions = useMemo(() => {
     if (!search) {
       return options
@@ -22,11 +18,19 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
     })
   }, [search, options])
 
+  const isAll = useMemo(() => {
+    return renderOptions?.length === value?.length
+  }, [renderOptions?.length, value?.length])
+
+  const isEmpty = useMemo(() => {
+    return !options?.length
+  }, [options?.length])
+
   const handleChangeAll = () => {
     if (isAll) {
       props.onChange([])
     } else {
-      const res = options?.map(item => item.value);
+      const res = renderOptions?.map(item => item.value);
 
       props.onChange(res)
     }
@@ -43,6 +47,7 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
       options={renderOptions}
       search={search}
       isAll={isAll}
+      isEmpty={isEmpty}
       onChangeSearch={handleChangeSearch}
       onChangeAll={handleChangeAll}
     />

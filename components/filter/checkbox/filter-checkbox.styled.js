@@ -9,9 +9,10 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   max-height: ${responsiveSize(276)};
-  padding: ${responsiveSize(6.5)} 0px;
 
   overflow-y: scroll;
+
+  
 `
 
 export const Search = styled(FormSearch)`
@@ -19,5 +20,8 @@ export const Search = styled(FormSearch)`
 
   background-color: transparent;
   border-radius: 0px;
-  border-bottom: 1px solid #EBEBEB;
+  
+  ${props => !props.empty && `
+    border-bottom: 1px solid #EBEBEB;
+  `}
 `
