@@ -36,7 +36,13 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         onChange={value => formik.setFieldValue('series', value)}
       />
 
-      <FilterCheckbox title="Year" disabled={loading} />
+      {/* <FilterCheckbox title="Year" disabled={loading} /> */}
+      <FilterRange
+        title="Year"
+        value={formik.values.year}
+        disabled={loading}
+        onChange={value => formik.setFieldValue('year', value)}
+      />
 
       <FilterRange
         title="Odometr"
