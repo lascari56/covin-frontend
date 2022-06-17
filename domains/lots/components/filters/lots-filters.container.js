@@ -55,7 +55,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       make: [],
       model: [],
       series: [],
-      year: [],
+      year: ["", ""],
       odometr: [],
       loss: [],
       damage: [],
@@ -70,7 +70,9 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       document: [],
       site: [],
     },
-    onSubmit: onFilter,
+    onSubmit: (values) => {
+      onFilter(values)
+    },
   });
 
   // const carFilters = useMemo(() => {
