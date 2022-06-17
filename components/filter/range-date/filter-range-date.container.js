@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 
 import FilterRangeDateView from "./filter-range-date.view"
 
@@ -42,12 +42,31 @@ const FilterRangeSelectContainer = ({min, onChange, ...props}) => {
       let disabled = false;
 
       if (props.value[0]) {
-        disabled = item.value > props.value[0]
+        disabled = item.value < props.value[0]
       }
 
       return {...item, disabled}
     });
   }, [options, props.value[0]])
+
+
+  useEffect(() => {
+    const _value = [...props.value]
+
+    if (_value[0] && _value[1]) {
+      if (_value[0] > _value[1]) {
+        _value[0] = ""
+      }
+  
+      if (_value[1] < _value[0]) {
+        _value[1] = ""
+      }
+  
+      if (props.value[0] !== _value[0] || props.value[1] !== _value[1]) {
+        onChange(_value)
+      }
+    }
+  }, [props.value])
 
   return (
     <FilterRangeDateView {...props} optionsMin={optionsMin} optionsMax={optionsMax} onChange={handleChange} />
