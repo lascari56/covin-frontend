@@ -12,10 +12,12 @@ export const Container = styled.div`
 
   cursor: pointer;
   user-select: none;
+  transition: opacity 0.4s;
   
   &:hover {
-    transform: rotate(360deg);
-    transition: all 0.4s;
+    /* transform: rotate(360deg); */
+    
+    opacity: 0.5;
   }
 `
 

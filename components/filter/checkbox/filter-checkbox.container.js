@@ -19,8 +19,8 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
   }, [search, options])
 
   const isAll = useMemo(() => {
-    return renderOptions?.length === value?.length
-  }, [renderOptions?.length, value?.length])
+    return renderOptions?.length === value?.length && renderOptions.length
+  }, [renderOptions?.length, value?.length, renderOptions])
 
   const isEmpty = useMemo(() => {
     return !options?.length

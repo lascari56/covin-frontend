@@ -29,6 +29,7 @@ const CabinetMetaView = ({className, formik}) => {
       />
 
       <S.Select
+        displayType="left"
         label="Speed"
         size="big"
         options={speedOptions}
@@ -44,6 +45,7 @@ const CabinetMetaView = ({className, formik}) => {
       /> */}
 
       <S.Select 
+        displayType="left"
         label="Sort by"
         size="big"
         options={sortOptions}

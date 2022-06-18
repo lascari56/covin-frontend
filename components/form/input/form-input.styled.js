@@ -11,7 +11,7 @@ export const Input = styled.input`
   height: ${responsiveSize(36)};
 
   background: #FAFBFC;
-  border: 0.5px solid #DFE7F0;
+  border: 1px solid #DFE7F0;
   border-radius: 5px;
   font-family: Roboto;
 

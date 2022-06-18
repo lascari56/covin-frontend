@@ -29,7 +29,7 @@ function FilterCheckboxView({
       <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
 
       <S.Container>
-        {isSearch && <S.Search isIcon={false} empty={!!options?.length} value={search} onChange={onChangeSearch} />}
+        {isSearch && <S.Search isIcon={false} empty={isEmpty} value={search} onChange={onChangeSearch} />}
         
         <S.Content>
           <FormCheckbox value={value} options={options} onChange={onChange} />

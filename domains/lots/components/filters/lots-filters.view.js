@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FilterCheckbox, FilterRange } from 'components/filter';
+import { FilterCheckbox, FilterRange, FilterRangeDate } from 'components/filter';
 
 import LotsFiltersHeader from "./components/header"
 
@@ -37,10 +37,11 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       {/* <FilterCheckbox title="Year" disabled={loading} /> */}
-      <FilterRange
+      <FilterRangeDate
         title="Year"
         value={formik.values.year}
         disabled={loading}
+        min={2011}
         onChange={value => formik.setFieldValue('year', value)}
       />
 
