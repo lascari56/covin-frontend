@@ -16,7 +16,6 @@ export default function LotCardContainer({speedUnit, ...props}) {
 
         if (item.key === 'odometer') {
           let _value = speedUnit === "km" ? Math.floor(value * 1.6) : value;
-          // const unit = speedUnit === "km" ? "km" : "ml";
 
           value = `${_value} ${speedUnit}`;
         } 

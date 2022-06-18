@@ -75,7 +75,7 @@ export const Date = styled.span`
   line-height: ${responsiveSize(16)};
   letter-spacing: 0.02em;
 
-  color: #7C8DB5;
+  color: ${props => props.theme === "green" ? "green" : "#7C8DB5"};
 `
 
 export const CalendarIcon = styled.img`

@@ -55,7 +55,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       make: [],
       model: [],
       series: [],
-      year: ["", ""],
+      year: [],
       odometr: [],
       loss: [],
       damage: [],
@@ -71,7 +71,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       site: [],
     },
     onSubmit: (values) => {
-      onFilter(values)
+      handleFilter(values)
     },
   });
 
@@ -185,6 +185,38 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
 
     return res.sort(sortAlphabet)
   }, [seriesOptions, formik.values.make?.length, formik.values.model?.length])
+
+
+  const handleFilter = (values) => {
+    const res = {
+      make: validateAll(values.make, filters.make),
+      model: validateAll(values.model, modelOptions),
+      series: validateAll(values.series, seriesFilters),
+      loss: validateAll(values.loss, filters.loss),
+      damage: validateAll(values.damage, filters.damage),
+      drive: validateAll(values.drive, filters.drive),
+      status: validateAll(values.status, filters.status),
+      keys: validateAll(values.keys, filters.keys),
+      transmission: validateAll(values.transmission, filters.transmission),
+      engine: validateAll(values.engine, filters.engine),
+      fuel: validateAll(values.fuel, filters.fuel),
+      location: validateAll(values.location, filters.location),
+      document: validateAll(values.document, filters.document),
+      site: validateAll(values.site, filters.site),
+    }
+
+    console.log(res)
+
+    onFilter(res)
+  }
+
+  const validateAll = (value, options) => {
+    if (value.length === options.length) {
+      return []
+    }
+
+    return value
+  }
 
   const handlerReset = () => {
     formik.resetForm()

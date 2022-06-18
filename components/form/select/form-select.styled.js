@@ -43,6 +43,10 @@ export const Inner = styled.select`
 
     font-weight: 400;
   `}
+
+  ${props => !props.value && `
+    color: #BEBEBE;
+  `}
 `
 
 export const Arrow = styled.img`

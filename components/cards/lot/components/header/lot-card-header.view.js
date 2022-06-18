@@ -22,7 +22,7 @@ export default function LotCardHeaderView({data, date}) {
       {/* <S.Date>{data?.auction_date_api || "Future"}</S.Date> */}
       {/* {data?.auction_date_api} |  */}
       {/* <S.Date>{data?.auction_date_api}</S.Date> */}
-      <S.Date>{date || "Future"}</S.Date>
+      <S.Date theme={date?.theme}>{date?.value}</S.Date>
     </S.Container>
   )
 }
