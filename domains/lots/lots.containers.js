@@ -26,10 +26,10 @@ const sortOptions = {
     key: "createdAt",
     value: -1
   },
-  alphabet: {
-    key: "make",
-    value: 1
-  },
+  // alphabet: {
+  //   key: "make",
+  //   value: 1
+  // },
 };
 
 export default function СontactsContainer({navigation, ...props}) {
@@ -91,14 +91,56 @@ export default function СontactsContainer({navigation, ...props}) {
   
     setLoading(true)
 
+    console.log("filters", filters);
+
+    let query = {};
+
+    for (let filter in filters) {
+      if (filter === 'damage' && filters?.damage.length) {
+        query.$or = [
+          {
+            damage_pr: {
+              $in: filters?.damage,
+            }
+          },
+          {
+            damage_sec: {
+              $in: filters?.damage,
+            }
+          }
+        ]
+      } else if (filters[filter]) {
+        query[filter] = filters[filter]
+      }
+    }
+
+    if (formikMeta?.values?.search) query.title = { $search: formikMeta?.values?.search };
+
+    // if (filters?.)
+
+    // return;
+
     const res = await api.service('cars').find({
       query: {
-        $skip: page * 10,
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        title: { $search: formikMeta?.values?.search },
-        ...filters,
+        $skip: page * 10,
+        $limit: 10,
+        // title: { $search: formikMeta?.values?.search },
+        // $or: [
+        //   {
+        //     auction_date: {
+        //       $lte: moment().subtract(3, 'hours').unix(),
+        //     }
+        //   },
+        //   {
+        //     lot_id: {
+        //       $in: selledLotIds,
+        //     }
+        //   }
+        // ],
+        ...query,
       }
     });
 
@@ -111,17 +153,17 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   const handleLoadLots = async () => {
-    const res = await api.service('cars').find({
-      query: {
-        full: true,
-        $sort: {
-          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
-        },
-      }
-    });
+    // const res = await api.service('cars').find({
+    //   query: {
+    //     full: true,
+    //     $sort: {
+    //       [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+    //     },
+    //   }
+    // });
 
-    setLots({...res})
-    setLoading(false)
+    // setLots({...res})
+    // setLoading(false)
     didMount.current = true;
   };
   
