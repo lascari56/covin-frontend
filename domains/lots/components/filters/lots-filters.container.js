@@ -203,9 +203,9 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       location: validateAll(values.location, filters.location),
       document: validateAll(values.document, filters.document),
       site: validateAll(values.site, filters.site),
-      year: filters.year,
-      odometr: filters.odometr,
-      cost_repair: filters.odometr,
+      year: values.year,
+      odometr: values.odometr,
+      cost_repair: values.odometr,
     }
 
     console.log(res)
