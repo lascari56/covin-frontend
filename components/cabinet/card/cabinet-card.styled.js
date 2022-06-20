@@ -18,9 +18,7 @@ export const Header = styled.div`
   border-bottom: 1px solid #DFE7F0;;
 `
 
-export const Icon = styled.img`
-  width: ${responsiveSize(26)};
-  height: ${responsiveSize(26)};
+export const Icon = styled.div`
   margin-right: ${responsiveSize(8)};
 `
 

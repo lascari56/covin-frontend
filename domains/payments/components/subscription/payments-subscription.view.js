@@ -8,7 +8,7 @@ import * as S from './payments-subscription.styled'
 
 export default function PaymentsSubscriptionView({className}) {
   return (
-    <CabinetCard className={className} title="Buy Report" icon="/images/payments2.svg">
+    <CabinetCard className={className} title="My subscription" icon="/images/payments2.svg">
       <PaymentsSubscriptionType/>
 
       <S.Footer>

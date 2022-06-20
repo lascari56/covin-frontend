@@ -10,6 +10,8 @@ import PaymentsSVG from './images/payments';
 import SettingsSVG from './images/settings';
 import NewsSVG from './images/news';
 import SupportSVG from './images/support';
+import QuestionSVG from './images/question';
+import PlusSVG from './images/plus';
 
 export const icons = {
   copy: CopySVG,
@@ -23,5 +25,7 @@ export const icons = {
   payments: PaymentsSVG,
   settings: SettingsSVG,
   news: NewsSVG,
-  support: SupportSVG
+  support: SupportSVG,
+  question: QuestionSVG,
+  plus: PlusSVG
 };
