@@ -153,17 +153,17 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   const handleLoadLots = async () => {
-    // const res = await api.service('cars').find({
-    //   query: {
-    //     full: true,
-    //     $sort: {
-    //       [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
-    //     },
-    //   }
-    // });
+    const res = await api.service('cars').find({
+      query: {
+        full: true,
+        $sort: {
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        },
+      }
+    });
 
-    // setLots({...res})
-    // setLoading(false)
+    setLots({...res})
+    setLoading(false)
     didMount.current = true;
   };
   
