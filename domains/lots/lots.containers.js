@@ -93,32 +93,9 @@ export default function СontactsContainer({navigation, ...props}) {
 
     console.log("filters", filters);
 
-    let query = {};
-
-    for (let filter in filters) {
-      if (filter === 'damage' && filters?.damage.length) {
-        query.$or = [
-          {
-            damage_pr: {
-              $in: filters?.damage,
-            }
-          },
-          {
-            damage_sec: {
-              $in: filters?.damage,
-            }
-          }
-        ]
-      } else if (filters[filter]) {
-        query[filter] = filters[filter]
-      }
-    }
+    let query = filters;
 
     if (formikMeta?.values?.search) query.title = { $search: formikMeta?.values?.search };
-
-    // if (filters?.)
-
-    // return;
 
     const res = await api.service('cars').find({
       query: {
@@ -127,19 +104,6 @@ export default function СontactsContainer({navigation, ...props}) {
         },
         $skip: page * 10,
         $limit: 10,
-        // title: { $search: formikMeta?.values?.search },
-        // $or: [
-        //   {
-        //     auction_date: {
-        //       $lte: moment().subtract(3, 'hours').unix(),
-        //     }
-        //   },
-        //   {
-        //     lot_id: {
-        //       $in: selledLotIds,
-        //     }
-        //   }
-        // ],
         ...query,
       }
     });

@@ -157,7 +157,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
   const handleFilter = (values) => {
     const res = {};
 
-    const keys = ["make", "loss", "damage", "drive", "status", "keys", "transmission", "engine", "fuel", "location", "document", "site"]
+    const keys = ["make", "loss", "drive", "status", "keys", "transmission", "engine", "fuel", "location", "document", "site"]
     
     keys.forEach(key => {
       if (values[key]?.length && values[key]?.length !== filters[key]?.length) {
@@ -171,7 +171,21 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
     if (values.series?.length && values.series?.length !== seriesFilters?.length) {
       res.series = values.series
     }
-   
+
+    if (values.damage?.length) {
+      res.$or = [
+        {
+          damage_pr: {
+            $in: values?.damage,
+          }
+        },
+        {
+          damage_sec: {
+            $in: values?.damage,
+          }
+        }
+      ]
+    }
 
     ["year", "odometr", "cost_repair"].forEach(key => {
       if (values[key]?.min || values[key]?.max) {
