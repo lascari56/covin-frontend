@@ -13,7 +13,9 @@ const LotsView = () => {
         <S.Subscription />
       </S.Content>
 
-      <PaymentsInfo/>
+      <PaymentsInfo />
+
+      <S.Table />
     </S.Container>
   );
 };

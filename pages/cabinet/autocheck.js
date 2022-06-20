@@ -1,12 +1,13 @@
 import React from "react";
 
 import Autocheck from "@domains/autocheck";
+import Сarfax from "@domains/carfax";
 
 import LayoutCabinet from "../../layouts/cabinet"
 
 function AutocheckScreen(props) {
   return (
-    <Autocheck {...props} />
+    <Сarfax {...props} />
   );
 }
 
