@@ -12,6 +12,8 @@ import NewsSVG from './images/news';
 import SupportSVG from './images/support';
 import QuestionSVG from './images/question';
 import PlusSVG from './images/plus';
+import SearchSVG from './images/search';
+import ArrowRightSVG from './images/arrow-right';
 
 export const icons = {
   copy: CopySVG,
@@ -27,5 +29,7 @@ export const icons = {
   news: NewsSVG,
   support: SupportSVG,
   question: QuestionSVG,
-  plus: PlusSVG
+  plus: PlusSVG,
+  search: SearchSVG,
+  "arrow-right": ArrowRightSVG
 };
