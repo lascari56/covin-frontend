@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {Icon} from "@components"
+
 import * as S from './page-top-line-balance.styled'
 
 export default function PageTopLineBalanceView() {
@@ -11,7 +13,9 @@ export default function PageTopLineBalanceView() {
 
       <S.Balance>0 $</S.Balance>
 
-      <S.Add src="/images/plus.svg"/>
+      <S.Add>
+        <Icon name="plus" size={14} />  
+      </S.Add>
     </S.Container>
   )
 }

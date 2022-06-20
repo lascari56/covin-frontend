@@ -34,11 +34,20 @@ export const Balance = styled.p`
   color: #7C8DB5;
 `
 
-export const Add = styled.img`
-  padding: ${responsiveSize(14)};
+export const Add = styled.div`
+  width: ${responsiveSize(42)};
+  height: ${responsiveSize(42)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: 1px solid #DFE7F0;
   border-radius: ${responsiveSize(4)};
 
   cursor: pointer;
+  transition: all 0.4s;
+
+  &:hover {
+    transform: scale(0.9);
+  }
 `

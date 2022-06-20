@@ -18,13 +18,13 @@ export const Header = styled.div`
   border-bottom: 1px solid #DFE7F0;;
 `
 
-export const Icon = styled.img`
-  width: ${responsiveSize(26)};
-  height: ${responsiveSize(26)};
+export const Icon = styled.div`
   margin-right: ${responsiveSize(8)};
 `
 
 export const Title = styled.h5`
+  flex: 1;
+
   font-weight: 500;
   font-size: ${responsiveSize(18)};
   line-height: ${responsiveSize(26)};

@@ -26,10 +26,10 @@ const sortOptions = {
     key: "createdAt",
     value: -1
   },
-  alphabet: {
-    key: "make",
-    value: 1
-  },
+  // alphabet: {
+  //   key: "make",
+  //   value: 1
+  // },
 };
 
 export default function СontactsContainer({navigation, ...props}) {
@@ -91,14 +91,20 @@ export default function СontactsContainer({navigation, ...props}) {
   
     setLoading(true)
 
+    console.log("filters", filters);
+
+    let query = filters;
+
+    if (formikMeta?.values?.search) query.title = { $search: formikMeta?.values?.search };
+
     const res = await api.service('cars').find({
       query: {
-        $skip: page * 10,
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        title: { $search: formikMeta?.values?.search },
-        ...filters,
+        $skip: page * 10,
+        $limit: 10,
+        ...query,
       }
     });
 

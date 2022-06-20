@@ -2,13 +2,15 @@ import React from 'react'
 
 import * as S from "./cabinet-card.styled"
 
-export default function CabinetCardView({className, children, title, icon}) {
+export default function CabinetCardView({className, children, title, IconComponent, RightComponent}) {
   return (
     <S.Container className={className}>
       <S.Header>
-        <S.Icon src={icon} />
+        {!!IconComponent && <S.Icon>{IconComponent}</S.Icon>}
 
         <S.Title>{title}</S.Title>
+
+        {RightComponent}
       </S.Header>
 
       <S.Content>
