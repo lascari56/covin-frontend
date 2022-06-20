@@ -13,9 +13,9 @@ const FilterRangeDateView = ({value, optionsMin, optionsMax, onChange, ...props}
           theme="white"
           label="Min" 
           placeholder="Сhoose"
-          value={value[0]}
+          value={value.min}
           options={optionsMin}
-          onChange={(event) => onChange(event, 0)}
+          onChange={(event) => onChange(event, "min")}
         />
 
         <S.Hr>
@@ -28,8 +28,8 @@ const FilterRangeDateView = ({value, optionsMin, optionsMax, onChange, ...props}
           label="Max"
           options={optionsMax}
           placeholder="Сhoose"
-          value={value[1]}
-          onChange={(event) => onChange(event, 1)}
+          value={value.max}
+          onChange={(event) => onChange(event, "max")}
         />
       </S.Container>
     </FilterGroup>

@@ -3,10 +3,10 @@ import React from 'react';
 import FilterRangeView from "./filter-range.view"
 
 const FilterRangeContainer = ({onChange, ...props}) => {
-  const handleChange = (value, index) => {
-    const res = [...props.value]
+  const handleChange = (value, key) => {
+    const res = {...props.value}
 
-    res[index] = value
+    res[key] = value
 
     onChange(res)
   }

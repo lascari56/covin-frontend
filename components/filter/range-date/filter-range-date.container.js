@@ -5,10 +5,10 @@ import FilterRangeDateView from "./filter-range-date.view"
 import moment from "moment"
 
 const FilterRangeSelectContainer = ({min, onChange, ...props}) => {
-  const handleChange = (value, index) => {
-    const res = [...props.value]
+  const handleChange = (value, key) => {
+    const res = {...props.value}
 
-    res[index] = value
+    res[key] = value
 
     onChange(res)
   }
@@ -29,40 +29,40 @@ const FilterRangeSelectContainer = ({min, onChange, ...props}) => {
     return options?.map(item => {
       let disabled = false;
 
-      if (props.value[1]) {
-        disabled = item.value > props.value[1]
+      if (props.value?.max) {
+        disabled = item.value > props.value?.max
       }
 
       return {...item, disabled}
     });
-  }, [options, props.value[1]])
+  }, [options, props.value?.max])
 
   const optionsMax = useMemo(() => {
     return options?.map(item => {
       let disabled = false;
 
-      if (props.value[0]) {
-        disabled = item.value < props.value[0]
+      if (props.value?.min) {
+        disabled = item.value < props.value?.min
       }
 
       return {...item, disabled}
     });
-  }, [options, props.value[0]])
+  }, [options, props.value?.min])
 
 
   useEffect(() => {
-    const _value = [...props.value]
+    const _value = {...props.value}
 
-    if (_value[0] && _value[1]) {
-      if (_value[0] > _value[1]) {
-        _value[0] = ""
+    if (_value?.min && _value?.max) {
+      if (_value?.min > _value?.max) {
+        _value.min = ""
       }
   
-      if (_value[1] < _value[0]) {
-        _value[1] = ""
+      if (_value?.max < _value?.min) {
+        _value.max = ""
       }
   
-      if (props.value[0] !== _value[0] || props.value[1] !== _value[1]) {
+      if (props.value?.min !== _value?.min || props.value?.max !== _value?.max) {
         onChange(_value)
       }
     }

@@ -13,3 +13,8 @@ export const Input = styled(FormInput)`
   flex: 1;
   margin-right: ${responsiveSize(8)};
 `
+
+export const Logo = styled.img`
+  width: ${responsiveSize(83)};
+  height: ${responsiveSize(20)};
+`

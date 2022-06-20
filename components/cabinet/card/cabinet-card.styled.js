@@ -23,6 +23,8 @@ export const Icon = styled.div`
 `
 
 export const Title = styled.h5`
+  flex: 1;
+
   font-weight: 500;
   font-size: ${responsiveSize(18)};
   line-height: ${responsiveSize(26)};

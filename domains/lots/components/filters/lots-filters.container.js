@@ -47,16 +47,14 @@ const convertToDamage = (damage_pr, damage_sec) => {
 }
 
 export default function LotsFiltersContainer({data, onFilter, ...props}) {
-  // const [filters, setFilters] = useState({})
-
   const formik = useFormik({
     initialValues: {
       search: '',
       make: [],
       model: [],
       series: [],
-      year: [],
-      odometr: [],
+      year: {min: null, max: null},
+      odometr: {min: null, max: null},
       loss: [],
       damage: [],
       drive: [],
@@ -65,7 +63,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       transmission: [],
       engine: [],
       fuel: [],
-      cost_repair: [],
+      cost_repair: {min: null, max: null},
       location: [],
       document: [],
       site: [],
@@ -75,42 +73,11 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
     },
   });
 
-  // const carFilters = useMemo(() => {
-  //   const res = {}
-
-
-  //   if (data?.series) {
-  //     console.log(JSON.stringify(data.series))
-
-  //     Object.keys(data.series).forEach((key) => {
-  //       const item = data.series[key];
-
-
-  //       if (res[item.make]) {
-
-  //       }
-  //     })
-  //   }
-
-    
-  // }, [data])
-
-  // useEffect(() => {
-  //   if (formik.values.make?.length) {
-
-  //   }
-  // }, [formik.values.make?.length]);
-  // const 
-
   const filters = useMemo(() => {
     const res = {};
 
     if (data) {
-
-      // console.log(JSON.stringify(data))
       res.make = convertToCkeckbox({data: data?.make})
-      // res.model = convertToCkeckbox(data?.model)
-      // res.series = convertToCkeckbox(data?.series)
 
       res.loss = convertToCkeckbox({data: data?.loss})
       
@@ -188,37 +155,66 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
 
 
   const handleFilter = (values) => {
-    const res = {
-      make: validateAll(values.make, filters.make),
-      model: validateAll(values.model, modelOptions),
-      series: validateAll(values.series, seriesFilters),
-      loss: validateAll(values.loss, filters.loss),
-      damage: validateAll(values.damage, filters.damage),
-      drive: validateAll(values.drive, filters.drive),
-      status: validateAll(values.status, filters.status),
-      keys: validateAll(values.keys, filters.keys),
-      transmission: validateAll(values.transmission, filters.transmission),
-      engine: validateAll(values.engine, filters.engine),
-      fuel: validateAll(values.fuel, filters.fuel),
-      location: validateAll(values.location, filters.location),
-      document: validateAll(values.document, filters.document),
-      site: validateAll(values.site, filters.site),
-      year: values.year,
-      odometr: values.odometr,
-      cost_repair: values.odometr,
-    }
+    const res = {};
 
-    console.log(res)
+    const keys = ["make", "loss", "damage", "drive", "status", "keys", "transmission", "engine", "fuel", "location", "document", "site"]
+    
+    keys.forEach(key => {
+      if (values[key]?.length && values[key]?.length !== filters[key]?.length) {
+        res[key] = values[key];
+      }
+    })
+
+    if (values.model?.length && values.model?.length !== modelOptions?.length) {
+      res.model = values.model
+    }
+    if (values.series?.length && values.series?.length !== seriesFilters?.length) {
+      res.series = values.series
+    }
+   
+
+    ["year", "odometr", "cost_repair"].forEach(key => {
+      if (values[key]?.min || values[key]?.max) {
+        const _res = {}
+        const value = values[key]
+
+        if (value?.min) {
+          _res["$gte"] = value?.min
+        }
+
+        if (value?.max) {
+          _res["$lte"] = value?.max
+        }
+
+        res[key] = _res;
+      }
+    })
 
     onFilter(res)
   }
 
   const validateAll = (value, options) => {
     if (value.length === options.length) {
-      return []
+      return null
     }
 
     return value
+  }
+
+  const validateRange = (value) => {
+    if (!value?.start && value?.end) {
+      return null
+    }
+
+    const res = {}
+
+    if (value?.start) {
+      res["$gte"] = value?.start
+    }
+
+    if (value?.end) {
+      res["$lte"] = value?.end
+    }
   }
 
   const handlerReset = () => {

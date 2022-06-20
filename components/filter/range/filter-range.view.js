@@ -14,8 +14,8 @@ const FilterRangeView = ({value, onChange, ...props}) => {
           theme="white"
           label="Min" 
           placeholder="0"
-          value={value[0]}
-          onChange={(event) => onChange(event, 0)}
+          value={value?.min}
+          onChange={(event) => onChange(event, "min")}
         />
 
         <S.Hr>
@@ -26,8 +26,8 @@ const FilterRangeView = ({value, onChange, ...props}) => {
           theme="white"
           label="Max"
           placeholder="250000"
-          value={value[1]}
-          onChange={(event) => onChange(event, 1)}
+          value={value?.max}
+          onChange={(event) => onChange(event, "max")}
         />
       </S.Container>
     </FilterGroup>

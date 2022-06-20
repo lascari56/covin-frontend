@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CabinetPage } from "@components/cabinet";
 
-import {Table} from "@components"
+import CarfaxTable from "./components/table"
 
 import * as S from "./carfax.styled"
 
@@ -11,7 +11,7 @@ export default function СarfaxView() {
     <CabinetPage>
       <S.Form />
 
-      <Table />
+      <CarfaxTable />
     </CabinetPage>
   )
 }
