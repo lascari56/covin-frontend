@@ -1,6 +1,6 @@
 import React from "react";
 
-import Sticker from "@domains/sticker";
+// import Sticker from "@domains/sticker";
 import Сarfax from "@domains/carfax";
 
 import LayoutCabinet from "../../layouts/cabinet"
