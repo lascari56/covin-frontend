@@ -20,6 +20,14 @@ const sortOptions = [
   {label: "Date of adding (old first)", value: "date_adding_old"},
 ]
 
+const typeOptions = [
+  {label: "Buy Now", value: "buy_now"},
+  {label: "Notification lots", value: "notification_lots"},
+  {label: "Commented lots", value: "commented_lots"},
+  {label: "Hide lots", value: "hide_lots"},
+  {label: "Purchased reports", value: "purchased_reports"},
+]
+
 const CabinetMetaView = ({className, formik}) => {
   return (
     <S.Container className={className}>
@@ -51,6 +59,15 @@ const CabinetMetaView = ({className, formik}) => {
         options={sortOptions}
         value={formik?.values?.sort}
         onChange={value => formik.setFieldValue('sort', value)}
+      />
+
+      <S.Select 
+        displayType="left"
+        label="Type"
+        size="big"
+        options={typeOptions}
+        value={formik?.values?.type}
+        onChange={value => formik.setFieldValue('type', value)}
       />
     </S.Container>
   );

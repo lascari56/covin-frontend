@@ -60,6 +60,7 @@ export const ActionButton = styled(Button)`
 
 export const Meta = styled(LotCardMeta)`
   flex: 1;
+  /* visibility: ${props => !props.show ? "hidden" : "visible"}; */
 
   &:not(:last-child) {
     margin-bottom: ${responsiveSize(8)};
