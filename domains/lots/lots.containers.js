@@ -91,11 +91,29 @@ export default function СontactsContainer({navigation, ...props}) {
   
     setLoading(true)
 
-    console.log("filters", filters);
+    let query = {...filters};
 
-    let query = filters;
+    if (!!formikMeta?.values?.search) {
+      if (!query.$or) query.$or = [];
 
-    if (formikMeta?.values?.search) query.title = { $search: formikMeta?.values?.search };
+      query.$or = [
+        {
+          title: {
+            $search: formikMeta?.values?.search,
+          }
+        },
+        {
+          vin: {
+            $in: formikMeta?.values?.search,
+          }
+        },
+        {
+          lot_id: {
+            $in: formikMeta?.values?.search,
+          }
+        }
+      ];
+    } 
 
     const res = await api.service('cars').find({
       query: {
