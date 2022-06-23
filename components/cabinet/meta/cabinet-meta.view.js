@@ -36,6 +36,15 @@ const CabinetMetaView = ({className, formik}) => {
         onChange={value => formik.setFieldValue('search', value)}
       />
 
+      <S.Select 
+        displayType="left"
+        label="Type"
+        size="big"
+        options={typeOptions}
+        value={formik?.values?.type}
+        onChange={value => formik.setFieldValue('type', value)}
+      />
+
       <S.Select
         displayType="left"
         label="Speed"
@@ -61,14 +70,7 @@ const CabinetMetaView = ({className, formik}) => {
         onChange={value => formik.setFieldValue('sort', value)}
       />
 
-      <S.Select 
-        displayType="left"
-        label="Type"
-        size="big"
-        options={typeOptions}
-        value={formik?.values?.type}
-        onChange={value => formik.setFieldValue('type', value)}
-      />
+      
     </S.Container>
   );
 }
