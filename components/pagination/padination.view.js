@@ -1,13 +1,22 @@
 import React from 'react'
 
-import ReactPaginate from 'react-paginate';
+import {Icon} from "@components"
+
+// import ReactPaginate from 'react-paginate';
 
 import * as S from "./padination.styled"
 
 export default function PadinationView({className, children, value, total, pageCount, onChange}) {
   return (
     <S.Container className={className}>
-      <ReactPaginate
+      <div>
+        <Icon name="arr-left" />
+
+        <Icon name="arr-right" />
+      </div>
+
+      <S.Inner size="small" theme="white" onChange={() => {}} />
+      {/* <ReactPaginate
         className="pagination"
         activeLinkClassName="active"
         breakLabel="..."
@@ -16,11 +25,11 @@ export default function PadinationView({className, children, value, total, pageC
         pageRangeDisplayed={2}
         pageCount={pageCount}
         renderOnZeroPageCount={null}
-      />
+      /> */}
 
       {children}
 
-      <S.Meta>Showing 1 to 10 of {total} entries</S.Meta>
+      <S.Meta>Showing {value + 1} to {pageCount} of {total} entries</S.Meta>
     </S.Container>
   )
 }

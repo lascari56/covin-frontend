@@ -29,7 +29,7 @@ const TableView = ({ data, columns, renderItem, onSearch }) => {
         {!!onSearch && <TableSearch />}
       </S.Content>
 
-      <S.Pagination total={200} pageCount={10} onChange={() => {}} />
+      {/* <S.Pagination total={200} pageCount={10} onChange={() => {}} /> */}
     </S.Container>
   );
 }
