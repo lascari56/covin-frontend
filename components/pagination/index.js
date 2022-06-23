@@ -1,1 +1,1 @@
-export {default} from "./padination.view"
+export {default} from "./padination.container"

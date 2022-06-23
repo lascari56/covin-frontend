@@ -6,17 +6,30 @@ import {Icon} from "@components"
 
 import * as S from "./padination.styled"
 
-export default function PadinationView({className, children, value, total, pageCount, onChange}) {
+export default function PadinationView({className, children, localValue, value, total, pageCount, onNext, onPrev, onChangeLocalValue, onBlur}) {
   return (
     <S.Container className={className}>
-      <div>
-        <Icon name="arr-left" />
+      <S.Content>
+        <S.Item disabled={value === 0} onClick={onPrev}>
+          <Icon name="arr-left" />
+        </S.Item>
 
-        <Icon name="arr-right" />
-      </div>
+        <S.Item disabled={value === total} onClick={onNext}>
+          <Icon name="arr-right" />
+        </S.Item>
 
-      <S.Inner size="small" theme="white" onChange={() => {}} />
-      {/* <ReactPaginate
+        <S.Inner size="small" theme="white" value={localValue} onChange={onChangeLocalValue} onBlur={onBlur} />
+      </S.Content>
+
+      {children}
+
+      <S.Meta>Showing {value + 1} to {pageCount} of {total} entries</S.Meta>
+    </S.Container>
+  )
+}
+
+
+{/* <ReactPaginate
         className="pagination"
         activeLinkClassName="active"
         breakLabel="..."
@@ -26,10 +39,3 @@ export default function PadinationView({className, children, value, total, pageC
         pageCount={pageCount}
         renderOnZeroPageCount={null}
       /> */}
-
-      {children}
-
-      <S.Meta>Showing {value + 1} to {pageCount} of {total} entries</S.Meta>
-    </S.Container>
-  )
-}
