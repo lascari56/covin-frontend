@@ -129,17 +129,19 @@ export default function СontactsContainer({navigation, ...props}) {
       }
     });
 
-    console.log(page)
+    // console.log(page)
+
+    // alert(res.data?.length)
 
     if (isMore) {
       setLots({...lots, data: [...lots?.data, ...res?.data]})
       setIsMore(false)
     } else {
-      setLots({...lots, data: res.data})
+      setLots({...lots, data: [...res.data]})
 
-      requestAnimationFrame(() => {
-        animateScroll.scrollToTop()
-      })
+      // requestAnimationFrame(() => {
+      //   animateScroll.scrollToTop()
+      // })
     }
     
     setLoading(false)
@@ -157,7 +159,7 @@ export default function СontactsContainer({navigation, ...props}) {
       }
     });
 
-    setLots({...res})
+    setLots({...res, data: [...res?.data]})
     
     setLoading(false)
     // didMount.current = true;
