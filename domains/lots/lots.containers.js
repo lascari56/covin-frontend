@@ -120,8 +120,8 @@ export default function СontactsContainer({navigation, ...props}) {
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        $skip: page * 100,
-        $limit: 100,
+        $skip: page * 20,
+        $limit: 20,
         ...query,
       }
     });
