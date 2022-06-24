@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useLayoutEffect, useMemo} from 'react';
 
 import {api} from '../../utils/api.util';
 
@@ -56,8 +56,12 @@ export default function СontactsContainer({navigation, ...props}) {
     },
   });
 
-  useEffect(() => {
-    handleLoadLots()
+  useLayoutEffect(() => {
+    if (!didMount.current) {
+      handleLoadLots();
+
+      didMount.current = true;
+    }
   }, []);
 
   useEffect(() => {
@@ -103,12 +107,12 @@ export default function СontactsContainer({navigation, ...props}) {
         },
         {
           vin: {
-            $in: formikMeta?.values?.search,
+            $search: formikMeta?.values?.search,
           }
         },
         {
           lot_id: {
-            $in: formikMeta?.values?.search,
+            $search: formikMeta?.values?.search,
           }
         }
       ];
@@ -156,7 +160,7 @@ export default function СontactsContainer({navigation, ...props}) {
     setLots({...res})
     
     setLoading(false)
-    didMount.current = true;
+    // didMount.current = true;
   };
   
   const handlePageMore = () => {
