@@ -36,9 +36,10 @@ export default function СontactsContainer({navigation, ...props}) {
   const dispatch = useDispatch();
 
   const [lots, setLots] = useState(null);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isMore, setIsMore] = useState(false);
 
   const didMount = React.useRef(false);
 
@@ -63,8 +64,6 @@ export default function СontactsContainer({navigation, ...props}) {
     if (didMount.current) {
       handleGetLots();
     }
-
-    
   }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search]);
 
   useEffect(() => {
@@ -82,7 +81,7 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   const handleFilter = async (value) => {
-    setPage(0);
+    setPage(1);
     setFilters(value);
   };
 
@@ -120,18 +119,28 @@ export default function СontactsContainer({navigation, ...props}) {
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        $skip: page * 20,
+        $skip: (page - 1) * 20,
         $limit: 20,
         ...query,
       }
     });
 
-    setLots({...lots, ...res})
+    console.log(page)
+
+    if (isMore) {
+      setLots({...lots, data: [...lots?.data, ...res?.data]})
+      setIsMore(false)
+    } else {
+      setLots({...lots, data: res.data})
+
+      requestAnimationFrame(() => {
+        animateScroll.scrollToTop()
+      })
+    }
+    
     setLoading(false)
 
-    requestAnimationFrame(() => {
-      animateScroll.scrollToTop()
-    })
+    
   };
 
   const handleLoadLots = async () => {
@@ -145,12 +154,14 @@ export default function СontactsContainer({navigation, ...props}) {
     });
 
     setLots({...res})
+    
     setLoading(false)
     didMount.current = true;
   };
   
   const handlePageMore = () => {
     setPage(page + 1)
+    setIsMore(true)
   }
 
   return (
