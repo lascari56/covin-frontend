@@ -121,9 +121,9 @@ export default function СontactsContainer({navigation, ...props}) {
     const res = await api.service('cars').find({
       query: {
         ...query,
-        $sort: {
-          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
-        },
+        // $sort: {
+        //   [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        // },
         $skip: (page - 1) * 20,
         $limit: 20,
       }
@@ -153,9 +153,9 @@ export default function СontactsContainer({navigation, ...props}) {
     const res = await api.service('cars').find({
       query: {
         full: true,
-        $sort: {
-          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
-        },
+        // $sort: {
+        //   [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        // },
       }
     });
 

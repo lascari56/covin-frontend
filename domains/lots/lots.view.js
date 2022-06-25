@@ -22,7 +22,7 @@ const LotsView = ({lots, page, pageCount, loading, formikMeta, onFilter, onChang
 
             {lots?.data?.map(item => <S.Card data={item} speedUnit={formikMeta.values.speed} key={item?._id} />)}
 
-            <p>{lots?.data?.length}</p>
+            {/* <p>{lots?.data?.length}</p> */}
 
             <Padination value={page} total={lots?.total} pageCount={pageCount} onChange={onChangePage}>
               <Button title="Show 10 more" disabled={page >= pageCount - 1} onClick={onPageMore} />
