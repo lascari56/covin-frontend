@@ -6,7 +6,7 @@ import {Icon} from "@components"
 
 import * as S from "./padination.styled"
 
-export default function PadinationView({className, children, localValue, value, total, pageCount, onNext, onPrev, onChangeLocalValue, onBlur}) {
+export default function PadinationView({className, children, localValue, value, total, pageCount, onNext, onPrev, onBlur, onChange, onKeyUp}) {
   return (
     <S.Container className={className}>
       <S.Content>
@@ -18,12 +18,12 @@ export default function PadinationView({className, children, localValue, value, 
           <Icon name="arr-right" />
         </S.Item>
 
-        <S.Inner size="small" theme="white" value={localValue} onChange={onChangeLocalValue} onBlur={onBlur} />
+        <S.Inner size="small" theme="white" value={localValue} onChange={onChange} onBlur={onBlur} onSubmit={onBlur} onKeyPress={onKeyUp} />
       </S.Content>
 
       {children}
 
-      <S.Meta>Showing {value + 1} to {pageCount} of {total} entries</S.Meta>
+      <S.Meta>Showing {value} to {pageCount} of {total} entries</S.Meta>
     </S.Container>
   )
 }
