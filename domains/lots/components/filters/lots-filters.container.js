@@ -207,29 +207,29 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
     onFilter(res)
   }
 
-  const validateAll = (value, options) => {
-    if (value.length === options.length) {
-      return null
-    }
+  // const validateAll = (value, options) => {
+  //   if (value.length === options.length) {
+  //     return null
+  //   }
 
-    return value
-  }
+  //   return value
+  // }
 
-  const validateRange = (value) => {
-    if (!value?.start && value?.end) {
-      return null
-    }
+  // const validateRange = (value) => {
+  //   if (!value?.start && value?.end) {
+  //     return null
+  //   }
 
-    const res = {}
+  //   const res = {}
 
-    if (value?.start) {
-      res["$gte"] = value?.start
-    }
+  //   if (value?.start) {
+  //     res["$gte"] = value?.start
+  //   }
 
-    if (value?.end) {
-      res["$lte"] = value?.end
-    }
-  }
+  //   if (value?.end) {
+  //     res["$lte"] = value?.end
+  //   }
+  // }
 
   const handlerReset = () => {
     formik.resetForm()
