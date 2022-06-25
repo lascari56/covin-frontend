@@ -15,6 +15,8 @@ const LotCardHeaderContainer = ({...props}) => {
       const timeLive = -60000 * 90;
       const time = +_date - +currentDate;
 
+      // res.value = _date.format("DD MMM, HH:mm")
+
       if (time <= 0) {
         if (time > timeLive) {
           res = {
@@ -27,9 +29,7 @@ const LotCardHeaderContainer = ({...props}) => {
       } else {
         res.value = _date.format("DD MMM, HH:mm")
       }
-    }
-
-    res.value = "Future"
+    } else res.value = "Future"
 
     return res
   }, [props.data?.auction_date_api])

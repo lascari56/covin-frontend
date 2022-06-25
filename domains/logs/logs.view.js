@@ -16,12 +16,20 @@ const data = [
 
 const columns = [{label: "Date"}, {label: "Status"}, {label: "Message"}]
 
-const LogsView = ({logs}) => {
+const LogsView = ({logs, page, pageCount, onChangePage}) => {
   const renderItem = (item) => <LogsItem data={item} key={item?.id} />
 
   return (
     <S.Container>
-      <Table data={logs?.data} columns={columns} renderItem={renderItem} />
+      <Table 
+        data={logs?.data}
+        columns={columns}
+        renderItem={renderItem}
+        page={page}
+        total={logs?.total}
+        pageCount={pageCount}
+        onChangePage={onChangePage}
+      />
     </S.Container>
   );
 };

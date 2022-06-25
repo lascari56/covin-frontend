@@ -15,7 +15,7 @@ import {animateScroll} from 'react-scroll';
 
 const sortOptions = {
   auction_date: {
-    key: "auction_date_api",
+    key: "auction_date",
     value: 1
   },
   date_adding_new: {
@@ -81,6 +81,7 @@ export default function СontactsContainer({navigation, ...props}) {
   }, [lots?.total, lots?.limit]);
 
   const hnadleHangePage = async (value) => {
+    console.log("value", value);
     setPage(value);
   };
 
@@ -91,12 +92,17 @@ export default function СontactsContainer({navigation, ...props}) {
 
   const handleGetLots = async () => {
     if (loading) return;
+
+    let currentPage = page; 
   
     setLoading(true)
 
     let query = {...filters};
 
     if (!!formikMeta?.values?.search) {
+      currentPage = 1;
+      setPage(currentPage);
+
       if (!query.$or) query.$or = [];
 
       query.$or = [
@@ -120,12 +126,14 @@ export default function СontactsContainer({navigation, ...props}) {
 
     const res = await api.service('cars').find({
       query: {
+        
+        $sort: {
+          auction_date_known: 1,
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        },
         ...query,
-        // $sort: {
-        //   [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
-        // },
-        $skip: (page - 1) * 20,
-        $limit: 20,
+        $skip: (currentPage - 1) * 20,
+        // $limit: 20,
       }
     });
 
@@ -153,9 +161,9 @@ export default function СontactsContainer({navigation, ...props}) {
     const res = await api.service('cars').find({
       query: {
         full: true,
-        // $sort: {
-        //   [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
-        // },
+        $sort: {
+          [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
+        },
       }
     });
 

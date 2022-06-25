@@ -4,7 +4,7 @@ import TableSearch from "./components/search"
 
 import * as S from "./table.styled"
 
-const TableView = ({ data, columns, renderItem, onSearch }) => {
+const TableView = ({ data, columns, renderItem, page, total, pageCount, onSearch,  onChangePage }) => {
   return (
     <S.Container>
       <S.Content>
@@ -29,7 +29,7 @@ const TableView = ({ data, columns, renderItem, onSearch }) => {
         {!!onSearch && <TableSearch />}
       </S.Content>
 
-      <S.Pagination value={1} total={200} pageCount={10} onChange={() => {}} />
+      <S.Pagination value={page} total={total} pageCount={pageCount} onChange={onChangePage} />
     </S.Container>
   );
 }
