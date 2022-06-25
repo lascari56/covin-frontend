@@ -147,9 +147,9 @@ export default function СontactsContainer({navigation, ...props}) {
     } else {
       setLots({...lots, data: [...res.data]})
 
-      // requestAnimationFrame(() => {
-      //   animateScroll.scrollToTop()
-      // })
+      requestAnimationFrame(() => {
+        animateScroll.scrollToTop()
+      })
     }
     
     setLoading(false)
