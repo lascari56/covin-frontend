@@ -133,7 +133,7 @@ export default function СontactsContainer({navigation, ...props}) {
         },
         ...query,
         $skip: (currentPage - 1) * 20,
-        // $limit: 20,
+        $limit: 20,
       }
     });
 
@@ -164,6 +164,7 @@ export default function СontactsContainer({navigation, ...props}) {
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
+        $limit: 20,
       }
     });
 
