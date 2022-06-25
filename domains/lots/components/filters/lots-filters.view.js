@@ -46,10 +46,10 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterRange
-        title="Odometr"
-        value={formik.values.odometr}
+        title="Odometer"
+        value={formik.values.odometer}
         disabled={loading}
-        onChange={value => formik.setFieldValue('odometr', value)}
+        onChange={value => formik.setFieldValue('odometer', value)}
       />
 
       <FilterCheckbox

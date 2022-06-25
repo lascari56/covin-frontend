@@ -54,7 +54,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       model: [],
       series: [],
       year: {min: null, max: null},
-      odometr: {min: null, max: null},
+      odometer: {min: null, max: null},
       loss: [],
       damage: [],
       drive: [],
@@ -187,7 +187,7 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
       ]
     }
 
-    ["year", "odometr", "cost_repair"].forEach(key => {
+    ["year", "odometer", "cost_repair"].forEach(key => {
       if (values[key]?.min || values[key]?.max) {
         const _res = {}
         const value = values[key]
