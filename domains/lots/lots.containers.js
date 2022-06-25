@@ -120,12 +120,12 @@ export default function СontactsContainer({navigation, ...props}) {
 
     const res = await api.service('cars').find({
       query: {
+        ...query,
         $sort: {
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
-        $skip: page * 20,
-        $limit: 20,
-        ...query,
+        $skip: page * 10,
+        $limit: 10,
       }
     });
 
