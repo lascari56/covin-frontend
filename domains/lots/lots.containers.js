@@ -128,7 +128,7 @@ export default function СontactsContainer({navigation, ...props}) {
       query: {
         
         $sort: {
-          auction_date_known: 1,
+          auction_date_known: -1,
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value
         },
         ...query,
