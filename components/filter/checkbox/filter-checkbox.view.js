@@ -24,6 +24,9 @@ function FilterCheckboxView({
   onChangeTemplate,
   ...props
  }) {
+
+  
+
   return (
     <FilterGroup {...props} disabled={disabled || isEmpty}>
       <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
