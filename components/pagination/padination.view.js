@@ -23,7 +23,7 @@ export default function PadinationView({className, children, localValue, value, 
 
       {children}
 
-      <S.Meta>Showing {value} to {pageCount} of {total} entries</S.Meta>
+      <S.Meta>Showing {value} to {pageCount} of {total - 1} entries</S.Meta>
     </S.Container>
   )
 }
