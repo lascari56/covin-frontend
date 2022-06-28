@@ -154,7 +154,9 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
   }, [seriesOptions, formik.values.make?.length, formik.values.model?.length])
 
 
-  const handleFilter = (values) => {
+  const handleFilter = (data) => {
+    const values = {...data}
+
     const res = {};
 
     const keys = ["make", "loss", "drive", "status", "keys", "transmission", "engine", "fuel", "location", "document", "site"]
@@ -185,6 +187,19 @@ export default function LotsFiltersContainer({data, onFilter, ...props}) {
           }
         }
       ]
+    }
+
+    if (props.units?.speed == "km" && (values.odometer?.min || values.odometer?.max)) {
+      const _value = {...values.odometer};
+
+      if (_value?.min) {
+        _value.min = Math.floor(_value.min / 1.6);
+      }
+      if (_value?.max) {
+        _value.max = Math.floor(_value.max / 1.6);
+      }
+
+      values.odometer = _value
     }
 
     ["year", "odometer", "cost_repair"].forEach(key => {

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import LoginFormView from "./login-form.view"
+import LoginView from "./login.view"
 
 import {useFormik} from 'formik';
 
-const LoginFormContainer = ({...props}) => {
+const LoginContainer = ({...props}) => {
   const formik = useFormik({
     initialValues: {
       login: '',
@@ -16,8 +16,8 @@ const LoginFormContainer = ({...props}) => {
   });
 
   return (
-    <LoginFormView {...props} formik={formik} />
+    <LoginView {...props} formik={formik} />
   );
 }
 
-export default LoginFormContainer;
+export default LoginContainer;

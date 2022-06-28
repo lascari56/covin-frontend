@@ -24,7 +24,12 @@ export const Amount = styled.span`
 `
 
 export const Status = styled.span`
-  color: #FFAF36;
+  ${props => props.status === "Error" && `
+    color: #FF0E0E;
+    font-weight: 600;
+  `}
+
+  ${props => props.status === "Success" && `color: #2DC946;`}
 `
 
 export const Message = styled.span`

@@ -1,1 +1,1 @@
-export {default} from "./index-view"
+export {default} from "./login.container"

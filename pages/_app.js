@@ -1,7 +1,7 @@
 import '../styles/global.scss'
 import '@splidejs/splide/dist/css/splide.min.css';
 
-// import RootContainer from '../containers/root';
+import RootContainer from '../containers/root';
 
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -16,9 +16,9 @@ function MyApp({ Component, pageProps }) {
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           
-          {/* <RootContainer> */}
+          <RootContainer>
             <Component {...pageProps} />
-          {/* </RootContainer> */}
+          </RootContainer>
         </Provider>
       </PersistGate>
     </>

@@ -30,6 +30,11 @@ export const Container = styled.div`
     height: ${responsiveSize(44)};
   `}
 
+  ${props => props.size === "large" && `
+    padding: 0px ${responsiveSize(32)};
+    height: ${responsiveSize(60)};
+  `}
+
   ${props => props.size === "big" && `
     padding: 0px ${responsiveSize(48)};
     height: ${responsiveSize(71)};
@@ -45,6 +50,10 @@ export const Container = styled.div`
 
   ${props => props.theme === "outline" && `
     border: 1px solid #216DD1;
+  `}
+
+  ${props => props.theme === "outline-grey" && `
+    border: 1px solid #D5D9DD;
   `}
 
   ${props => props.theme === "violet" && `
@@ -66,4 +75,12 @@ export const Title = styled.span`
   ${props => (props.theme === "green" || props.theme === "blue") && `
     color: #ffffff;
   `}
+
+  ${props => props.theme === "outline-grey" && `
+    color: #000000;
+  `}
+`
+
+export const Icon = styled.div`
+  margin-right: ${responsiveSize(10)};
 `

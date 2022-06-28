@@ -1,9 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+import {getCounty} from './commonReducer.thunk';
+
 const initialState = {
   units: {
     speed: "miles"
   },
+
+  country: null
 };
 
 const commonSlice = createSlice({
@@ -18,9 +22,13 @@ const commonSlice = createSlice({
     },
     clean: state => {
       state.units = initialState.units;
+      state.country = initialState.country;
     },
   },
   extraReducers: {
+    [getCounty.fulfilled]: (state, {payload}) => {
+      state.country = payload;
+    },
   },
 });
 

@@ -6,7 +6,7 @@ import LotsFiltersHeader from "./components/header"
 
 import * as S from "./lots-filters.styled"
 
-const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading, onReset}) => {
+const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading, units, onReset}) => {
   return (
     <S.Container>
       <LotsFiltersHeader onReset={onReset} />
@@ -46,7 +46,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterRange
-        title="Odometer"
+        title={`Odometer, ${units?.speed}`}
         value={formik.values.odometer}
         disabled={loading}
         onChange={value => formik.setFieldValue('odometer', value)}

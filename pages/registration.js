@@ -1,19 +1,19 @@
 import React from "react";
 
-import Login from "@domains/login";
+import Registration from "@domains/registration";
 
 import AuthCabinet from "../layouts/auth"
 
-function LoginScreen(props) {
+function RegistrationScreen(props) {
   return (
-    <Login {...props} />
+    <Registration {...props} />
   );
 }
 
-LoginScreen.getLayout = function getLayout(page) {
+RegistrationScreen.getLayout = function getLayout(page) {
   return (
-    <AuthCabinet>{page}</AuthCabinet>
+    <AuthCabinet title="Registration">{page}</AuthCabinet>
   )
 }
 
-export default LoginScreen;
+export default RegistrationScreen;

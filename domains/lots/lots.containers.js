@@ -47,6 +47,7 @@ export default function СontactsContainer({navigation, ...props}) {
 
   const formikMeta = useFormik({
     initialValues: {
+      show: "all",
       search: '',
       speed: units.speed,
       sort: "auction_date"
@@ -188,6 +189,7 @@ export default function СontactsContainer({navigation, ...props}) {
       pageCount={pageCount}
       loading={loading}
       formikMeta={formikMeta}
+      units={units}
       onFilter={handleFilter}
       onChangePage={hnadleHangePage}
       onPageMore={handlePageMore}

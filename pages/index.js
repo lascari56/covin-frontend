@@ -12,7 +12,7 @@ function LoginScreen(props) {
 
 LoginScreen.getLayout = function getLayout(page) {
   return (
-    <AuthCabinet>{page}</AuthCabinet>
+    <AuthCabinet title="Log In">{page}</AuthCabinet>
   )
 }
 

@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 import { responsiveSize } from "@utils/responsive";
 
-export const Container = styled.div`
-  
-`
+export const Container = styled.div``
 
 export const Input = styled.input`
   width: 100%;
@@ -13,12 +11,18 @@ export const Input = styled.input`
 
   background: #FAFBFC;
   border: 1px solid #DFE7F0;
-  border-radius: 5px;
+  border-radius: ${responsiveSize(5)};
+
+  font-weight: 300;
+  font-size: ${responsiveSize(14)};
+  line-height: ${responsiveSize(16)};
   font-family: Roboto;
 
   &::placeholder {
     color: #BEBEBE;
 
+    font-size: inherit;
+    font-weight: inherit;
     font-family: inherit;
   }
 
@@ -31,7 +35,7 @@ export const Input = styled.input`
   `}
 `
 
-export const Label = styled.span`
+export const Label = styled.p`
   margin-bottom: ${responsiveSize(6)};
 
   font-weight: 300;
@@ -39,4 +43,10 @@ export const Label = styled.span`
   line-height: ${responsiveSize(14)};
   letter-spacing: 0.02em;
   color: #959090;
+
+  ${props => props.type === "auth" && `
+    margin-bottom: ${responsiveSize(10)};
+
+    color: #7C8DB5;
+  `}
 `

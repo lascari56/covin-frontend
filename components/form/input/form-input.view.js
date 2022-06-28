@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react'
 
 import * as S from "./form-input.styled"
 
-export default function FormInputView({ className, autofocus, label, size, theme, onChange, ...props}) {
+export default function FormInputView({ className, autofocus, label, size, theme, type, onChange, ...props}) {
   const innerRef = useRef()
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function FormInputView({ className, autofocus, label, size, theme
 
   return (
     <S.Container className={className}>
-      {!!label && <S.Label>{label}</S.Label>}
+      {!!label && <S.Label type={type}>{label}</S.Label>}
 
       <S.Input {...props} ref={innerRef} size={size} theme={theme} onChange={event => onChange(event.target.value)} />
     </S.Container>
