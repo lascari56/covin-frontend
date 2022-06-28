@@ -14,6 +14,7 @@ import QuestionSVG from './images/question';
 import PlusSVG from './images/plus';
 import SearchSVG from './images/search';
 import ArrowRightSVG from './images/arrow-right';
+import ArrowLeftSVG from './images/arrow-left';
 import ArrRightSVG from './images/arr-right';
 import ArrLeftSVG from './images/arr-left';
 import GoogleSVG from './images/google';
@@ -35,6 +36,7 @@ export const icons = {
   plus: PlusSVG,
   search: SearchSVG,
   "arrow-right": ArrowRightSVG,
+  "arrow-left": ArrowLeftSVG,
   "arr-left": ArrLeftSVG,
   "arr-right": ArrRightSVG,
   google: GoogleSVG

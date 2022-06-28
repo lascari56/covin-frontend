@@ -1,12 +1,12 @@
 import React from "react";
 
-import Login from "@domains/login";
+import Forgot from "@domains/forgot";
 
 import AuthCabinet from "../../layouts/auth"
 
 function ForgotScreen(props) {
   return (
-    <Login {...props} />
+    <Forgot {...props} />
   );
 }
 
