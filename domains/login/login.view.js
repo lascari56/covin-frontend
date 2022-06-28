@@ -15,7 +15,9 @@ const LoginView = ({formik}) => {
         <S.Input size="big" type="auth" label="Password" placeholder="Enter password" value={formik.values.password} onChange={value => formik.setFieldValue('password', value)} />
       </S.Content>
 
-      <S.Forgot>Forgot password?</S.Forgot>
+      <Link href="/forgot">
+        <S.Forgot>Forgot password?</S.Forgot>
+      </Link>
 
       <S.Action size="large" title="Login" onClick={formik.handleSubmit} />
 

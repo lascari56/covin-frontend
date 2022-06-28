@@ -6,13 +6,13 @@ import * as S from "./icon.styled"
 
 import {icons} from './icon.config';
 
-const Icon = ({name, icon, size, onPress, ...props}) => {
+const Icon = ({className, name, icon, size, onPress, ...props}) => {
   const IconComponent = useMemo(() => {
     return icons[name] || false;
   }, [name]);
 
   return (
-    <S.Container size={size}>
+    <S.Container className={className} size={size}>
       <IconComponent {...props} />
     </S.Container>
   );
