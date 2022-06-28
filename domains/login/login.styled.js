@@ -54,7 +54,7 @@ export const SingUp = styled.span`
   text-align: center;
 `
 
-export const SingUpLink = styled.a`
+export const SingUpLink = styled.span`
   padding: ${responsiveSize(10)} 0px;
 
   color: #216DD1;

@@ -31,7 +31,7 @@ const PadinationContainer = ({onChange, ...props}) => {
   }
 
   const handlerNext = () => {
-    if (props.value < props.total) {
+    if (props.value < props.pageCount) {
       onChange(+props.value + 1)
     }
   }

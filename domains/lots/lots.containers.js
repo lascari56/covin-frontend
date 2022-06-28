@@ -146,7 +146,7 @@ export default function СontactsContainer({navigation, ...props}) {
       setLots({...lots, data: [...lots?.data, ...res?.data]})
       setIsMore(false)
     } else {
-      setLots({...lots, data: [...res.data]})
+      setLots({...lots, ...res})
 
       requestAnimationFrame(() => {
         animateScroll.scrollToTop()
@@ -170,7 +170,7 @@ export default function СontactsContainer({navigation, ...props}) {
       }
     });
 
-    setLots({...res, data: [...res?.data]})
+    setLots(res)
     
     setLoading(false)
     // didMount.current = true;
