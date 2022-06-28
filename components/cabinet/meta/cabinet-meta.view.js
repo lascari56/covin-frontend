@@ -20,7 +20,8 @@ const sortOptions = [
   {label: "Date of adding (old first)", value: "date_adding_old"},
 ]
 
-const typeOptions = [
+const showOptions = [
+  {label: "All", value: "all"},
   {label: "Buy Now", value: "buy_now"},
   {label: "Notification lots", value: "notification_lots"},
   {label: "Commented lots", value: "commented_lots"},
@@ -38,11 +39,11 @@ const CabinetMetaView = ({className, formik}) => {
 
       <S.Select 
         displayType="left"
-        label="Type"
+        label="Show"
         size="big"
-        options={typeOptions}
-        value={formik?.values?.type}
-        onChange={value => formik.setFieldValue('type', value)}
+        options={showOptions}
+        value={formik?.values?.show}
+        onChange={value => formik.setFieldValue('show', value)}
       />
 
       <S.Select

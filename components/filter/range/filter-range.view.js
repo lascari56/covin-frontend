@@ -11,6 +11,7 @@ const FilterRangeView = ({value, onChange, ...props}) => {
     <FilterGroup {...props}>
       <S.Container>
         <FormInput 
+          autofocus
           theme="white"
           label="Min" 
           placeholder="0"

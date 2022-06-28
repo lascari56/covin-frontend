@@ -11,8 +11,6 @@ export const Content = styled.div`
   max-height: ${responsiveSize(276)};
 
   overflow-y: scroll;
-
-  
 `
 
 export const Search = styled(FormSearch)`

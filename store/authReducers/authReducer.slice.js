@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {userLogin, getCompanySettings, editUser} from './authReducer.thunk';
+import {userLogin} from './authReducer.thunk';
 
 const initialState = {
   user: {

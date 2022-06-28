@@ -16,6 +16,7 @@ import SearchSVG from './images/search';
 import ArrowRightSVG from './images/arrow-right';
 import ArrRightSVG from './images/arr-right';
 import ArrLeftSVG from './images/arr-left';
+import GoogleSVG from './images/google';
 
 export const icons = {
   copy: CopySVG,
@@ -36,4 +37,5 @@ export const icons = {
   "arrow-right": ArrowRightSVG,
   "arr-left": ArrLeftSVG,
   "arr-right": ArrRightSVG,
+  google: GoogleSVG
 };
