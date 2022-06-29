@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as S from './lot-card-header.styled'
 
-export default function LotCardHeaderView({data, date}) {
+export default function LotCardHeaderView({data, date, onFull}) {
   return (
     <S.Container type={data?.type}>
       <S.Logo src={data?.site === "1" ? "/images/copart-logo.png" : "/images/iaai-logo.png"} site={data?.site} />
@@ -10,7 +10,7 @@ export default function LotCardHeaderView({data, date}) {
       <S.Title type={data?.type}>
         {data?.title}
 
-        <S.Link><a href="#">(view all photo)</a></S.Link>
+        <S.Link onClick={onFull}>(view all photo)</S.Link>
 
         {data?.type === "hide" && <S.Hide>(hide)</S.Hide>}
       </S.Title>
@@ -19,9 +19,6 @@ export default function LotCardHeaderView({data, date}) {
 
       <S.CalendarIcon src="/images/calendar.svg/"/>
 
-      {/* <S.Date>{data?.auction_date_api || "Future"}</S.Date> */}
-      {/* {data?.auction_date_api} |  */}
-      {/* <S.Date>{data?.auction_date_api}</S.Date> */}
       <S.Date theme={date?.theme}>{date?.value}</S.Date>
     </S.Container>
   )

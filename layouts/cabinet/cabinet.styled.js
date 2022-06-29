@@ -27,6 +27,4 @@ export const Sidebar = styled(CabinetSidebar)`
   position: absolute;
   top: 0px;
   left: 0px;
-
-  z-index: 1;
 `
