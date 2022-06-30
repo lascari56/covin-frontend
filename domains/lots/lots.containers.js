@@ -74,7 +74,7 @@ export default function СontactsContainer({navigation, ...props}) {
     if (didMount.current) {
       handleGetLots();
     }
-  }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search]);
+  }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search, formikMeta?.values?.show]);
 
   useEffect(() => {
     if (formikMeta.values.speed !== units.speed) {
@@ -128,7 +128,13 @@ export default function СontactsContainer({navigation, ...props}) {
           }
         }
       ];
-    } 
+    }
+
+    console.log("formikMeta?.values?.sort", formikMeta?.values?.sort);
+
+    if (formikMeta?.values?.show === 'buy_now') {
+      query.price_new = { $gt: 0 }
+    }
 
     const res = await api.service('cars').find({
       query: {
