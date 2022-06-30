@@ -53,6 +53,8 @@ export const Link = styled.span`
   letter-spacing: 0.02em;
   text-decoration-line: underline;
   color: #1A6CEB;
+
+  cursor: pointer;
 `
 
 export const Hide = styled.span`

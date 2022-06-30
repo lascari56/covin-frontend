@@ -67,27 +67,27 @@ input {
   box-sizing: border-box;
 }
 
-.pagination {
-  display: flex;
-  align-items: center;
+// .pagination {
+//   display: flex;
+//   align-items: center;
 
-  a {
-    padding: 10px;
+//   a {
+//     padding: 10px;
 
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.02em;
-    color: #7C8DB5;
+//     font-size: 14px;
+//     line-height: 16px;
+//     letter-spacing: 0.02em;
+//     color: #7C8DB5;
 
-    user-select: none;
-    cursor: pointer;
-  }
+//     user-select: none;
+//     cursor: pointer;
+//   }
 
-  .active {
-    color: #216DD1;
-    font-weight: 600;
-  }
-}
+//   .active {
+//     color: #216DD1;
+//     font-weight: 600;
+//   }
+// }
 
 .splide__slide {
   display: flex;
@@ -104,5 +104,18 @@ input {
   & .splide__arrow  {
     border-radius: 0px;
     background-color: transparent;
+  }
+}
+
+
+.ReactModal {
+  &__Overlay {
+    z-index: 2;
+
+    background-color: rgba(0, 0, 0, 0.52) !important;
+  }
+
+  &__Content {
+    outline: none;
   }
 }

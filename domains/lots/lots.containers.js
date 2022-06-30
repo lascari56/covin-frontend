@@ -13,6 +13,8 @@ import {saveUnits} from '@store/commonReducers/commonReducer.slice';
 
 import {animateScroll} from 'react-scroll';
 
+import {find} from "lodash"
+
 const sortOptions = {
   auction_date: {
     key: "auction_date",
@@ -26,10 +28,6 @@ const sortOptions = {
     key: "createdAt",
     value: -1
   },
-  // alphabet: {
-  //   key: "make",
-  //   value: 1
-  // },
 };
 
 export default function СontactsContainer({navigation, ...props}) {
@@ -40,6 +38,7 @@ export default function СontactsContainer({navigation, ...props}) {
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
   const [isMore, setIsMore] = useState(false);
+  const [fulLotId, setFulLotId] = useState(null)
 
   const didMount = React.useRef(false);
 
@@ -57,6 +56,12 @@ export default function СontactsContainer({navigation, ...props}) {
     },
   });
 
+  const fullItemSelected = useMemo(() => {
+    if (!fulLotId) return null;
+
+    return find(lots?.data, { _id: fulLotId })
+  }, [lots?.data, fulLotId])
+
   useLayoutEffect(() => {
     if (!didMount.current) {
       handleLoadLots();
@@ -69,7 +74,7 @@ export default function СontactsContainer({navigation, ...props}) {
     if (didMount.current) {
       handleGetLots();
     }
-  }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search]);
+  }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search, formikMeta?.values?.show]);
 
   useEffect(() => {
     if (formikMeta.values.speed !== units.speed) {
@@ -123,7 +128,13 @@ export default function СontactsContainer({navigation, ...props}) {
           }
         }
       ];
-    } 
+    }
+
+    console.log("formikMeta?.values?.sort", formikMeta?.values?.sort);
+
+    if (formikMeta?.values?.show === 'buy_now') {
+      query.price_new = { $gt: 0 }
+    }
 
     const res = await api.service('cars').find({
       query: {
@@ -190,9 +201,11 @@ export default function СontactsContainer({navigation, ...props}) {
       loading={loading}
       formikMeta={formikMeta}
       units={units}
+      fullItemSelected={fullItemSelected}
       onFilter={handleFilter}
       onChangePage={hnadleHangePage}
       onPageMore={handlePageMore}
+      onChangeFulLotId={setFulLotId}
     />
   );
 }

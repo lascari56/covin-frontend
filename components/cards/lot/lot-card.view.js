@@ -8,13 +8,13 @@ import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
-const LotCardView = ({ className, data, renderMeta, links }) => {
+const LotCardView = ({ className, data, renderMeta, links, onFull }) => {
   return (
    <S.Container className={className}>
-     <LotCardHeader data={data} />
+     <LotCardHeader data={data} onFull={onFull} />
+
       <S.Body type={data?.type}>
         <S.Content>
-          
           <LotCardSlider data={data} />
 
           <S.Wrapper>
