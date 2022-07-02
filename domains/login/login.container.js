@@ -47,7 +47,7 @@ const LoginContainer = ({...props}) => {
         render: "Login success", 
         type: "success", 
         isLoading: false , 
-        autoClose: 1000, 
+        autoClose: 500, 
         onClose: () => router.push('/cabinet/lots')})
     }).catch((e) => {
       console.log("authError", e);
