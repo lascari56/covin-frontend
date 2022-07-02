@@ -1,1 +1,1 @@
-export {default} from './setting-personal-info.view'
+export {default} from './setting-personal-info.container'

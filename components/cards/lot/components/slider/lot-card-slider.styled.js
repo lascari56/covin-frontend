@@ -28,6 +28,7 @@ export const Arrow = styled.img`
 
 export const Image = styled.div`
   height: ${responsiveSize(125)};
+  width: 100%;
 
   background: url(${props => props.image}) no-repeat center center;
   background-size: cover;

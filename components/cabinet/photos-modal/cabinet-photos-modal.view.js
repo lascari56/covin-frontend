@@ -4,12 +4,10 @@ import * as S from "./cabinet-photos-modal.styled"
 
 const CabinetPhotosModalView = ({ items, onRequestClose }) => {
   return (
-    <S.Modal isOpen={!!items?.length} onRequestClose={() => alert("Hello")}>
-      <S.Container>
-        {items?.map((item, index) => (
-          <S.Image src={item} alt="image" key={index} />
-        ))}
-      </S.Container>
+    <S.Modal isOpen={!!items?.length} onRequestClose={onRequestClose}>
+      {items?.map((item, index) => (
+        <S.Image url={item} key={index} />
+      ))}
     </S.Modal>
   );
 }

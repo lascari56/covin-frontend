@@ -33,6 +33,8 @@ export const Input = styled.input`
   ${props => props.theme === "white" && `
     background: #fff;
   `}
+
+  ${props => props.isValid === false && 'border-color: #E03B4B;'}
 `
 
 export const Label = styled.p`

@@ -2,30 +2,45 @@ import React from 'react'
 
 import LotCardActionsItem from "./components/item"
 
+import {LotNotification, LotCommentary} from "@components/lot"
+
 import * as S from './lot-card-actions.styled'
 
-export default function LotCardActionsView({showNotification, onChangeShowNotification}) {
+import FavoriteSVG from "./images/favorite"
+import CommentSVG from "./images/сomment"
+import HideSVG from "./images/hide"
+import NotificationVG from "./images/notification"
+
+export default function LotCardActionsView({showNotification, showCommentary, onChangeShowNotification, onChangeShowCommentary}) {
   return (
     <S.Container>
       <S.Item >
-        <LotCardActionsItem src="/images/favorite.svg" />
+        <LotCardActionsItem icon={FavoriteSVG} />
       </S.Item>
 
       <S.Item>
-        <LotCardActionsItem src="/images/сomment.svg" />
+        <LotCardActionsItem icon={CommentSVG} onClick={() => onChangeShowCommentary(!showCommentary)} />
       </S.Item>
 
       <S.Item>
-        <LotCardActionsItem src="/images/hide.svg" />
+        <LotCardActionsItem icon={HideSVG} />
       </S.Item>
 
       <S.Item>
-        <LotCardActionsItem src="/images/notification.svg" onClick={() => onChangeShowNotification(!showNotification)} />
+        <LotCardActionsItem icon={NotificationVG} onClick={() => onChangeShowNotification(!showNotification)} />
 
-        {!!showNotification && <S.Notification />}
+        {!!showNotification && (
+          <S.Popup>
+            <LotNotification onClose={() => onChangeShowNotification(false)} />  
+          </S.Popup>
+        )}
+
+        {!!showCommentary && (
+          <S.Popup>
+            <LotCommentary onClose={() => onChangeShowCommentary(false)} />  
+          </S.Popup>
+        )}
       </S.Item>
-
-      
     </S.Container>
   )
 }
