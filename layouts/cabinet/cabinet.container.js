@@ -1,17 +1,24 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 
 import CabinetView from "./cabinet.view"
 
-import { useRouter } from 'next/router'
+import {useSelector, useDispatch} from 'react-redux';
 // import {useDispatch, useSelector} from 'react-redux';
 
 import {api} from '@utils/api.util';
 
 import {logout} from '@store/authReducers/authReducer.slice';
 
+import {selectUser} from '@store/authReducers/authReducer.selector';
+
+import { useRouter } from 'next/router'
+
 export default function CabinetContainer({...props}) {
   const router = useRouter()
-  // const dispatch = useDispatch();
+  
+  const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
 
   const isFull = useMemo(() => {
     if (router.asPath === "/cabinet/lots" || router.asPath === "/cabinet/tracking") {
@@ -21,11 +28,17 @@ export default function CabinetContainer({...props}) {
     return true
   }, [router.asPath])
 
+  useEffect(() => {
+    if (!user) {
+      router.push('/')
+    }
+  }, [user])
+
   const handleLogout = async () => {
     await api.logout();
-    // await dispatch(logout());
+    await dispatch(logout());
 
-    router.push('/')
+    // router.push('/')
   }
 
   return (

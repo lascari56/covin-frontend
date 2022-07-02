@@ -12,18 +12,19 @@ import {store, persistor} from '../store/index';
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
 
-  return getLayout((
-    <>
-      <PersistGate loading={null} persistor={persistor}>
-        <Provider store={store}>
-          
-          <RootContainer>
-            <Component {...pageProps} />
-          </RootContainer>
-        </Provider>
-      </PersistGate>
-    </>
-  ))
+  return (
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        {
+          getLayout((
+            <RootContainer>
+              <Component {...pageProps} />
+            </RootContainer>
+          ))
+        }
+      </Provider>
+    </PersistGate>
+  )
 }
 
 export default MyApp
