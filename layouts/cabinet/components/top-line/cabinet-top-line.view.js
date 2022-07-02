@@ -10,12 +10,11 @@ const CabinetTopLineView = ({user, onLogout}) => {
    <S.Container>
       <S.Logo src="/images/logo.svg"/>
 
-      {/* <p>{JSON.stringify(user)}</p> */}
-
       <S.Content>
-        <CabinetTopLineEmail value={user?.email} />
-
-        <CabinetTopLineBalance/>
+        {!!user && <CabinetTopLineEmail value={user?.email} />}
+        
+        {!!user && <CabinetTopLineBalance value={user?.balance} />}
+        
 
         <S.Logout theme="outline" title="Logout" onClick={() => onLogout()} />
       </S.Content>

@@ -36,9 +36,8 @@ export default function CabinetContainer({...props}) {
 
   const handleLogout = async () => {
     await api.logout();
-    await dispatch(logout());
-
-    // router.push('/')
+    
+    dispatch(logout());
   }
 
   return (

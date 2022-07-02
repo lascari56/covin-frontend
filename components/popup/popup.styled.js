@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import ArrowSvg from "./images/arrow"
-
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -25,10 +23,6 @@ export const Title = styled.h4`
 
 export const Content = styled.div`
   padding: 0px ${responsiveSize(5)} ${responsiveSize(8.5)};
-`
-
-export const Group = styled.div`
-  margin: ${responsiveSize(4)} 0px;
 `
 
 export const Footer = styled.div`

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import LotCardActionsNotification from "@components/cards/notication"
-
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -17,7 +15,7 @@ export const Item = styled.div`
   position: relative;
 `
 
-export const Notification = styled(LotCardActionsNotification)`
+export const Popup = styled.div`
   position: absolute;
   right: 100%;
   bottom: 0px;
