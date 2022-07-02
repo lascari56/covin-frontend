@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
+import * as yup from 'yup';
 
 import LoginView from "./login.view"
 
@@ -13,6 +14,11 @@ import {saveUser, saveToken} from '@store/authReducers/authReducer.slice';
 
 import {api} from '@utils/api.util';
 
+const validationSchema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required(),
+});
+
 const LoginContainer = ({...props}) => {
   const dispatch = useDispatch();
   const router = useRouter()
@@ -24,11 +30,29 @@ const LoginContainer = ({...props}) => {
       email: '',
       password: ''
     },
+    validationSchema,
     onSubmit: (values) => {
       console.log("handleSend");
       handleSend(values)
     },
   });
+
+  const validItems = useMemo(() => {
+    return {
+      email: !formik.touched.email || !formik.errors.email,
+      password: !formik.touched.password || !formik.errors.password,
+    };
+  }, [formik.touched, formik.errors]);
+
+  const isValid = useMemo(() => {
+    let res = true;
+
+    for (let item of Object.values(validItems)) {
+      if (!item) res = false;
+    }
+
+    return res;
+  }, [validItems]);
 
   const handleSend = ({email, password}) => {
     setLoading(true);
@@ -65,7 +89,7 @@ const LoginContainer = ({...props}) => {
   };
 
   return (
-    <LoginView {...props} formik={formik} loading={loading} />
+    <LoginView {...props} formik={formik} loading={loading} validItems={validItems} isValid={isValid} />
   );
 }
 

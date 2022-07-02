@@ -6,20 +6,38 @@ import Link from 'next/link'
 
 import * as S from "./login.styled"
 
-const LoginView = ({formik, loading}) => {
+const LoginView = ({formik, loading, validItems, isValid}) => {
+  console.log("validItems", validItems);
+
   return (
     <S.Container>
       <S.Content>
-        <S.Input size="big" type="auth" label="E-mail" placeholder="Enter email" value={formik.values.email} onChange={value => formik.setFieldValue('email', value)} />
+        <S.Input 
+          size="big"
+          type="auth"
+          label="E-mail"
+          placeholder="Enter email"
+          value={formik.values.email}
+          isValid={validItems.email}
+          onChange={value => formik.setFieldValue('email', value)}
+        />
 
-        <S.Input size="big" type="auth" label="Password" placeholder="Enter password" value={formik.values.password} onChange={value => formik.setFieldValue('password', value)} />
+        <S.Input 
+          size="big"
+          type="auth"
+          label={"Password"}
+          placeholder="Enter password"
+          value={formik.values.password}
+          isValid={validItems.password}
+          onChange={value => formik.setFieldValue('password', value)}
+        />
       </S.Content>
 
       <Link href="/forgot">
         <S.Forgot>Forgot password?</S.Forgot>
       </Link>
 
-      <S.Action size="large" title="Login" disabled={loading} onClick={formik.handleSubmit} />
+      <S.Action size="large" title="Login" disabled={loading || !isValid} onClick={formik.handleSubmit} />
 
       <S.Action 
         theme="outline-grey"
