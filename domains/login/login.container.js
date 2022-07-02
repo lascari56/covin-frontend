@@ -17,7 +17,7 @@ const LoginContainer = ({...props}) => {
   const dispatch = useDispatch();
   const router = useRouter()
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -31,6 +31,8 @@ const LoginContainer = ({...props}) => {
   });
 
   const handleSend = ({email, password}) => {
+    setLoading(true);
+
     const notificationId = toast.loading("Please wait...")
 
     api.authenticate({
@@ -47,10 +49,16 @@ const LoginContainer = ({...props}) => {
         render: "Login success", 
         type: "success", 
         isLoading: false , 
-        autoClose: 1000, 
-        onClose: () => router.push('/cabinet/lots')})
+        autoClose: 500, 
+        onClose: () => {
+          router.push('/cabinet/lots')
+
+          setLoading(false)
+        }})
     }).catch((e) => {
       console.log("authError", e);
+
+      setLoading(false)
 
       toast.update(notificationId, { render: "Login or password is incorrect", type: "error", isLoading: false, autoClose: 2000 })
     })
