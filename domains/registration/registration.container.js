@@ -13,7 +13,8 @@ const RegistrationContainer = ({...props}) => {
 
   const formik = useFormik({
     initialValues: {
-      login: '',
+      email: '',
+      phone: '',
       passsword: ''
     },
     onSubmit: (values) => {

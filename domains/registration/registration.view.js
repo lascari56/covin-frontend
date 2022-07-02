@@ -10,11 +10,29 @@ const RegistrationView = ({formik, county}) => {
   return (
     <S.Container>
       <S.Content>
-        <S.Input size="big" type="auth" label="E-mail" placeholder="Enter email" value={formik.values.email} onChange={value => formik.setFieldValue('email', value)} />
+        <S.Input 
+          size="big" 
+          type="auth" 
+          label="E-mail" 
+          placeholder="Enter email" 
+          value={formik.values.email} 
+          onChange={value => formik.setFieldValue('email', value)}
+        />
 
-        <S.Phone county={county} />
+        <S.Phone 
+          county={county}
+          value={formik.values.phone}
+          onChange={value => formik.setFieldValue('phone', value)}
+        />
 
-        <S.Input size="big" type="auth" label="Password" placeholder="Enter password" value={formik.values.password} onChange={value => formik.setFieldValue('password', value)} />
+        <S.Input
+          size="big"
+          type="auth"
+          label="Password"
+          placeholder="Enter password"
+          value={formik.values.password}
+          onChange={value => formik.setFieldValue('password', value)} 
+        />
       </S.Content>
 
       <S.Action size="large" title="Sign Up" onClick={formik.handleSubmit} />
