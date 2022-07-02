@@ -12,8 +12,6 @@ import {logout} from '@store/authReducers/authReducer.slice';
 
 import {selectUser} from '@store/authReducers/authReducer.selector';
 
-import { useRouter } from 'next/router'
-
 export default function CabinetContainer({...props}) {
   const router = useRouter()
   
