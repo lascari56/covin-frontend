@@ -8,6 +8,9 @@ import {PersistGate} from 'redux-persist/integration/react';
 
 import {store, persistor} from '../store/index';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
 
@@ -18,6 +21,8 @@ function MyApp({ Component, pageProps }) {
           
           <RootContainer>
             <Component {...pageProps} />
+
+            <ToastContainer />
           </RootContainer>
         </Provider>
       </PersistGate>
