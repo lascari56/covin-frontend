@@ -1,29 +1,14 @@
-import feathers from 'feathers/client';
+// import feathers from 'feathers/client';
+import feathers from '@feathersjs/feathers';
 import rest from 'feathers-rest/client';
-
+import auth from '@feathersjs/authentication-client';
 import axios from 'axios';
 
 import {API} from '@configs/api';
 
-const api = feathers()
-  .configure(rest(API).axios(axios))
+const api = feathers();
 
-// import axios from 'axios';
-
-// import {API} from '@configs/api';
-
-// const defaultConfig = {
-//   baseURL: API,
-// };
-
-// const api = axios.create(defaultConfig);
-
-// const setHeader = token => {
-//   api.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
-
-// const removeHeader = () => {
-//   api.defaults.headers.common = {};
-// };
+api.configure(rest(API).axios(axios));
+api.configure(auth())
 
 export {api};
