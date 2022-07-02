@@ -19,14 +19,14 @@ const LoginView = ({formik, loading}) => {
         <S.Forgot>Forgot password?</S.Forgot>
       </Link>
 
-      <S.Action size="large" title="Login" loading={loading} onClick={formik.handleSubmit} />
+      <S.Action size="large" title="Login" disabled={loading} onClick={formik.handleSubmit} />
 
       <S.Action 
         theme="outline-grey"
         size="large"
         title="Log in with Google"
         IconComponent={<Icon name="google" size={22} />}
-        // loading={loading}
+        disabled={loading}
         onClick={formik.handleSubmit}
       />
 
