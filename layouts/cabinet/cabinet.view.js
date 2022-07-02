@@ -5,10 +5,10 @@ import CabinetTopLine from "./components/top-line"
 
 import * as S from "./cabinet.styled"
 
-export default function CabinetView({children, isFull, onLogout}) {
+export default function CabinetView({children, isFull, user, onLogout}) {
   return (
     <S.Container>
-      <CabinetTopLine onLogout={onLogout} />
+      <CabinetTopLine user={user} onLogout={onLogout} />
 
       <S.Body>
         <S.Sidebar full={isFull} />

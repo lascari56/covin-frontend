@@ -43,6 +43,6 @@ export default function CabinetContainer({...props}) {
   }
 
   return (
-    <CabinetView {...props} isFull={isFull} onLogout={handleLogout} />
+    <CabinetView {...props} isFull={isFull} user={user} onLogout={handleLogout} />
   )
 }
