@@ -3,6 +3,7 @@ import React, { useMemo, useEffect } from 'react'
 import CabinetView from "./cabinet.view"
 
 import {useSelector, useDispatch} from 'react-redux';
+import { useRouter } from 'next/router'
 
 import { toast } from 'react-toastify';
 
