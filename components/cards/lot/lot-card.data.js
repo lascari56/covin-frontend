@@ -1,57 +1,68 @@
+import VinSVG from "./images/vin"
+import NumberSVG from "./images/number"
+import CarCrashSVG from "./images/car-crash"
+import OdometrSVG from "./images/odometr"
+import CircleSVG from "./images/circle"
+import KeySVG from "./images/key"
+import LocationSVG from "./images/location"
+import DocumentSVG from "./images/document"
+import FuelTypeSVG from "./images/fuel-type"
+import DriveTrainSVG from "./images/drive-train"
+
 export const meta = [
   [
     {
       key: "vin",
-      icon: "/images/vin.svg"
+      icon: VinSVG
     },
     {
       key: "lot_id",
-      icon: "/images/number.svg"
+      icon: NumberSVG
     },
     {
       key: "damage_pr",
-      icon: "/images/car-crash.svg"
+      icon: CarCrashSVG
     },
     {
       key: "damage_sec",
-      icon: "/images/car-crash.svg"
+      icon: CarCrashSVG
     }
   ],
   [
     {
       key: "odometer",
-      icon: "/images/odometr.svg",
+      icon: OdometrSVG
       
     },
     {
       key: "status",
-      icon: "/images/circle.svg"
+      icon: CircleSVG
     },
     {
       key: "keys",
-      icon: "/images/key.svg"
+      icon: KeySVG
     },
     {
       key: "loss",
-      icon: "/images/circle.svg"
+      icon: CircleSVG
     }
   ],
   [
     {
       key: "location",
-      icon: "/images/location.svg"
+      icon: LocationSVG
     },
     {
       key: "document",
-      icon: "/images/document.svg"
+      icon: DocumentSVG
     },
     {
       key: "fuel",
-      icon: "/images/fuel-type.svg"
+      icon: FuelTypeSVG
     },
     {
       key: "transmission",
-      icon: "/images/drive-train.svg"
+      icon: DriveTrainSVG
     }
   ]
 ]

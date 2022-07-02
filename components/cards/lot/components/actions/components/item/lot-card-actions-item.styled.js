@@ -20,5 +20,3 @@ export const Container = styled.div`
     opacity: 0.5;
   }
 `
-
-export const Icon = styled.img``

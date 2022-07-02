@@ -2,10 +2,12 @@ import React from 'react';
 
 import * as S from "./lot-card-actions-item.styled"
 
-const LotCardActionsItemView = ({className, src, onClick}) => {
+import Icon from "@components/icon" 
+
+const LotCardActionsItemView = ({className, icon, onClick}) => {
   return (
     <S.Container className={className} onClick={onClick}>
-      <S.Icon src={src} />
+      <Icon icon={icon} size={24} />
     </S.Container>
   );
 }

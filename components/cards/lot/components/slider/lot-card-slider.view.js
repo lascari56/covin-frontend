@@ -4,6 +4,8 @@ import * as S from './lot-card-slider.styled'
 
 import Splide from '@splidejs/splide';
 
+import Zoom from 'react-medium-image-zoom'
+
 export default function LotCardSliderМiew({className, data, items}) {
   const sliderRef = createRef();
 
@@ -28,7 +30,9 @@ export default function LotCardSliderМiew({className, data, items}) {
           <ul className="splide__list">
             {items?.map((item, index) => (
               <li className="splide__slide" key={index}>
-                <S.Image image={item} />
+                <Zoom zoomMargin={100} overlayBgColorEnd="rgba(0, 0, 0, 0.4)" transitionDuration={400}>
+                  <S.Image image={item} />
+                </Zoom>
               </li>
             ))}
           </ul>
