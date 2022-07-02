@@ -2,12 +2,12 @@ import React from 'react'
 
 import * as S from './page-top-line-email.styled'
 
-export default function PageTopLineEmailView() {
+export default function PageTopLineEmailView({value}) {
   return (
     <S.Container>
-        <S.Icon src="/images/user.svg"/>
+      <S.Icon src="/images/user.svg"/>
 
-        <S.Title>myemail@gmail.com</S.Title>
+      <S.Title>{value}</S.Title>
     </S.Container>
   )
 }
