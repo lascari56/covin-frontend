@@ -27,53 +27,10 @@ const LoginContainer = ({...props}) => {
     onSubmit: (values) => {
       console.log("handleSend");
       handleSend(values)
-
-      // toast.promise(
-      //   handleSend,
-      //   {
-      //     pending: 'Promise is pending',
-      //     success: 'Promise resolved 👌',
-      //     error: 'Promise rejected 🤯'
-      //   }
-      // )
     },
   });
 
-  // const resolveWithSomeData = new Promise(resolve => {
-  //   api.authenticate({
-  //     strategy: 'local',
-  //     email,
-  //     password,
-  //   }).then(async (res) => {
-  //     // await dispatch(saveToken(res.accessToken));
-  //     // await dispatch(saveUser(res.user));
-
-  //     // router.push('/cabinet/lots')
-
-  //     console.log("res", res);
-
-  //     resolve();
-  //   }).catch((e) => {
-  //     resolve();
-  //     console.log("authError", e);
-  //   })
-  // });
-
   const handleSend = ({email, password}) => {
-    // return new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve('foo');
-    //   }, 300);
-    // });
-    // console.log("handleSend");
-
-    // return new Promise(resolve => {
-    //   setTimeout(resolve, 3000)
-    // })
-
-    // toast.success("Login Success!");
-    // setLoading(true)
-
     const notificationId = toast.loading("Please wait...")
 
     api.authenticate({
@@ -84,25 +41,19 @@ const LoginContainer = ({...props}) => {
       await dispatch(saveToken(res.accessToken));
       await dispatch(saveUser(res.user));
 
-      router.push('/cabinet/lots')
-
       console.log("res", res);
 
-      toast.update(notificationId, { render: "Login success", type: "success", isLoading: false , autoClose: 2000});
+      toast.update(notificationId, { 
+        render: "Login success", 
+        type: "success", 
+        isLoading: false , 
+        autoClose: 1000, 
+        onClose: () => router.push('/cabinet/lots')})
     }).catch((e) => {
       console.log("authError", e);
 
-      toast.update(notificationId, { render: "Login or password is incorrect", type: "error", isLoading: false, autoClose: 2000 });
+      toast.update(notificationId, { render: "Login or password is incorrect", type: "error", isLoading: false, autoClose: 2000 })
     })
-
-    // toast.promise(
-    //     res,
-    //     {
-    //       pending: 'Promise is pending',
-    //       success: 'Promise resolved 👌',
-    //       error: 'Promise rejected 🤯'
-    //     }
-    //   )
   };
 
   return (

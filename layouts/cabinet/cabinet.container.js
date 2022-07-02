@@ -3,6 +3,7 @@ import React, { useMemo } from 'react'
 import CabinetView from "./cabinet.view"
 
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify';
 // import {useDispatch, useSelector} from 'react-redux';
 
 import {api} from '@utils/api.util';
@@ -26,6 +27,8 @@ export default function CabinetContainer({...props}) {
     // await dispatch(logout());
 
     router.push('/')
+
+    // toast.success("Logout success!");
   }
 
   return (
