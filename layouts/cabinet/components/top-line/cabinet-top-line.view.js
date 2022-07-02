@@ -7,7 +7,7 @@ import CabinetTopLineBalance from './components/balance'
 
 import * as S from "./cabinet-top-line.styled";
 
-const CabinetTopLineView = () => {
+const CabinetTopLineView = ({onLogout}) => {
   return (
    <S.Container>
       <S.Logo src="/images/logo.svg"/>
@@ -17,7 +17,7 @@ const CabinetTopLineView = () => {
 
         <CabinetTopLineBalance/>
 
-        <S.Logout theme="outline" title="Logout" />
+        <S.Logout theme="outline" title="Logout" onClick={() => onLogout()} />
       </S.Content>
    </S.Container>
   );

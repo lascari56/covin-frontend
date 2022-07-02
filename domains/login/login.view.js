@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import * as S from "./login.styled"
 
-const LoginView = ({formik}) => {
+const LoginView = ({formik, loading}) => {
   return (
     <S.Container>
       <S.Content>
@@ -19,13 +19,14 @@ const LoginView = ({formik}) => {
         <S.Forgot>Forgot password?</S.Forgot>
       </Link>
 
-      <S.Action size="large" title="Login" onClick={formik.handleSubmit} />
+      <S.Action size="large" title="Login" loading={loading} onClick={formik.handleSubmit} />
 
       <S.Action 
         theme="outline-grey"
         size="large"
         title="Log in with Google"
         IconComponent={<Icon name="google" size={22} />}
+        // loading={loading}
         onClick={formik.handleSubmit}
       />
 
