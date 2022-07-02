@@ -1,1 +1,1 @@
-export {default} from "./cabinet-photos-modal.view"
+export {default} from "./cabinet-photos-modal.container"

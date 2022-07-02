@@ -1,5 +1,6 @@
 import '../styles/global.scss'
 import '@splidejs/splide/dist/css/splide.min.css';
+import 'react-medium-image-zoom/dist/styles.css'
 
 import RootContainer from '../containers/root';
 

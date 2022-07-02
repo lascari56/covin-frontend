@@ -6,9 +6,15 @@ import { responsiveSize } from "@utils/responsive";
 
 export const Modal = styled(CustomModal).attrs({
   style: {
-    content: {
-      height: "100%",
-      width: "100vw"
+    overlay: {
+      // height: "100%",
+      // width: "70vw",
+      // width: "100vw",
+      overflowY: "auto",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      padding: responsiveSize(32),
     }
   }
 })`
@@ -16,8 +22,8 @@ export const Modal = styled(CustomModal).attrs({
 `
 
 export const Container = styled.div`
-  height: 100%;
-  width: 100vw;
+  /* height: 100%;
+  width: 100vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,18 +34,15 @@ export const Container = styled.div`
   overflow-x: hidden;
 `
 
-export const Image = styled.img`
-  max-width: 80vw;
-  height: 80vh;
-  /* border-radius: ${responsiveSize(8)}; */
-  background: #fff;
+export const Image = styled.div`
+  width: 60vw;
+  height: calc(60vw / 4 * 3);
 
-  :first-child {
-    border-radius: ${responsiveSize(8)} ${responsiveSize(8)} 0px 0px;
-  }
+  background: rgba(255, 255, 255, 1) url("${props => props.url}") no-repeat;
+  background-size: cover;
+  border-radius: ${responsiveSize(5)};
 
-  :last-child {
-    /* margin-bottom: ${responsiveSize(8)}; */
-    border-radius: 0px 0px ${responsiveSize(8)} ${responsiveSize(8)};
+  :not(:last-child) {
+    margin-bottom: ${responsiveSize(12)};
   }
 `
