@@ -1,13 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import FilterGroupView from "./filter-group.view"
 
-export default function FilterGroupContainer({initialShow, ...props}) {
+export default function FilterGroupContainer({initialShow, onChangeShow, ...props}) {
   const [show, setShow] = useState(!!initialShow)
+
+  // useEffect(() => {
+  //   if (initialShow) {
+  //     onChangeShow(true)
+  //   }
+  // }, [initialShow])
 
   const handleChangeShow = () => {
     if (props.disabled !== true) {
       setShow(!show)
+      onChangeShow && onChangeShow(!show)
     }
   }
 

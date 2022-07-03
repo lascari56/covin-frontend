@@ -16,7 +16,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Make"
         value={formik.values.make}
         options={filters?.make}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('make', value)}
       />
 
@@ -24,7 +24,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Model"
         value={formik.values.model}
         options={modelFilters}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('model', value)}
       />
 
@@ -32,7 +32,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Series"
         value={formik.values.series}
         options={seriesFilters}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('series', value)}
       />
 
@@ -40,7 +40,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       <FilterRangeDate
         title="Year"
         value={formik.values.year}
-        disabled={loading}
+        // disabled={loading}
         min={2011}
         onChange={value => formik.setFieldValue('year', value)}
       />
@@ -48,7 +48,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       <FilterRange
         title={`Odometer, ${units?.speed}`}
         value={formik.values.odometer}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('odometer', value)}
       />
 
@@ -56,7 +56,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Loss"
         value={formik.values.loss}
         options={filters?.loss}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('loss', value)}
         onChangeTemplate={() => {}}
       />
@@ -65,7 +65,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Damage"
         value={formik.values.damage}
         options={filters?.damage}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('damage', value)}
         onChangeTemplate={() => {}}
       />
@@ -75,7 +75,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Drive"
         value={formik.values.keys}
         options={filters?.keys}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('keys', value)}
       />
 
@@ -84,7 +84,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Status"
         value={formik.values.status}
         options={filters?.status}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('status', value)}
       />
 
@@ -93,7 +93,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Keys"
         value={formik.values.keys}
         options={filters?.keys}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('keys', value)}
       />
 
@@ -102,7 +102,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Transmission"
         value={formik.values.transmission}
         options={filters?.transmission}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('transmission', value)}
       />
 
@@ -110,7 +110,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Engine Type"
         value={formik.values.engine}
         options={filters?.engine}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('engine', value)}
       />
 
@@ -119,14 +119,14 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Fuel Type"
         value={formik.values.fuel}
         options={filters?.fuel}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('fuel', value)}
       />
 
       <FilterRange
         title="Сost repair"
         value={formik.values.cost_repair}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('cost_repair', value)}
       />
 
@@ -134,7 +134,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Location"
         value={formik.values.location}
         options={filters?.location}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('location', value)}
         onChangeTemplate={() => {}}
       />
@@ -143,7 +143,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Document"
         value={formik.values.document}
         options={filters?.document}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('document', value)}
         onChangeTemplate={() => {}}
       />
@@ -153,7 +153,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
         title="Site"
         value={formik.values.site}
         options={filters?.site}
-        disabled={loading}
+        // disabled={loading}
         onChange={value => formik.setFieldValue('site', value)}
       />
 
