@@ -22,7 +22,7 @@ export const Title = styled.h4`
 `
 
 export const Content = styled.div`
-  padding: 0px ${responsiveSize(5)} ${responsiveSize(8.5)};
+  padding: 0px ${props => responsiveSize(props.pHorizontal)} ${responsiveSize(8.5)};
 `
 
 export const Footer = styled.div`

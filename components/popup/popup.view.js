@@ -1,8 +1,9 @@
+import { Popup } from 'components';
 import React, { useEffect, useRef } from 'react';
 
 import * as S from "./popup.styled"
 
-const PopupView = ({className, children, title, FooterComponent, onClose}) => {
+const PopupView = ({className, children, title, paddingHorizontal, FooterComponent, onClose}) => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const PopupView = ({className, children, title, FooterComponent, onClose}) => {
         <S.Title>{title}</S.Title>
       </S.Header>
 
-      <S.Content>
+      <S.Content pHorizontal={paddingHorizontal}>
         {children}
       </S.Content>
 
@@ -34,6 +35,10 @@ const PopupView = ({className, children, title, FooterComponent, onClose}) => {
       )}
     </S.Container>
   );
+}
+
+PopupView.defaultProps = {
+  paddingHorizontal: 20
 }
 
 export default PopupView;

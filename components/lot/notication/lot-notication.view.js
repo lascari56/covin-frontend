@@ -23,6 +23,7 @@ const LotNoticationView = ({onClose}) => {
   return (
     <Popup 
       title="Send notification if:"
+      paddingHorizontal={5.5}
       FooterComponent={<Button title="Save" size="small" />}
       onClose={onClose}
     >

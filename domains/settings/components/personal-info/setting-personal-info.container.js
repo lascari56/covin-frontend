@@ -4,6 +4,11 @@ import SettingPersonalInfoView from "./setting-personal-info.view"
 
 import {useFormik} from 'formik';
 
+const validationSchema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required(),
+});
+
 const SettingPersonalInfoContainer = ({user, ...props}) => {
   const [loading, setLoading] = useState(false);
 
