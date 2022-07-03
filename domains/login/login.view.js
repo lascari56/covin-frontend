@@ -27,6 +27,7 @@ const LoginView = ({formik, loading, validItems, isValid}) => {
           type="auth"
           label={"Password"}
           placeholder="Enter password"
+          inputType="password"
           value={formik.values.password}
           isValid={validItems.password}
           onChange={value => formik.setFieldValue('password', value)}

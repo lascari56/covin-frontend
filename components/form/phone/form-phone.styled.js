@@ -15,6 +15,8 @@ export const Container = styled.div`
 
     border-color: #DFE7F0;
     background-color: #FAFBFC;
+
+    ${props => props.isValid === false && 'border-color: #E03B4B;'}
   }
 
   .react-tel-input {
@@ -30,6 +32,8 @@ export const Container = styled.div`
       border-radius: ${responsiveSize(3)} 0 0 ${responsiveSize(3)};
       border-color: #DFE7F0;
       background-color: #FAFBFC;
+
+      ${props => props.isValid === false && 'border-color: #E03B4B;'}
     }
 
     /* .flag {

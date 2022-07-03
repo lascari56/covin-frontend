@@ -6,22 +6,24 @@ import Link from 'next/link'
 
 import * as S from "./registration.styled"
 
-const RegistrationView = ({formik, county}) => {
+const RegistrationView = ({formik, county, loading, validItems, isValid}) => {
   return (
     <S.Container>
       <S.Content>
         <S.Input 
-          size="big" 
-          type="auth" 
-          label="E-mail" 
-          placeholder="Enter email" 
-          value={formik.values.email} 
+          size="big"
+          type="auth"
+          label="E-mail"
+          placeholder="Enter email"
+          value={formik.values.email}
+          isValid={validItems.email}
           onChange={value => formik.setFieldValue('email', value)}
         />
 
         <S.Phone 
           county={county}
           value={formik.values.phone}
+          isValid={validItems.phone}
           onChange={value => formik.setFieldValue('phone', value)}
         />
 
@@ -30,12 +32,14 @@ const RegistrationView = ({formik, county}) => {
           type="auth"
           label="Password"
           placeholder="Enter password"
+          inputType="password"
           value={formik.values.password}
+          isValid={validItems.password}
           onChange={value => formik.setFieldValue('password', value)} 
         />
       </S.Content>
 
-      <S.Action size="large" title="Sign Up" onClick={formik.handleSubmit} />
+      <S.Action size="large" title="Sign Up" disabled={loading || !isValid} onClick={formik.handleSubmit} />
 
       <S.Action 
         theme="outline-grey"
