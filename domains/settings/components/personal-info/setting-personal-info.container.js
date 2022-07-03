@@ -3,10 +3,13 @@ import React, {useState} from 'react';
 import SettingPersonalInfoView from "./setting-personal-info.view"
 
 import {useFormik} from 'formik';
+import {useDispatch, useSelector} from 'react-redux';
 
 import * as yup from 'yup';
 
 import { toast } from 'react-toastify';
+
+import {saveUser} from '@store/authReducers/authReducer.slice';
 
 import {api} from '@utils/api.util';
 
@@ -17,12 +20,14 @@ const validationSchema = yup.object().shape({
 });
 
 const SettingPersonalInfoContainer = ({user, onSubmit, ...props}) => {
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       email: user?.email,
-      name: user?.name,
+      username: user?.username,
       phone: user?.phone,
       password: null,
       passwordConfirm: null,
@@ -34,23 +39,28 @@ const SettingPersonalInfoContainer = ({user, onSubmit, ...props}) => {
   });
 
   const handleSend = (values) => {
+    // console.log("user?.id", user?._id);
+    // return;
     setLoading(true);
 
     const notificationId = toast.loading("Please wait...")
 
-    api.service('users').update({
-      id: user?.id,
+    api.service('users').update(user?._id, {
       email: values.email,
       phone: values.phone,
-      name: values.name,
+      username: values.username,
     }).then(async (res) => {
       setLoading(false)
+
+      console.log("res", res);
+
+      await dispatch(saveUser(res))
 
       toast.update(notificationId, { 
         render: "Personal information updated successfully", 
         type: "success", 
         isLoading: false , 
-        autoClose: 500, 
+        autoClose: 1000, 
       })
     }).catch((e) => {
       console.log("user-update-err", e);

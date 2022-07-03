@@ -22,9 +22,9 @@ export default function SettingPersonalInfoView({className, formik}) {
           <S.Input
             size="big"
             placeholder="Name"
-            isValid={!formik.touched.name || !formik.errors.name}
-            value={formik.values.name}
-            onChange={value => formik.setFieldValue('name', value)}
+            isValid={!formik.touched.username || !formik.errors.username}
+            value={formik.values.username}
+            onChange={value => formik.setFieldValue('username', value)}
           />
 
           <FormPhone
