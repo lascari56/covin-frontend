@@ -9,6 +9,9 @@ import {selectUser} from '@store/authReducers/authReducer.selector';
 const SettingsContainer = ({...props}) => {
   const user = useSelector(selectUser);
 
+  const onUpdatePersonalInfo = (values) => {
+  }
+
   return (
     <SettingsView {...props} user={user} />
   );

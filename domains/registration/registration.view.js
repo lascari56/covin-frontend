@@ -24,6 +24,7 @@ const RegistrationView = ({formik, county, loading, validItems, isValid}) => {
           county={county}
           value={formik.values.phone}
           isValid={validItems.phone}
+          warning="Phone number is required for SMS account verification"
           onChange={value => formik.setFieldValue('phone', value)}
         />
 

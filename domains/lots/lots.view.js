@@ -9,10 +9,10 @@ import LayoutLots from "@layouts/lots"
 
 import * as S from "./lots.styled"
 
-const LotsView = ({lots, page, pageCount, loading, formikMeta, units, fullItemSelected, onFilter, onChangePage, onPageMore, onChangeFulLotId}) => {
+const LotsView = ({lots, meta, page, pageCount, loading, formikMeta, units, fullItemSelected, onFilter, onChangePage, onPageMore, onChangeFulLotId}) => {
   return (
     <LayoutLots 
-      LeftComponent={<LotsFilters data={lots?.filters} units={units} loading={loading} onFilter={onFilter} />}
+      LeftComponent={<LotsFilters data={meta?.filters} units={units} onFilter={onFilter} />}
       TopComponent={<CabinetMenu active="lots" />}
     >
       <S.Container>
@@ -20,7 +20,7 @@ const LotsView = ({lots, page, pageCount, loading, formikMeta, units, fullItemSe
           <>
             <S.Meta formik={formikMeta} />
 
-            {lots?.data?.map(item => (
+            {lots?.map(item => (
               <S.Card 
                 data={item}
                 speedUnit={formikMeta.values.speed}
@@ -29,13 +29,13 @@ const LotsView = ({lots, page, pageCount, loading, formikMeta, units, fullItemSe
               />
             ))}
 
-            <Padination value={page} total={lots?.total} pageCount={pageCount} onChange={onChangePage}>
+            <Padination value={page} total={meta?.total} pageCount={pageCount} onChange={onChangePage}>
               <Button title="Show 10 more" disabled={page >= pageCount - 1} onClick={onPageMore} />
             </Padination>
           </>
         )}
 
-        {loading && <Loader isBackground={lots?.data?.length} />}
+        {loading && <Loader isBackground={lots?.length} />}
       </S.Container>
 
       <CabinetPhotosModal items={fullItemSelected?.link_img_hd} onRequestClose={() => onChangeFulLotId(null)} />
