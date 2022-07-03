@@ -34,6 +34,7 @@ export default function СontactsContainer({navigation, ...props}) {
   const dispatch = useDispatch();
 
   const [lots, setLots] = useState(null);
+  const [meta, setMeta] = useState(null);
   const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
@@ -50,10 +51,7 @@ export default function СontactsContainer({navigation, ...props}) {
       search: '',
       speed: units.speed,
       sort: "auction_date"
-    },
-    onSubmit: () => {
-      
-    },
+    }
   });
 
   const fullItemSelected = useMemo(() => {
@@ -83,8 +81,8 @@ export default function СontactsContainer({navigation, ...props}) {
   }, [formikMeta.values.speed])
 
   const pageCount = useMemo(() => {
-    return Math.ceil(lots?.total / lots?.limit);
-  }, [lots?.total, lots?.limit]);
+    return Math.ceil(meta?.total / meta?.limit);
+  }, [meta?.total, meta?.limit]);
 
   const hnadleHangePage = async (value) => {
     console.log("value", value);
@@ -154,10 +152,12 @@ export default function СontactsContainer({navigation, ...props}) {
     // alert(res.data?.length)
 
     if (isMore) {
-      setLots({...lots, data: [...lots?.data, ...res?.data]})
+      setLots([...lots, ...res?.data])
+      // setLots({...lots, data: [...lots?.data, ...res?.data]})
       setIsMore(false)
     } else {
-      setLots({...lots, ...res})
+      setLots(res?.data)
+      // setLots({...lots, ...res})
 
       requestAnimationFrame(() => {
         animateScroll.scrollToTop()
@@ -181,8 +181,12 @@ export default function СontactsContainer({navigation, ...props}) {
       }
     });
 
-    setLots(res)
+    setLots(res?.data)
     
+    requestAnimationFrame(() => {
+      setMeta({total: res?.total, limit: res?.limit, filters: res?.filters})
+    })
+
     setLoading(false)
     // didMount.current = true;
   };
@@ -196,6 +200,7 @@ export default function СontactsContainer({navigation, ...props}) {
     <LotsView
       {...props}
       lots={lots}
+      meta={meta}
       page={page}
       pageCount={pageCount}
       loading={loading}
