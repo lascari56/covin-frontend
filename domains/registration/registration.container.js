@@ -1,7 +1,7 @@
 import React, {useMemo, useState} from 'react';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
-require('yup-phone');
+// require('yup-phone');
 
 import RegistrationView from "./registration.view"
 

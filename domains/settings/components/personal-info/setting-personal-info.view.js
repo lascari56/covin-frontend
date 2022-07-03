@@ -2,6 +2,8 @@ import React from 'react'
 
 import {CabinetCard} from "@components/cabinet"
 
+import {FormPhone} from "@components/form"
+
 import * as S from './setting-personal-info.styled'
 
 export default function SettingPersonalInfoView({className, formik}) {
@@ -12,6 +14,7 @@ export default function SettingPersonalInfoView({className, formik}) {
           <S.Input 
             size="big"
             placeholder="Email"
+            isValid={!formik.touched.email || !formik.errors.email}
             value={formik.values.email}
             onChange={value => formik.setFieldValue('email', value)}
           />
@@ -19,16 +22,23 @@ export default function SettingPersonalInfoView({className, formik}) {
           <S.Input
             size="big"
             placeholder="Name"
+            isValid={!formik.touched.name || !formik.errors.name}
             value={formik.values.name}
             onChange={value => formik.setFieldValue('name', value)}
           />
 
-          <S.Input
+          <FormPhone
+            value={formik.values.phone}
+            isValid={!formik.touched.phone || !formik.errors.phone}
+            onChange={value => formik.setFieldValue('phone', value)}
+          />
+
+          {/* <S.Input
             size="big"
             placeholder="Phone"
             value={formik.values.phone}
             onChange={value => formik.setFieldValue('phone', value)}
-          />
+          /> */}
         </S.Group>
 
         <S.Group title="Password" description="Your password settings">

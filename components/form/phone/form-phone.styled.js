@@ -24,12 +24,12 @@ export const Container = styled.div`
     .selected-flag {
       width: ${responsiveSize(38)};
       padding: 0 0 0 ${responsiveSize(8)};
-      border-radius: ${responsiveSize(3)} 0 0 ${responsiveSize(3)};
+      border-radius: ${responsiveSize(5)} 0 0 ${responsiveSize(5)};
       
     }
 
     .flag-dropdown {
-      border-radius: ${responsiveSize(3)} 0 0 ${responsiveSize(3)};
+      border-radius: ${responsiveSize(5)} 0 0 ${responsiveSize(5)};
       border-color: #DFE7F0;
       background-color: #FAFBFC;
 

@@ -6,15 +6,18 @@ import {useFormik} from 'formik';
 
 import * as yup from 'yup';
 
+import { toast } from 'react-toastify';
+
+import {api} from '@utils/api.util';
+
 const validationSchema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(6).required(),
+  // password: yup.string().min(6).requirыed(),
+  phone: yup.string().min(10).required(),
 });
 
-const SettingPersonalInfoContainer = ({user, ...props}) => {
+const SettingPersonalInfoContainer = ({user, onSubmit, ...props}) => {
   const [loading, setLoading] = useState(false);
-
-  console.log(user)
 
   const formik = useFormik({
     initialValues: {
@@ -24,11 +27,40 @@ const SettingPersonalInfoContainer = ({user, ...props}) => {
       password: null,
       passwordConfirm: null,
     },
+    validationSchema,
     onSubmit: (values) => {
-      console.log("handleSend");
       handleSend(values)
     },
   });
+
+  const handleSend = (values) => {
+    setLoading(true);
+
+    const notificationId = toast.loading("Please wait...")
+
+    api.service('users').update({
+      id: user?.id,
+      email: values.email,
+      phone: values.phone,
+      name: values.name,
+    }).then(async (res) => {
+      setLoading(false)
+
+      toast.update(notificationId, { 
+        render: "Personal information updated successfully", 
+        type: "success", 
+        isLoading: false , 
+        autoClose: 500, 
+      })
+    }).catch((e) => {
+      console.log("user-update-err", e);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 1000 })
+    })
+  };
 
   return (
     <SettingPersonalInfoView {...props} formik={formik} loading={loading} />

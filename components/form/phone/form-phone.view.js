@@ -5,10 +5,10 @@ import * as S from "./form-phone.styled"
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
-const FormPhoneView = ({className, county, isValid, onChange, ...props}) => {
+const FormPhoneView = ({className, county, label, isValid, warning, onChange, ...props}) => {
   return (
     <S.Container className={className} isValid={isValid}>
-      <S.Label>Phone</S.Label>
+      {!!label && <S.Label>{label}</S.Label>}
 
       <PhoneInput
         {...props}
@@ -17,7 +17,7 @@ const FormPhoneView = ({className, county, isValid, onChange, ...props}) => {
         onChange={phone => onChange(phone)}
       />
 
-      <S.Warning>Phone number is required for SMS account verification</S.Warning>
+      {!!warning && <S.Warning>{warning}</S.Warning>}
     </S.Container>
   );
 }
