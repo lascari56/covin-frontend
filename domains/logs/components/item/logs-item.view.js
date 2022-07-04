@@ -4,7 +4,7 @@ import moment from "moment"
 
 import * as S from "./logs-item.styled"
 
-const LogsItemView = ({data, onOpenFile}) => {
+const LogsItemView = ({data, fileLotsLink, onOpenFile}) => {
   return (
     <S.Container>
       <td>
@@ -25,7 +25,7 @@ const LogsItemView = ({data, onOpenFile}) => {
         </S.Item>
       </td>
 
-      <td>
+      {fileLotsLink && <td>
         <S.Item>
           <S.Action
             size="small"
@@ -33,7 +33,7 @@ const LogsItemView = ({data, onOpenFile}) => {
             onClick={onOpenFile}
           />
         </S.Item>
-      </td>
+      </td>}
     </S.Container>
   );
 }
