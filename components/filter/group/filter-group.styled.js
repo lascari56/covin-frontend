@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import FilterGroupActions from "./components/actions"
+
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -10,7 +12,7 @@ export const Header = styled.div`
   height: ${responsiveSize(44)};
   padding: 0px ${responsiveSize(16)};
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 
   border-bottom: 1px solid #EBEBEB;
@@ -24,6 +26,7 @@ export const Header = styled.div`
 `
 
 export const Title = styled.h6`
+  flex: 1;
   font-size: ${responsiveSize(14)};
   line-height: ${responsiveSize(16)};
 
@@ -41,4 +44,8 @@ export const Arrow = styled.img`
 
 export const Content = styled.div`
   border-bottom: 1px solid #EBEBEB;
+`
+
+export const Actions = styled(FilterGroupActions)`
+  margin-right: ${responsiveSize(12)};
 `

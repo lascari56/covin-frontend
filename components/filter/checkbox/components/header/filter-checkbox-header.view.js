@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import * as S from "./filter-checkbox-header.styled"
 
 export default function FilterCheckboxHeaderView({isAll, onChangeAll, onChangeTemplate}) {
@@ -11,11 +10,6 @@ export default function FilterCheckboxHeaderView({isAll, onChangeAll, onChangeTe
         LeftComponent={<S.AllLabel>Select all</S.AllLabel>}
         onClick={onChangeAll}
       />
-      {/* <S.All onClick={onChangeAll}>
-        <FilterCheckboxInner active={isAll} />
-
-        <S.AllLabel>Select all</S.AllLabel>
-      </S.All> */}
 
       {!!onChangeTemplate && (
         <S.Content>

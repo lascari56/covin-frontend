@@ -24,10 +24,11 @@ function FilterCheckboxView({
   onChangeTemplate,
   ...props
  }) {
-  // onChangeShow={onChangeShow}
   return (
     <FilterGroup {...props} disabled={disabled || isEmpty}>
-      <FilterCheckboxHeader isAll={isAll} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
+      {!props.short && (
+        <FilterCheckboxHeader isAll={isAll} short={props.short} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
+      )}
 
       <S.Container>
         {isSearch && <S.Search autofocus isIcon={false} empty={isEmpty} value={search} onChange={onChangeSearch} />}
@@ -43,7 +44,8 @@ function FilterCheckboxView({
 
 FilterCheckboxView.defaultProps = {
   isSearch: true,
-  isAll: true
+  isAll: true,
+  short: false
 }
 
 export default FilterCheckboxView;
