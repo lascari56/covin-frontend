@@ -11,6 +11,7 @@ const TrackingCreateNameView = ({formik, onBack}) => {
         <FormInput
           value={formik.values.name}
           placeholder="Enter filter name"
+          isValid={!formik.touched.name || !formik.errors.name}
           onChange={value => formik.setFieldValue('name', value)}
         />
       </S.Content>
@@ -18,7 +19,7 @@ const TrackingCreateNameView = ({formik, onBack}) => {
       <S.Footer>
         <S.Action size="smaller" theme="outline" title="Back" onClick={onBack} />
 
-        <S.Action size="smaller" title="Finish" />
+        <S.Action size="smaller" title="Finish" onClick={formik.handleSubmit} />
       </S.Footer>
     </S.Container>
   );
