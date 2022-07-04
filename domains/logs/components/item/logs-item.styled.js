@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
+import {Button} from "@components"
+
 import { responsiveSize } from "@utils/responsive";
 
+export const Container = styled.tr`
+  border-bottom: 1px solid #DFE7F0;
+`
+
 export const Item = styled.div`
-  min-height: ${responsiveSize(40)};
+  min-height: ${responsiveSize(72)};
   display: flex;
   align-items: center;
 `
@@ -30,10 +36,15 @@ export const Status = styled.span`
   `}
 
   ${props => props.status === "Success" && `color: #2DC946;`}
+  ${props => props.status === "Warning" && `color: #FFAF36;`}
 `
 
 export const Message = styled.span`
   font-weight: 300;
   font-size: ${responsiveSize(14)};
   line-height: 150%;
+`
+
+export const Action = styled(Button)`
+  width: 100px;
 `
