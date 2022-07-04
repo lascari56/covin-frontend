@@ -4,12 +4,12 @@ import moment from "moment"
 
 import * as S from "./logs-item.styled"
 
-const LogsItemView = ({data, onOpenFile}) => {
+const LogsItemView = ({data, fileLotsLink, onOpenFile}) => {
   return (
     <S.Container>
       <td>
         <S.Item>
-          <S.Date>{moment(data?.date).format('DD.MM.YYYY hh:mm:ss')}</S.Date>
+          <S.Date style={{width: 80}}>{moment(data?.date).format('DD.MM hh:mm')}</S.Date>
         </S.Item>
       </td>
 
@@ -25,7 +25,7 @@ const LogsItemView = ({data, onOpenFile}) => {
         </S.Item>
       </td>
 
-      <td>
+      {fileLotsLink && <td>
         <S.Item>
           <S.Action
             size="small"
@@ -33,7 +33,7 @@ const LogsItemView = ({data, onOpenFile}) => {
             onClick={onOpenFile}
           />
         </S.Item>
-      </td>
+      </td>}
     </S.Container>
   );
 }
