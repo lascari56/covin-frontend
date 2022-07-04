@@ -10,8 +10,6 @@ export default function LogsContainer({navigation, ...props}) {
     items = items[items.length - 1].slice(1);
 
     window.open(`${API}/lots/${items}.txt`, "_blank");
-
-    // console.log("file", `${API}/lots/${items}.txt`);
   }
 
   return (
