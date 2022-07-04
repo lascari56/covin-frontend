@@ -6,7 +6,7 @@ import * as S from "./filter-range-date.styled"
 
 const FilterRangeDateView = ({value, optionsMin, optionsMax, onChange, ...props}) => {
   return (
-    <FilterGroup {...props}>
+    <FilterGroup {...props} onClear={() => {}}>
       <S.Container>
         <S.Select 
           size="large"
