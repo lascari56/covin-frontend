@@ -25,6 +25,11 @@ export const Container = styled.div`
     height: ${responsiveSize(30)};
   `}
 
+  ${props => props.size === "smaller" && `
+    padding: 0px ${responsiveSize(15)};
+    height: ${responsiveSize(40)};
+  `}
+
   ${props => props.size === "base" && `
     padding: 0px ${responsiveSize(24)};
     height: ${responsiveSize(44)};

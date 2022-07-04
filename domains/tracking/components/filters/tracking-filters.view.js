@@ -5,7 +5,7 @@ import * as S from "./tracking-filters.styled"
 const TrackingFiltersView = () => {
   return (
     <S.Container>
-      <S.AddButton title="New Tracking" />
+      <S.AddButton title="New Tracking" to="/cabinet/tracking/create" />
 
       <S.Title>Tracking list</S.Title>
 

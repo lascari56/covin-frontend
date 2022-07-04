@@ -1,1 +1,1 @@
-export {default} from "./logs-item.view"
+export {default} from "./logs-item.container"
