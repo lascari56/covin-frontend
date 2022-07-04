@@ -22,10 +22,11 @@ function FilterCheckboxView({
   onChange, 
   onChangeAll,
   onChangeTemplate,
+  onClear,
   ...props
  }) {
   return (
-    <FilterGroup {...props} disabled={disabled || isEmpty}>
+    <FilterGroup {...props} disabled={disabled || isEmpty} onAll={onChangeAll} onClear={onClear}>
       {!props.short && (
         <FilterCheckboxHeader isAll={isAll} short={props.short} onChangeAll={onChangeAll} onChangeTemplate={onChangeTemplate} />
       )}

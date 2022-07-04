@@ -8,7 +8,7 @@ import * as S from "./filter-range.styled"
 
 const FilterRangeView = ({value, onChange, ...props}) => {
   return (
-    <FilterGroup {...props}>
+    <FilterGroup {...props} onClear={() => {}}>
       <S.Container>
         <FormInput 
           autofocus

@@ -8,7 +8,14 @@ export const Container = styled.div`
   user-select: none;
 `
 
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`
+
 export const Header = styled.div`
+  width: 100%;
   height: ${responsiveSize(44)};
   padding: 0px ${responsiveSize(16)};
   display: flex;
@@ -47,5 +54,10 @@ export const Content = styled.div`
 `
 
 export const Actions = styled(FilterGroupActions)`
+  position: absolute;
+  
+  right: ${responsiveSize(31)};
   margin-right: ${responsiveSize(12)};
+
+  z-index: 1;
 `

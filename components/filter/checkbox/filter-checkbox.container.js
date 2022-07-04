@@ -40,6 +40,9 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
     setSearch(value)
   }
 
+  const handleClear = () => {
+  }
+
   return (
     <FilterCheckboxView
       {...props}
@@ -50,6 +53,7 @@ export default function FilterCheckboxContainer({value, options, ...props}) {
       isEmpty={isEmpty}
       onChangeSearch={handleChangeSearch}
       onChangeAll={handleChangeAll}
+      onClear={handleClear}
     />
   )
 }
