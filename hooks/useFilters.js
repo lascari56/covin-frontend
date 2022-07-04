@@ -44,8 +44,9 @@ const convertToDamage = (damage_pr, damage_sec) => {
   return Object.values(res).sort(sortAlphabet)
 }
 
-export default ({
+export const useFilters = ({
   data,
+  units,
   onFilter
 }) => {
   const formik = useFormik({
@@ -190,7 +191,7 @@ export default ({
       ]
     }
 
-    if (props.units?.speed == "km" && (values.odometer?.min || values.odometer?.max)) {
+    if (units?.speed == "km" && (values.odometer?.min || values.odometer?.max)) {
       const _value = {...values.odometer};
 
       if (_value?.min) {
@@ -233,7 +234,7 @@ export default ({
     filters,
     modelFilters,
     seriesFilters,
-    onFilter: handleFilter,
+    // onFilter: handleFilter,
     onReset: handlerReset
   }
 }

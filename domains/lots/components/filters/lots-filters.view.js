@@ -6,7 +6,7 @@ import LotsFiltersHeader from "./components/header"
 
 import * as S from "./lots-filters.styled"
 
-const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading, units, onReset}) => {
+const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, units, onReset}) => {
   return (
     <S.Container>
       <LotsFiltersHeader onReset={onReset} />
