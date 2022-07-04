@@ -14,7 +14,9 @@ export const Header = styled.div`
   align-items: center;
 
   border-bottom: 1px solid #EBEBEB;
+  background: ${props => props.show ? "#F1F6FC" : "transparents"};
 
+  transition: all 0.4s;
   
   ${props => !props.disabled && `
     cursor: pointer;

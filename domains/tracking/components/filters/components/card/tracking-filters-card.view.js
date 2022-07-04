@@ -16,8 +16,6 @@ export default function TrackingFiltersCardView({className}) {
       <S.Footer>
         <S.Icon name="copy" />
 
-        <S.Icon name="copy" />
-
         <S.Icon name="notification" />
 
         <S.Icon name="delete"/>

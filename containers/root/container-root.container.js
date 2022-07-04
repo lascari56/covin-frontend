@@ -19,17 +19,14 @@ const ContainerRootView = ({children}) => {
   // const user = useSelector(selectUser);
 
   useEffect(() => {
+    api.authenticate().then((res) => {
+      dispatch(saveUser(res.user))
+    }).catch(() => {
+      dispatch(logout())
+    });
+
     dispatch(getCounty())
   }, [])
-
-  api.authenticate().then((res) => {
-    console.log("authenticated", res);
-
-    dispatch(saveUser(res.user))
-  }).catch(() => {
-    dispatch(logout())
-    // setLogin(null);
-  });
   
   // api.on('authenticated', loginResult => {
   //   // console.log("authenticated", loginResult);

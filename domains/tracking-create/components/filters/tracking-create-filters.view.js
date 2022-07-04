@@ -2,17 +2,14 @@ import React from 'react';
 
 import { FilterCheckbox, FilterRange, FilterRangeDate } from 'components/filter';
 
-import LotsFiltersHeader from "./components/header"
+import * as S from "./tracking-create-filters.styled"
 
-import * as S from "./lots-filters.styled"
-
-const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading, units, onReset}) => {
+const TrackingCreateFiltersView = ({formik, filters, modelFilters, seriesFilters, units, onBack, onNext}) => {
   return (
-    <S.Container>
-      <LotsFiltersHeader onReset={onReset} />
-
+    <>
       <FilterCheckbox
         initialShow
+        short
         title="Make"
         value={formik.values.make}
         options={filters?.make}
@@ -20,6 +17,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         title="Model"
         value={formik.values.model}
         options={modelFilters}
@@ -27,6 +25,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         title="Series"
         value={formik.values.series}
         options={seriesFilters}
@@ -34,6 +33,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterRangeDate
+        short
         title="Year"
         value={formik.values.year}
         min={2011}
@@ -41,12 +41,14 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterRange
+        short
         title={`Odometer, ${units?.speed}`}
         value={formik.values.odometer}
         onChange={value => formik.setFieldValue('odometer', value)}
       />
 
       <FilterCheckbox
+        short
         title="Loss"
         value={formik.values.loss}
         options={filters?.loss}
@@ -55,6 +57,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         title="Damage"
         value={formik.values.damage}
         options={filters?.damage}
@@ -63,6 +66,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         isSearch={false}
         title="Drive"
         value={formik.values.keys}
@@ -71,6 +75,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         isSearch={false}
         title="Status"
         value={formik.values.status}
@@ -79,6 +84,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         isSearch={false}
         title="Keys"
         value={formik.values.keys}
@@ -87,6 +93,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         isSearch={false}
         title="Transmission"
         value={formik.values.transmission}
@@ -95,6 +102,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         title="Engine Type"
         value={formik.values.engine}
         options={filters?.engine}
@@ -102,6 +110,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         isSearch={false}
         title="Fuel Type"
         value={formik.values.fuel}
@@ -110,12 +119,14 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterRange
+        short
         title="Сost repair"
         value={formik.values.cost_repair}
         onChange={value => formik.setFieldValue('cost_repair', value)}
       />
 
       <FilterCheckbox
+        short
         title="Location"
         value={formik.values.location}
         options={filters?.location}
@@ -124,6 +135,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         title="Document"
         value={formik.values.document}
         options={filters?.document}
@@ -132,6 +144,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <FilterCheckbox
+        short
         isSearch={false}
         title="Site"
         value={formik.values.site}
@@ -140,12 +153,12 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, loading,
       />
 
       <S.Footer>
-        <S.Action theme="outline" title="Save New Order" />
+        <S.Action size="smaller" theme="outline" title="Back" onClick={onBack} />
 
-        <S.Action title="OK" onClick={formik.handleSubmit} />
+        <S.Action size="smaller" title="Save" onClick={onNext} />
       </S.Footer>
-    </S.Container>
+    </>
   );
 }
 
-export default LotsFiltersView;
+export default TrackingCreateFiltersView
