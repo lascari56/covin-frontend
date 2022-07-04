@@ -9,7 +9,7 @@ const LogsItemView = ({data, fileLotsLink, onOpenFile}) => {
     <S.Container>
       <td>
         <S.Item>
-          <S.Date>{moment(data?.date).format('DD.MM.YYYY hh:mm:ss')}</S.Date>
+          <S.Date style={{width: 80}}>{moment(data?.date).format('DD.MM hh:mm')}</S.Date>
         </S.Item>
       </td>
 
