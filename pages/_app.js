@@ -3,6 +3,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 import 'react-medium-image-zoom/dist/styles.css'
 
 import RootContainer from '../containers/root';
+import AuthContainer from '../containers/auth';
 
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -21,9 +22,11 @@ function MyApp({ Component, pageProps }) {
         {
           getLayout((
             <RootContainer>
-              <Component {...pageProps} />
+              <AuthContainer>
+                <Component {...pageProps} />
 
-              <ToastContainer />
+                <ToastContainer />
+              </AuthContainer>
             </RootContainer>
           ))
         }
