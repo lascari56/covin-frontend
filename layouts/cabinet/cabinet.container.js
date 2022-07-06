@@ -21,18 +21,18 @@ export default function CabinetContainer({...props}) {
   const user = useSelector(selectUser);
 
   const isFull = useMemo(() => {
-    if (router.asPath === "/cabinet/lots" || router.asPath === "/cabinet/tracking") {
+    if (router.pathname === "/cabinet/lots" || router.pathname === "/cabinet/tracking") {
       return false
     }
 
     return true
-  }, [router.asPath])
+  }, [router.pathname])
 
-  useEffect(() => {
-    if (!user) {
-      router.push('/')
-    }
-  }, [user])
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push('/')
+  //   }
+  // }, [user, router.pathname])
 
   const handleLogout = async () => {
     await api.logout();
