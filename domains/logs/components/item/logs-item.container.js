@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {API} from '@configs/api';
+import {STORAGE_URL} from '@configs/api';
 
 import LogsItemView from './logs-item.view';
 
@@ -9,7 +9,7 @@ export default function LogsContainer({navigation, ...props}) {
 
     let item = props.data.message.split("File name saved:")[1].slice(1);
 
-    return `${API}/lots/${item}.txt`;
+    return `${STORAGE_URL}/${item}`;
   }, [props.data]);
 
   const handleOpenFIle = () => {
