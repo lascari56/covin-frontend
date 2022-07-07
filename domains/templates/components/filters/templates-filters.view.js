@@ -9,7 +9,7 @@ const TemplatesFiltersView = () => {
 
       <S.Title>Templates list</S.Title>
 
-      <S.Card />
+      <S.Card active />
 
       <S.Card />
 

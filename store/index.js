@@ -2,7 +2,7 @@ import {configureStore, combineReducers} from '@reduxjs/toolkit';
 
 import {commonName, commonReducer} from './commonReducers';
 import {authName, authReducer} from './authReducers';
-import {lotName, lotReducer} from './lotReducers';
+import {lotsName, lotsReducer} from './lotsReducers';
 
 import {persistStore, persistReducer} from 'redux-persist';
 import {getPersistConfig} from 'redux-deep-persist';
@@ -10,7 +10,7 @@ import {getPersistConfig} from 'redux-deep-persist';
 import storage from 'redux-persist/lib/storage'
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const persistLotConfig = getPersistConfig({
+const persistCommonConfig = getPersistConfig({
   key: 'common',
   storage,
   blacklist: [],
@@ -27,12 +27,12 @@ const persistAuthConfig = getPersistConfig({
   rootReducer: authReducer,
 });
 
-const persistCommonConfig = getPersistConfig({
-  key: 'lot',
+const persistLotsConfig = getPersistConfig({
+  key: 'lots',
   storage,
   blacklist: [
-    'lot.loading',
-    'lot.error',
+    'templates.loading',
+    'templates.error',
   ],
   rootReducer: authReducer,
 });
@@ -40,7 +40,7 @@ const persistCommonConfig = getPersistConfig({
 const rootReducer = combineReducers({
   [commonName]: persistReducer(persistCommonConfig, commonReducer),
   [authName]: persistReducer(persistAuthConfig, authReducer),
-  [lotName]: persistReducer(persistLotConfig, lotReducer),
+  [lotsName]: persistReducer(persistLotsConfig, lotsReducer),
 });
 
 export const store = configureStore({

@@ -8,7 +8,7 @@ export const Container = styled.div`
   padding: ${responsiveSize(15)};
 
   background: #F9FCFF;
-  border: 1px solid #DFE7F0;
+  border: 1px solid ${props => props.active ? "#216DD1" : "#DFE7F0"};
   border-radius: ${responsiveSize(3)};
 
   cursor: pointer;
