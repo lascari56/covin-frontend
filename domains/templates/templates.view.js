@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { CabinetPage } from "@components/cabinet";
+import LayoutLots from "@layouts/lots"
 
-export default function TemplatesView() {
+import TemplatesFilters from "./components/filters"
+
+export default function TemplatesView({selectedId, onChangeSelectedId}) {
   return (
-    <CabinetPage>
-    </CabinetPage>
+    <LayoutLots LeftComponent={<TemplatesFilters value={selectedId} onChhange={onChangeSelectedId} />} />
   )
 }

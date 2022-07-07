@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useLayoutEffect, useMemo} from 'react';
 
-import {api} from '../../utils/api.util';
+import {api} from '@utils/api.util';
 
 import LotsView from './lots.view';
 
@@ -57,8 +57,8 @@ export default function СontactsContainer({navigation, ...props}) {
   const fullItemSelected = useMemo(() => {
     if (!fulLotId) return null;
 
-    return find(lots?.data, { _id: fulLotId })
-  }, [lots?.data, fulLotId])
+    return find(lots, { _id: fulLotId })
+  }, [lots, fulLotId])
 
   useLayoutEffect(() => {
     if (!didMount.current) {
@@ -85,7 +85,6 @@ export default function СontactsContainer({navigation, ...props}) {
   }, [meta?.total, meta?.limit]);
 
   const hnadleHangePage = async (value) => {
-    console.log("value", value);
     setPage(value);
   };
 

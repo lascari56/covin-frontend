@@ -1,19 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getLots} from './lotReducer.thunk';
+// import {getLots} from './lotReducer.thunk';
 
 const initialState = {
-  lots: {
-    loading: false,
-    error: null,
-    data: null,
-    total: 0,
-    limit: 0,
-    skip: 0,
-  },
+  templates: {
+    data: [],
+    loading: true,
+    error: false,
+  }
 };
 
-const lotSlice = createSlice({
-  name: 'lot',
+const lotsSlice = createSlice({
+  name: 'lots',
   initialState,
   reducers: {},
   extraReducers: {
@@ -36,5 +33,5 @@ const lotSlice = createSlice({
   },
 });
 
-export const {} = lotSlice.actions;
-export default lotSlice;
+export const {} = lotsSlice.actions;
+export default lotsSlice;

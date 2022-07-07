@@ -45,6 +45,7 @@ export default function SettingPersonalInfoView({className, formik}) {
           <S.Input
             size="big"
             placeholder="New password"
+            isValid={!formik.touched.password || !formik.errors.password}
             value={formik.values.password}
             onChange={value => formik.setFieldValue('password', value)}
           />
@@ -52,6 +53,7 @@ export default function SettingPersonalInfoView({className, formik}) {
           <S.Input
             size="big"
             placeholder="Confirm password"
+            isValid={!formik.touched.passwordConfirm || !formik.errors.passwordConfirm}
             value={formik.values.passwordConfirm}
             onChange={value => formik.setFieldValue('passwordConfirm', value)}
           />

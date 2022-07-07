@@ -9,6 +9,8 @@ export const Container = styled.div`
 
   background: #216DD1;
   border-radius: ${responsiveSize(50)};
+
+  cursor: pointer;
 `
 
 export const Indicator = styled.div`

@@ -14,7 +14,9 @@ function ButtonContainer({to, scroll, target, onClick, ...props}) {
       if (target === "_blank") {
         window.open (to, '_ blank')
       } else {
-        router.push(to, router.pathname, {scroll, target})
+        // router.push(to, router.pathname, {scroll, target})
+
+        router.push(to)
       }
     } else if (onClick) {
       onClick()

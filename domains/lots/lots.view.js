@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Padination, Button, Loader} from "@components"
+import {Padination, Button, Loader, Empty} from "@components"
 import {CabinetMenu, CabinetPhotosModal} from "@components/cabinet";
 
 import LotsFilters from "./components/filters"
@@ -13,9 +13,8 @@ const LotsView = ({lots, meta, page, pageCount, loading, formikMeta, units, full
   return (
     <LayoutLots 
       LeftComponent={<LotsFilters data={meta?.filters} units={units} onFilter={onFilter} />}
-      TopComponent={<CabinetMenu active="lots" />}
     >
-      <S.Container>
+      {/* <S.Container>
         {!!lots && (
           <>
             <S.Meta formik={formikMeta} />
@@ -29,16 +28,20 @@ const LotsView = ({lots, meta, page, pageCount, loading, formikMeta, units, full
               />
             ))}
 
-            <Padination value={page} total={meta?.total} pageCount={pageCount} onChange={onChangePage}>
-              <Button title="Show 10 more" disabled={page >= pageCount - 1} onClick={onPageMore} />
-            </Padination>
+            {!lots?.data?.length && <Empty />}
+
+            {!!lots?.data?.length && (
+              <Padination value={page} total={meta?.total} pageCount={pageCount} onChange={onChangePage}>
+                <Button title="Show 10 more" disabled={page >= pageCount - 1} onClick={onPageMore} />
+              </Padination>
+            )}
           </>
         )}
 
         {loading && <Loader isBackground={lots?.length} />}
       </S.Container>
 
-      <CabinetPhotosModal items={fullItemSelected?.link_img_hd} onRequestClose={() => onChangeFulLotId(null)} />
+      <CabinetPhotosModal items={fullItemSelected?.link_img_hd} onRequestClose={() => onChangeFulLotId(null)} /> */}
     </LayoutLots>
   );
 };
