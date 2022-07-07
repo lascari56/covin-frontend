@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Padination, Button, Loader} from "@components"
+import {Padination, Button, Loader, Empty} from "@components"
 import {CabinetMenu } from "@components/cabinet";
 
 import LotsFilters from "./components/filters"
@@ -19,9 +19,13 @@ const LotsView = ({lots, loading, page, pageCount, formikMeta, onChangePage}) =>
 
             {lots?.data?.map(item => <S.Card data={item} speedUnit={formikMeta.values.speed} key={item?.id} />)}
 
-            <Padination value={page} total={lots?.total} pageCount={pageCount} onChange={onChangePage}>
-              <Button title="Show 10 more" />
-            </Padination>
+            {!lots?.data?.length && <Empty />}
+
+            {!!lots?.data?.length && (
+              <Padination value={page} total={lots?.total} pageCount={pageCount} onChange={onChangePage}>
+                <Button title="Show 10 more" />
+              </Padination>
+            )}
           </>
         )}
 

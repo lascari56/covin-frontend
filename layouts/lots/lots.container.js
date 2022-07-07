@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useLayoutEffect, useMemo} from 'react';
 
-import {api} from '../../utils/api.util';
+import {api} from '@utils/api.util';
 
 import LotsView from './lots.view';
 
@@ -85,7 +85,6 @@ export default function СontactsContainer({navigation, ...props}) {
   }, [meta?.total, meta?.limit]);
 
   const hnadleHangePage = async (value) => {
-    console.log("value", value);
     setPage(value);
   };
 
