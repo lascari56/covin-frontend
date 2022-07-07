@@ -6,7 +6,7 @@ import * as S from "./lots.styled"
 
 import {CabinetMenu, CabinetPhotosModal} from "@components/cabinet";
 
-export default function LotsView({lots, loading, fullItemSelected, formikMeta, page, pageCount, meta, LeftComponent, onChangePage, onPageMore}) {
+export default function LotsView({lots, loading, fullItemSelected, formikMeta, page, pageCount, meta, LeftComponent, onChangePage, onPageMore, onChangeFulLotId}) {
   return (
     <S.Container>
       {!!LeftComponent && <S.Left>{LeftComponent}</S.Left>}

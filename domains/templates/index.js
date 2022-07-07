@@ -1,1 +1,1 @@
-export { default } from "./templates.view";
+export { default } from "./templates.container";
