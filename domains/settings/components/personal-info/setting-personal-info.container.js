@@ -15,8 +15,16 @@ import {api} from '@utils/api.util';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required(),
-  // password: yup.string().min(6).requirыed(),
   phone: yup.string().min(10).required(),
+  password: yup.string().min(6),
+  passwordConfirm: yup.string().when('password', (password, field) =>
+    password ? field.required().oneOf([yup.ref('password')]) : field
+  ),
+  // passwordConfirm: yup.string()
+  //   .min(6)
+  //   .when('password', (password, field) =>
+  //   password ? field.required() : field
+  //   ),
 });
 
 const SettingPersonalInfoContainer = ({user, onSubmit, ...props}) => {
@@ -39,17 +47,21 @@ const SettingPersonalInfoContainer = ({user, onSubmit, ...props}) => {
   });
 
   const handleSend = (values) => {
-    // console.log("user?.id", user?._id);
+    console.log("values", values);
     // return;
     setLoading(true);
 
     const notificationId = toast.loading("Please wait...")
 
-    api.service('users').update(user?._id, {
+    let data = {
       email: values.email,
       phone: values.phone,
       username: values.username,
-    }).then(async (res) => {
+    };
+
+    if (values.password) data.password = values.password
+
+    api.service('users').patch(user?._id, data).then(async (res) => {
       setLoading(false)
 
       console.log("res", res);
