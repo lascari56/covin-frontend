@@ -6,7 +6,7 @@ import moment from "moment-timezone"
 
 const LotCardHeaderContainer = ({...props}) => {
   const date = useMemo(() => {
-    const res = {theme: "base", value: ""}
+    let res = {theme: "base", value: ""}
 
     if (props.data?.auction_date_api) {
       const currentDate = moment();
