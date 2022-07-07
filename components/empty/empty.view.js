@@ -7,7 +7,7 @@ const EmptyView = () => {
     <S.Container>
       <S.Title>Empty</S.Title>
 
-      <S.Description>Сouldn't find anything</S.Description>
+      <S.Description>{`Сouldn\'t find anything`}</S.Description>
     </S.Container>
   );
 }
