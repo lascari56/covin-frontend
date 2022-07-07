@@ -10,6 +10,14 @@ export const Container = styled.div`
   background: #F9FCFF;
   border: 1px solid #DFE7F0;
   border-radius: ${responsiveSize(3)};
+
+  cursor: pointer;
+  transition: all 0.4s;
+
+  :hover {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
 `
 
 export const Header = styled.div`
