@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
-import LotsView from './lots.view';
+import TrackingView from './tracking.view';
 
 import {useFormik} from 'formik';
 
 import {api} from '../../utils/api.util';
 
-export default function СontactsContainer({navigation, ...props}) {
+export default function TrackingContainer({navigation, ...props}) {
   const [lots, setLots] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -33,7 +33,7 @@ export default function СontactsContainer({navigation, ...props}) {
   };
 
   return (
-    <LotsView
+    <TrackingView
       {...props}
       lots={lots}
       loading={loading}

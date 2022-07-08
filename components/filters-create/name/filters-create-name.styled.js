@@ -7,11 +7,9 @@ import { responsiveSize } from "@utils/responsive";
 export const Container = styled.div`
 `
 
-
 export const Content = styled.div`
   padding: 0px ${responsiveSize(20)};
 `
-
 
 export const Footer = styled.div`
   display: flex;

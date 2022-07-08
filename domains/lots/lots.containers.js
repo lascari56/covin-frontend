@@ -128,8 +128,6 @@ export default function СontactsContainer({navigation, ...props}) {
       ];
     }
 
-    console.log("formikMeta?.values?.sort", formikMeta?.values?.sort);
-
     if (formikMeta?.values?.show === 'buy_now') {
       query.price_new = { $gt: 0 }
     }

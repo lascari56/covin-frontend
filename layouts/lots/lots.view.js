@@ -29,7 +29,7 @@ export default function LotsView({lots, loading, fullItemSelected, formikMeta, p
                   />
                 ))}
 
-                {!lots?.length && <Empty />}
+                {!lots?.length && !loading && <Empty />}
 
                 {!!lots?.length && (
                   <Padination value={page} total={meta?.total} pageCount={pageCount} onChange={onChangePage}>

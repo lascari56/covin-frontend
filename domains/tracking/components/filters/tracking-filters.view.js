@@ -9,7 +9,7 @@ const TrackingFiltersView = () => {
 
       <S.Title>Tracking list</S.Title>
 
-      <S.Card />
+      <S.Card active />
 
       <S.Card />
 

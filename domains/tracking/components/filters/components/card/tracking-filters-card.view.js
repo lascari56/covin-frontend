@@ -2,9 +2,9 @@ import React from 'react'
 
 import * as S from "./tracking-filters-card.styled"
 
-export default function TrackingFiltersCardView({className}) {
+export default function TrackingFiltersCardView({className, active}) {
   return (
-    <S.Container className={className}>
+    <S.Container className={className} active={active}>
       <S.Header>
         <S.Title>Mazda CX-5 от 2017</S.Title>
       </S.Header>

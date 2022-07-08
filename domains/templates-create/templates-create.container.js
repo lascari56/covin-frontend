@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 
-import TrackingCreateView from './tracking-create.view'
+import TemplatesCreateView from './templates-create.view'
 
 import {useFiltersCreate} from "@hooks/useFiltersCreate"
 
 const meta = [
-  {
-    title: "Notification settings",
-    description: "Подзаголовок, который кратко описывает функционал данной страницы"
-  },
   {
     title: "Create Filter",
     description: "Подзаголовок, который кратко описывает функционал данной страницы"
@@ -22,7 +18,7 @@ const meta = [
 const TrackingCreateContainer = ({...props}) => {
   const [loading, setLoading] = useState(false)
 
-  const filtersCreate = useFiltersCreate({ initialActiveStep: 2, onSubmit: (values) => {
+  const filtersCreate = useFiltersCreate({ onSubmit: (values) => {
     alert(JSON.stringify(values))
   }})
 
@@ -31,7 +27,7 @@ const TrackingCreateContainer = ({...props}) => {
   }, [filtersCreate.activeStep])
 
   return (
-    <TrackingCreateView 
+    <TemplatesCreateView 
       {...props}
       filtersCreate={filtersCreate}
       metaInfo={metaInfo}

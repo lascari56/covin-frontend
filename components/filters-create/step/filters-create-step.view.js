@@ -1,8 +1,8 @@
 import React from 'react';
 
-import * as S from "./tracking-create-step.styled"
+import * as S from "./filters-create-step.styled"
 
-const TrackingCreateStepView = ({children, title, number, active, next, last}) => {
+const FiltersCreateStepView = ({children, title, number, active, next, last}) => {
   return (
     <S.Container>
       <S.Header>
@@ -20,4 +20,4 @@ const TrackingCreateStepView = ({children, title, number, active, next, last}) =
   );
 }
 
-export default TrackingCreateStepView;
+export default FiltersCreateStepView;

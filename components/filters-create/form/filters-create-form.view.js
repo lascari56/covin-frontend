@@ -2,9 +2,9 @@ import React from 'react';
 
 import { FilterCheckbox, FilterRange, FilterRangeDate } from 'components/filter';
 
-import * as S from "./tracking-create-filters.styled"
+import * as S from "./filters-create-form.styled"
 
-const TrackingCreateFiltersView = ({formik, filters, modelFilters, seriesFilters, units, onBack, onNext}) => {
+const FiltersCreateFormView = ({formik, filters, modelFilters, seriesFilters, units, onBack, onNext}) => {
   return (
     <>
       <FilterCheckbox
@@ -153,12 +153,12 @@ const TrackingCreateFiltersView = ({formik, filters, modelFilters, seriesFilters
       />
 
       <S.Footer>
-        <S.Action size="smaller" theme="outline" title="Back" onClick={onBack} />
+        {!!onBack && <S.Action size="smaller" theme="outline" title="Back" onClick={onBack} />}
 
-        <S.Action size="smaller" title="Save" onClick={onNext} />
+        <S.Action size="smaller" title="Save" onClick={formik.handleSubmit} />
       </S.Footer>
     </>
   );
 }
 
-export default TrackingCreateFiltersView
+export default FiltersCreateFormView
