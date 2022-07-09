@@ -1,15 +1,15 @@
 import React from 'react'
 
-import TemplatesFiltersCardIcon from "./components/icon"
+import {FiltersCreateIcon} from "@components/filters-create"
 
 import * as S from "./templates-filters-card.styled"
 
-export default function TemplatesFiltersCardView({className, active}) {
+export default function TemplatesFiltersCardView({className, title, active, onClick}) {
   return (
-    <S.Container className={className} active={active}>
-      <S.Title>Mazda CX-5 от 2017</S.Title>
+    <S.Container className={className} active={active} onClick={onClick}>
+      <S.Title>{title}</S.Title>
 
-      <TemplatesFiltersCardIcon name="delete"/>
+      <FiltersCreateIcon name="delete"/>
     </S.Container>
   )
 }

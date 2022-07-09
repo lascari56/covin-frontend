@@ -14,6 +14,7 @@ export default function LotCardSliderМiew({className, data, items}) {
       perPage: 5,
       rewind : true,
       gap: 6,
+      lazyLoad: "nearby",
       pagination: false,
       swipeDistanceThreshold: 50,
     }).mount();
@@ -30,9 +31,9 @@ export default function LotCardSliderМiew({className, data, items}) {
           <ul className="splide__list">
             {items?.map((item, index) => (
               <li className="splide__slide" key={index}>
-                <Zoom zoomMargin={100} overlayBgColorEnd="rgba(0, 0, 0, 0.4)" transitionDuration={400}>
+                {/* <Zoom zoomMargin={100} overlayBgColorEnd="rgba(0, 0, 0, 0.4)" transitionDuration={400}> */}
                   <S.Image image={item} />
-                </Zoom>
+                {/* </Zoom> */}
               </li>
             ))}
           </ul>

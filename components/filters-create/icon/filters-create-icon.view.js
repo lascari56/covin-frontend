@@ -2,9 +2,9 @@ import React from 'react';
 
 import {Icon} from "@components"
 
-import * as S from "./tracking-filters-card-icon.styled"
+import * as S from "./filters-create-icon.styled"
 
-const TrackingFiltersCardIconView = ({className, name}) => {
+const FiltersCreateIconView = ({className, name}) => {
   return (
     <S.Container className={className}>
       <Icon name={name} />
@@ -12,4 +12,4 @@ const TrackingFiltersCardIconView = ({className, name}) => {
   );
 }
 
-export default TrackingFiltersCardIconView;
+export default FiltersCreateIconView;

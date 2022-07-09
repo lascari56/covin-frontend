@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import TrackingFiltersCardIcon from "./components/icon"
+import {FiltersCreateIcon} from "@components/filters-create"
 
 import { responsiveSize } from "@utils/responsive";
 
@@ -16,7 +16,6 @@ export const Container = styled.div`
 
   :hover {
     transform: scale(0.95);
-    opacity: 0.7;
   }
 `
 
@@ -41,7 +40,7 @@ export const Footer = styled.div`
   padding-top: ${responsiveSize(15)};
 `
 
-export const Icon = styled(TrackingFiltersCardIcon)`
+export const Icon = styled(FiltersCreateIcon)`
   &:not(:last-child) {
     margin-right: ${responsiveSize(4)};
   }

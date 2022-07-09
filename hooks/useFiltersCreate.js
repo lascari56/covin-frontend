@@ -47,7 +47,10 @@ export const useFiltersCreate = ({ initialActiveStep, onSubmit }) => {
   const handlerSaveName = (value) => {
     formik.setFieldValue('name', value)
 
-    onSubmit(formik.values)
+    onSubmit({
+      filters: formik.values.filters,
+      name: value
+    })
   }
 
   return {

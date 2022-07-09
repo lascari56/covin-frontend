@@ -19,9 +19,7 @@ const meta = [
   }
 ]
 
-const TrackingCreateContainer = ({...props}) => {
-  const [loading, setLoading] = useState(false)
-
+const TrackingCreateContainer = ({navigation, ...props}) => {
   const filtersCreate = useFiltersCreate({ initialActiveStep: 2, onSubmit: (values) => {
     alert(JSON.stringify(values))
   }})
@@ -35,7 +33,6 @@ const TrackingCreateContainer = ({...props}) => {
       {...props}
       filtersCreate={filtersCreate}
       metaInfo={metaInfo}
-      loading={loading}
     />
   );
 }
