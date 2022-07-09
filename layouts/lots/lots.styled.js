@@ -17,6 +17,8 @@ export const Content = styled.div`
 `;
 
 export const Children = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   
   padding: ${responsiveSize(25)} ${responsiveSize(22)};
@@ -25,6 +27,7 @@ export const Children = styled.div`
 export const Lots = styled.div`
   position: relative;
   min-height: 100%;
+  flex: 1;
 `
 
 export const Card = styled(LotCard)`

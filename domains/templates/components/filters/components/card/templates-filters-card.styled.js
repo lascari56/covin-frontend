@@ -16,7 +16,6 @@ export const Container = styled.div`
 
   :hover {
     transform: scale(0.95);
-    opacity: 0.7;
   }
 `
 

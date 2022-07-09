@@ -18,8 +18,10 @@ export const Body = styled.div`
 `
 
 export const Content = styled.div`
+  position: relative;
   display: flex;
   flex-grow: 1;
+  flex: 1;
   margin-left: ${props => props.full ? responsiveSize(232) : responsiveSize(76)};
 `
 

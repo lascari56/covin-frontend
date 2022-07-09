@@ -20,16 +20,16 @@ const sortOptions = [
   {label: "Date of adding (old first)", value: "date_adding_old"},
 ]
 
-const showOptions = [
-  {label: "All", value: "all"},
-  {label: "Buy Now", value: "buy_now"},
-  {label: "Notification lots", value: "notification_lots"},
-  {label: "Commented lots", value: "commented_lots"},
-  {label: "Hide lots", value: "hide_lots"},
-  {label: "Purchased reports", value: "purchased_reports"},
-]
+// const showOptions = [
+//   {label: "All", value: "all"},
+//   {label: "Buy Now", value: "buy_now"},
+//   {label: "Notification lots", value: "notification_lots"},
+//   {label: "Commented lots", value: "commented_lots"},
+//   {label: "Hide lots", value: "hide_lots"},
+//   {label: "Purchased reports", value: "purchased_reports"},
+// ]
 
-const CabinetMetaView = ({className, formik}) => {
+const CabinetMetaView = ({className, formik, showOptions}) => {
   return (
     <S.Container className={className}>
       <S.Search 

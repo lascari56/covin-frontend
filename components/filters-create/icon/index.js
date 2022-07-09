@@ -1,0 +1,1 @@
+export {default} from "./filters-create-icon.view"

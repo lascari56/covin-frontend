@@ -6,7 +6,7 @@ import * as S from "./lots.styled"
 
 import {CabinetMenu, CabinetPhotosModal} from "@components/cabinet";
 
-export default function LotsView({lots, loading, fullItemSelected, formikMeta, page, pageCount, meta, LeftComponent, onChangePage, onPageMore, onChangeFulLotId}) {
+export default function LotsView({children, data, loading, fullItemSelected, formikMeta, page, pageCount, meta, showOptions, LeftComponent, onChangePage, onPageMore, onChangeFulLotId}) {
   return (
     <S.Container>
       {!!LeftComponent && <S.Left>{LeftComponent}</S.Left>}
@@ -16,11 +16,13 @@ export default function LotsView({lots, loading, fullItemSelected, formikMeta, p
 
         <S.Children>
           <S.Lots>
-            {!!lots && (
-              <>
-                <S.Meta formik={formikMeta} />
+            {children}
 
-                {lots?.map(item => (
+            {!!data && (
+              <>
+                <S.Meta formik={formikMeta} showOptions={showOptions} />
+
+                {data?.map(item => (
                   <S.Card 
                     data={item}
                     speedUnit={formikMeta.values.speed}
@@ -29,17 +31,17 @@ export default function LotsView({lots, loading, fullItemSelected, formikMeta, p
                   />
                 ))}
 
-                {!lots?.length && <Empty />}
+                {!data?.length && !loading && <Empty />}
 
-                {!!lots?.length && (
+                {!!data?.length && (
                   <Padination value={page} total={meta?.total} pageCount={pageCount} onChange={onChangePage}>
-                    <Button title="Show 10 more" disabled={page >= pageCount - 1} onClick={onPageMore} />
+                    <Button title="Show 10 more" disabled={page >= pageCount} onClick={onPageMore} />
                   </Padination>
                 )}
               </>
             )}
 
-            {loading && <Loader isBackground={lots?.length} />}
+            {loading && <Loader isBackground={data?.length} />}
           </S.Lots>
 
           <CabinetPhotosModal items={fullItemSelected?.link_img_hd} onRequestClose={() => onChangeFulLotId(null)} />

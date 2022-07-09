@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import TemplatesView from "./templates.view"
+import TrackingView from "./tracking.view"
 
 import {useLots} from "@hooks/useLots"
 
@@ -27,10 +27,18 @@ const templates = [
   }
 ]
 
-const TemplatesContainer = ({...props}) => {
+const showOptions = [
+  {label: "All", value: "all"},
+  {label: "Notification lots", value: "notification_lots"},
+  {label: "Commented lots", value: "commented_lots"},
+  {label: "Hide lots", value: "hide_lots"},
+  {label: "Purchased reports", value: "purchased_reports"},
+]
+
+const TrackingContainer = ({...props}) => {
   const [selectedId, setSelectedId] = useState(null)
 
-  const lots = useLots()
+  const lots = useLots({initialSort: "date_adding_new", showOptions})
 
   useEffect(() => {
     if (selectedId) {
@@ -41,14 +49,14 @@ const TemplatesContainer = ({...props}) => {
   }, [selectedId])
 
   return (
-    <TemplatesView
+    <TrackingView
       {...props}
+      lots={lots}
       selectedId={selectedId}
       templates={templates}
-      lots={lots}
       onChangeSelectedId={setSelectedId}
     />
   );
 }
 
-export default TemplatesContainer;
+export default TrackingContainer;

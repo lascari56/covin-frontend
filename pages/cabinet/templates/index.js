@@ -2,7 +2,7 @@ import React from "react";
 
 import Templates from "@domains/templates";
 
-import LayoutCabinet from "../../layouts/cabinet"
+import LayoutCabinet from "../../../layouts/cabinet"
 
 function TemplatesScreen(props) {
   return (

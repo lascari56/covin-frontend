@@ -47,7 +47,7 @@ const convertToDamage = (damage_pr, damage_sec) => {
 export const useFilters = ({
   data,
   units,
-  onFilter
+  onSubmit
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -155,6 +155,9 @@ export const useFilters = ({
     return res.sort(sortAlphabet)
   }, [seriesOptions, formik.values.make?.length, formik.values.model?.length])
 
+  const isEmpty = useMemo(() => {
+    return true;
+  }, [filters.formik?.values])
 
   const handleFilter = (data) => {
     const values = {...data}
@@ -221,7 +224,7 @@ export const useFilters = ({
       }
     })
 
-    onFilter(res)
+    onSubmit(res)
   }
 
   const handlerReset = () => {
@@ -232,9 +235,9 @@ export const useFilters = ({
   return {
     formik,
     filters,
+    isEmpty,
     modelFilters,
     seriesFilters,
-    // onFilter: handleFilter,
     onReset: handlerReset
   }
 }

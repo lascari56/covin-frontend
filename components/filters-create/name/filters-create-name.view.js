@@ -2,9 +2,9 @@ import React from 'react';
 
 import { FormInput } from 'components/form';
 
-import * as S from "./tracking-create-name.styled"
+import * as S from "./filters-create-name.styled"
 
-const TrackingCreateNameView = ({formik, onBack}) => {
+const FiltersCreateNameView = ({formik, onBack}) => {
   return (
     <S.Container>
       <S.Content>
@@ -19,10 +19,10 @@ const TrackingCreateNameView = ({formik, onBack}) => {
       <S.Footer>
         <S.Action size="smaller" theme="outline" title="Back" onClick={onBack} />
 
-        <S.Action size="smaller" title="Finish" onClick={formik.handleSubmit} />
+        <S.Action size="smaller" title="Finish" disabled={!formik.values.name}  onClick={formik.handleSubmit} />
       </S.Footer>
     </S.Container>
   );
 }
 
-export default TrackingCreateNameView
+export default FiltersCreateNameView

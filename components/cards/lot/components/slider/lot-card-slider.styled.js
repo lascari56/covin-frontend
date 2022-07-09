@@ -4,6 +4,7 @@ import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
   position: relative;
+  width: 100%;
 
   padding: 0px ${responsiveSize(20)};
 `
