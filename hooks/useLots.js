@@ -28,7 +28,16 @@ const sortOptions = {
   },
 };
 
-export const useLots = ({isInitialLoad} = {}) => {
+const baseShowOptions = [
+  {label: "All", value: "all"},
+  {label: "Buy Now", value: "buy_now"},
+  {label: "Notification lots", value: "notification_lots"},
+  {label: "Commented lots", value: "commented_lots"},
+  {label: "Hide lots", value: "hide_lots"},
+  {label: "Purchased reports", value: "purchased_reports"},
+]
+
+export const useLots = ({isInitialLoad = false, initialSort = "auction_date", showOptions = baseShowOptions } = {}) => {
   const dispatch = useDispatch();
 
   const [lots, setLots] = useState(null);
@@ -48,7 +57,7 @@ export const useLots = ({isInitialLoad} = {}) => {
       show: "all",
       search: '',
       speed: units.speed,
-      sort: "auction_date"
+      sort: initialSort
     }
   });
 
@@ -201,6 +210,7 @@ export const useLots = ({isInitialLoad} = {}) => {
     formikMeta,
     units,
     fullItemSelected,
+    showOptions,
     onFilter: handleFilter,
     onChangePage: hnadleHangePage,
     onPageMore: handlePageMore,

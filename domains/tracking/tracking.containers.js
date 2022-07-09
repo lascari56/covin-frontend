@@ -27,10 +27,18 @@ const templates = [
   }
 ]
 
+const showOptions = [
+  {label: "All", value: "all"},
+  {label: "Notification lots", value: "notification_lots"},
+  {label: "Commented lots", value: "commented_lots"},
+  {label: "Hide lots", value: "hide_lots"},
+  {label: "Purchased reports", value: "purchased_reports"},
+]
+
 const TrackingContainer = ({...props}) => {
   const [selectedId, setSelectedId] = useState(null)
 
-  const lots = useLots()
+  const lots = useLots({initialSort: "date_adding_new", showOptions})
 
   useEffect(() => {
     if (selectedId) {

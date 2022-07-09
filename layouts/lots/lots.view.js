@@ -6,7 +6,7 @@ import * as S from "./lots.styled"
 
 import {CabinetMenu, CabinetPhotosModal} from "@components/cabinet";
 
-export default function LotsView({children, data, loading, fullItemSelected, formikMeta, page, pageCount, meta, LeftComponent, onChangePage, onPageMore, onChangeFulLotId}) {
+export default function LotsView({children, data, loading, fullItemSelected, formikMeta, page, pageCount, meta, showOptions, LeftComponent, onChangePage, onPageMore, onChangeFulLotId}) {
   return (
     <S.Container>
       {!!LeftComponent && <S.Left>{LeftComponent}</S.Left>}
@@ -20,7 +20,7 @@ export default function LotsView({children, data, loading, fullItemSelected, for
 
             {!!data && (
               <>
-                <S.Meta formik={formikMeta} />
+                <S.Meta formik={formikMeta} showOptions={showOptions} />
 
                 {data?.map(item => (
                   <S.Card 
