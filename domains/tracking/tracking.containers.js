@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import TrackingView from "./tracking.view"
 
 import {useLots} from "@hooks/useLots"
+import {useTemplates} from "@hooks/useTemplates"
 
 import {find} from "lodash"
 
@@ -36,25 +37,14 @@ const showOptions = [
 ]
 
 const TrackingContainer = ({...props}) => {
-  const [selectedId, setSelectedId] = useState(null)
-
   const lots = useLots({initialSort: "date_adding_new", showOptions})
-
-  useEffect(() => {
-    if (selectedId) {
-      const filters = find(templates, {_id: selectedId})?.filters;
-
-      lots?.onFilter(filters)
-    }
-  }, [selectedId])
+  const templates = useTemplates({entry: "bynow-trackings", onFilter: lots.onFilter})
 
   return (
     <TrackingView
       {...props}
       lots={lots}
-      selectedId={selectedId}
       templates={templates}
-      onChangeSelectedId={setSelectedId}
     />
   );
 }

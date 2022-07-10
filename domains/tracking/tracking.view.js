@@ -6,16 +6,12 @@ import LotsFilters from "./components/filters"
 
 import LayoutLots from "@layouts/lots"
 
-const TrackingView = ({lots, templates, selectedId, onChangeSelectedId}) => {
+const TrackingView = ({lots, templates}) => {
   return (
     <LayoutLots 
       {...lots}
       LeftComponent={
-        <LotsFilters
-          items={templates}
-          value={selectedId}
-          onChange={onChangeSelectedId}
-        />
+        <LotsFilters {...templates} />
       } 
     >
       {!lots?.loading && !lots?.data?.length && <Empty title="Not chosen" description="Choose a template for viewing lots" />}

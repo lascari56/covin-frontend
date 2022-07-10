@@ -51,7 +51,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, units, o
         value={formik.values.loss}
         options={filters?.loss}
         onChange={value => formik.setFieldValue('loss', value)}
-        onChangeTemplate={() => {}}
+        // onChangeTemplate={() => {}}
       />
 
       <FilterCheckbox
@@ -59,7 +59,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, units, o
         value={formik.values.damage}
         options={filters?.damage}
         onChange={value => formik.setFieldValue('damage', value)}
-        onChangeTemplate={() => {}}
+        // onChangeTemplate={() => {}}
       />
 
       <FilterCheckbox
@@ -120,7 +120,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, units, o
         value={formik.values.location}
         options={filters?.location}
         onChange={value => formik.setFieldValue('location', value)}
-        onChangeTemplate={() => {}}
+        // onChangeTemplate={() => {}}
       />
 
       <FilterCheckbox
@@ -128,7 +128,7 @@ const LotsFiltersView = ({formik, filters, modelFilters, seriesFilters, units, o
         value={formik.values.document}
         options={filters?.document}
         onChange={value => formik.setFieldValue('document', value)}
-        onChangeTemplate={() => {}}
+        // onChangeTemplate={() => {}}
       />
 
       <FilterCheckbox

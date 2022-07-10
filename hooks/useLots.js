@@ -144,7 +144,6 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
 
     const res = await api.service('cars').find({
       query: {
-        
         $sort: {
           auction_date_known: -1,
           [sortOptions[formikMeta?.values?.sort].key]: sortOptions[formikMeta?.values?.sort].value

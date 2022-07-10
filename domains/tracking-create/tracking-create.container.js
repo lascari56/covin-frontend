@@ -4,6 +4,8 @@ import TrackingCreateView from './tracking-create.view'
 
 import {useFiltersCreate} from "@hooks/useFiltersCreate"
 
+import { useRouter } from 'next/router'
+
 const meta = [
   {
     title: "Notification settings",
@@ -20,8 +22,10 @@ const meta = [
 ]
 
 const TrackingCreateContainer = ({navigation, ...props}) => {
-  const filtersCreate = useFiltersCreate({ initialActiveStep: 2, onSubmit: (values) => {
-    alert(JSON.stringify(values))
+  const router = useRouter()
+
+  const filtersCreate = useFiltersCreate({ entry: "bynow-trackings", initialActiveStep: 2, onSuccess: (values) => {
+    router.push('/cabinet/tracking')
   }})
 
   const metaInfo = useMemo(() => {
