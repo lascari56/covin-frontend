@@ -4,7 +4,7 @@ import * as S from './lot-card-slider.styled'
 
 import Splide from '@splidejs/splide';
 
-import Zoom from 'react-medium-image-zoom'
+// import Zoom from 'react-medium-image-zoom'
 
 export default function LotCardSliderМiew({className, data, items}) {
   const sliderRef = createRef();
@@ -55,7 +55,6 @@ export default function LotCardSliderМiew({className, data, items}) {
           <S.Icon360 src="/images/360.svg" />
         </S.Link360>
       )}
-      
     </S.Container>
   )
 }

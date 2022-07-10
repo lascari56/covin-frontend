@@ -7,11 +7,20 @@ const TrackingFiltersView = ({ value, items, onChange }) => {
     <S.Container>
       <S.AddButton title="New Tracking" to="/cabinet/tracking/create" />
 
-      <S.Title>Tracking list</S.Title>
+      {!!items?.data?.length && (
+        <>
+          <S.Title>Tracking list</S.Title>
 
-      {items?.map(item => (
-        <S.Card title={item?.name} active={item?._id === value} key={item?._id} onClick={() => onChange(item?._id)} />
-      ))}
+          {items?.data?.map(item => (
+            <S.Card
+              title={item?.name}
+              active={item?._id === value}
+              key={item?._id}
+              onClick={() => onChange(item?._id)}
+            />
+          ))}
+        </>
+      )}
     </S.Container>
   );
 }

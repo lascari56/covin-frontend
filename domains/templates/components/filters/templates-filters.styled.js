@@ -7,6 +7,7 @@ import TemplatesFiltersCard from "./components/card"
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
+  position: relative;
   padding: ${responsiveSize(15)} ${responsiveSize(20)};
 `
 
