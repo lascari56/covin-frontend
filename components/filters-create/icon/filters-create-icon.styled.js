@@ -17,7 +17,6 @@ export const Container = styled.div`
   transition: all 0.4s;
 
   &:hover {
-    transform: scale(0.9);
-    opacity: 0.7;
+    opacity: 0.6;
   }
 `

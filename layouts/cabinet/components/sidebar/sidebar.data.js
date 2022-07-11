@@ -22,7 +22,7 @@ export const sections = [
         icon: "sticker"
       },
       {
-        key: "finder",
+        key: "lots",
         route: "/cabinet/lots",
         title: "Lot Finder",
         icon: "lots"
