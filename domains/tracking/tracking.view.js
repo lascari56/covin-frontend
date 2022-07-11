@@ -10,6 +10,7 @@ const TrackingView = ({lots, templates}) => {
   return (
     <LayoutLots 
       {...lots}
+      cardType="buy-now"
       LeftComponent={
         <LotsFilters {...templates} />
       } 

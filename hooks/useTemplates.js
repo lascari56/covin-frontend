@@ -4,7 +4,7 @@ import {api} from '@utils/api.util';
 
 import {find} from "lodash"
 
-export const useTemplates = ({ entry, onFilter }) => {
+export const useTemplates = ({ entry, initialFilters = {},  onFilter }) => {
   const [value, setValue] = useState(null)
   const [items, setItems] = useState({data: [], loading: true})
 
@@ -16,7 +16,7 @@ export const useTemplates = ({ entry, onFilter }) => {
     if (value && items?.data?.length) {
       const filters = find(items?.data, {_id: value})?.filters;
 
-      onFilter(filters)
+      onFilter({...filters, ...initialFilters})
     }
   }, [value, items?.data])
 

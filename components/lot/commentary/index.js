@@ -1,1 +1,1 @@
-export {default} from "./lot-commentary.view"
+export {default} from "./lot-commentary.container"

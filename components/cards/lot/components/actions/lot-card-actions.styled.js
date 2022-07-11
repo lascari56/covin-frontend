@@ -18,8 +18,10 @@ export const Item = styled.div`
 export const Popup = styled.div`
   position: absolute;
   right: 100%;
-  bottom: 0px;
   min-width: ${responsiveSize(338)};
 
   z-index: 1;
+
+  ${props => props.position === "bottom" && `bottom: 0px;`}
+  ${props => props.position === "top" && `top: 0px;`}
 `

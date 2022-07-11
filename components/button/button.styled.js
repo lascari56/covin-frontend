@@ -10,15 +10,10 @@ export const Container = styled.div`
   text-decoration: none !important;
   
   border-radius: ${responsiveSize(4)};
-
-  cursor: pointer;
+  
   transition: transform 0.4s;
   box-sizing: border-box;
   user-select: none;
-
-  &:hover {
-    transform: scale(0.95);
-  }
 
   ${props => props.size === "small" && `
     padding: 0px ${responsiveSize(15)};
@@ -66,6 +61,14 @@ export const Container = styled.div`
   `}
 
   ${props => props.disabled && `opacity: 0.5;`}
+
+  ${props => !props.disabled && `
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+  `}
 `
 
 export const Title = styled.span`
