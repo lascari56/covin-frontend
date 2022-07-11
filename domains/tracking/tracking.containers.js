@@ -30,7 +30,6 @@ const templates = [
 
 const showOptions = [
   {label: "All", value: "all"},
-  {label: "Notification lots", value: "notification_lots"},
   {label: "Commented lots", value: "commented_lots"},
   {label: "Hide lots", value: "hide_lots"},
   {label: "Purchased reports", value: "purchased_reports"},
@@ -38,7 +37,11 @@ const showOptions = [
 
 const TrackingContainer = ({...props}) => {
   const lots = useLots({initialSort: "date_adding_new", showOptions})
-  const templates = useTemplates({entry: "bynow-trackings", onFilter: lots.onFilter})
+  const templates = useTemplates({
+    entry: "bynow-trackings",
+    onFilter: lots.onFilter,
+    initialFilters: {price_new: { $gt: 0 }}
+  })
 
   return (
     <TrackingView

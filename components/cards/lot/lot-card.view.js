@@ -8,7 +8,7 @@ import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
-const LotCardView = ({ className, data, renderMeta, links, onFull }) => {
+const LotCardView = ({ className, data, type, renderMeta, links, onFull }) => {
   return (
    <S.Container className={className}>
      <LotCardHeader data={data} onFull={onFull} />
@@ -39,7 +39,7 @@ const LotCardView = ({ className, data, renderMeta, links, onFull }) => {
 
         </S.Content>
         
-        <LotCardActions/>
+        <LotCardActions type={type} />
       </S.Body>
       
       {!!data?.commentary && <LotCardCommentary />}
