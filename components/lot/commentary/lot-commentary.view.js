@@ -9,10 +9,15 @@ const LotCommentaryView = ({formik, onClose}) => {
   return (
     <Popup 
       title="Send commentary"
-      FooterComponent={<Button title="Send" size="small" />}
+      FooterComponent={<Button title="Send" size="small" disabled={!formik.values.comment} onClick={formik.handleSubmit} />}
       onClose={onClose}
     >
-     <FormInput placeholder="Enter commentary" />
+      <FormInput 
+        value={formik.values.comment}
+        placeholder="Enter commentary"
+        isValid={!formik.touched.comment || !formik.errors.comment}
+        onChange={value => formik.setFieldValue('comment', value)}
+      />
     </Popup>
   );
 }

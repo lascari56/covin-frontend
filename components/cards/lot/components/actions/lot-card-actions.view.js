@@ -11,7 +11,7 @@ import CommentSVG from "./images/сomment"
 import HideSVG from "./images/hide"
 import NotificationVG from "./images/notification"
 
-export default function LotCardActionsView({showNotification, showCommentary, type, onChangeShowNotification, onChangeShowCommentary}) {
+export default function LotCardActionsView({showNotification, showCommentary, type, onChangeShowNotification, onChangeShowCommentary, onSubmitCommentary}) {
   return (
     <S.Container>
       <S.Item >
@@ -23,7 +23,7 @@ export default function LotCardActionsView({showNotification, showCommentary, ty
 
         {!!showCommentary && (
           <S.Popup position="top">
-            <LotCommentary onClose={() => onChangeShowCommentary(false)} />  
+            <LotCommentary onClose={() => onChangeShowCommentary(false)} onSubmit={onSubmitCommentary} />  
           </S.Popup>
         )}
       </S.Item>

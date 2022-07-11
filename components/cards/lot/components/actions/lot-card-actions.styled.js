@@ -18,9 +18,7 @@ export const Item = styled.div`
 export const Popup = styled.div`
   position: absolute;
   right: 100%;
-  /* top: 0px; */
   min-width: ${responsiveSize(338)};
-  /* transform: translateY(-50%); */
 
   z-index: 1;
 
