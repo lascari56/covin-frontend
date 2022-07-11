@@ -1,1 +1,1 @@
-export {default} from "./lots.container"
+export {default} from "./lots.view"

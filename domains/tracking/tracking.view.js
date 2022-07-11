@@ -1,17 +1,22 @@
 import React from "react";
 
-import {Padination, Button, Loader, Empty} from "@components"
-import {CabinetMenu } from "@components/cabinet";
+import {Empty} from "@components"
 
 import LotsFilters from "./components/filters"
 
 import LayoutLots from "@layouts/lots"
 
-// import * as S from "./lots.styled"
-
-const TrackingView = ({lots, loading, page, pageCount, formikMeta, onChangePage}) => {
+const TrackingView = ({lots, templates}) => {
   return (
-    <LayoutLots LeftComponent={<LotsFilters />} TopComponent={<CabinetMenu active="tracking" />} />
+    <LayoutLots 
+      {...lots}
+      cardType="buy-now"
+      LeftComponent={
+        <LotsFilters {...templates} />
+      } 
+    >
+      {!lots?.loading && !lots?.data?.length && <Empty title="Not chosen" description="Choose a template for viewing lots" />}
+    </LayoutLots>
   );
 };
 

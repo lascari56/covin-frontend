@@ -5,9 +5,7 @@ import Popup from "@components/popup"
 
 import {FormInput} from "@components/form"
 
-import * as S from "./lot-commentary.styled"
-
-const LotCommentaryView = ({onClose}) => {
+const LotCommentaryView = ({formik, onClose}) => {
   return (
     <Popup 
       title="Send commentary"

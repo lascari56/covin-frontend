@@ -7,11 +7,11 @@ import LotCardMeta from './components/meta'
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
+  width: 100%;
+
   background: #FFFFFF;
   border: 1px solid #DFE7F0;
   border-radius: 4px;
-
-  overflow: hidden;
 `;
 
 export const Body = styled.div`

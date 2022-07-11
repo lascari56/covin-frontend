@@ -36,7 +36,7 @@ export default function TemplatesCreateView({filtersCreate, metaInfo}) {
         </FiltersCreateStep>
       </S.Container>
 
-      {filtersCreate.filters?.loading && <Loader isBackground />}
+      {(filtersCreate?.filters?.loading || filtersCreate?.loading) && <Loader isBackground />}
     </CabinetPage>
   )
 }

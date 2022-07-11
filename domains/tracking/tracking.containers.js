@@ -1,43 +1,55 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
-import TrackingView from './tracking.view';
+import TrackingView from "./tracking.view"
 
-import {useFormik} from 'formik';
+import {useLots} from "@hooks/useLots"
+import {useTemplates} from "@hooks/useTemplates"
 
-import {api} from '../../utils/api.util';
+import {find} from "lodash"
 
-export default function TrackingContainer({navigation, ...props}) {
-  const [lots, setLots] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const formikMeta = useFormik({
-    initialValues: {
-      search: '',
-      speed: "miles",
-      time: "+02:00"
+const templates = [
+  {
+    "_id": 1,
+    "filters": {
+      "make": [
+        "ACURA"
+      ]
     },
-    onSubmit: () => {
-      
+    "name": "ACURA"
+  },
+  {
+    "_id": 2,
+    "filters": {
+      "make": [
+        "ALFA ROMEO",
+      ]
     },
-  });
+    "name": "ALFA ROMEO"
+  }
+]
 
-  useEffect(() => {
-    handleLoadLots()
-  }, []);
+const showOptions = [
+  {label: "All", value: "all"},
+  {label: "Commented lots", value: "commented_lots"},
+  {label: "Hide lots", value: "hide_lots"},
+  {label: "Purchased reports", value: "purchased_reports"},
+]
 
-  const handleLoadLots = async () => {
-    const res = await api.service('cars?full=true').find({});
-
-    setLots({...res})
-    setLoading(false)
-  };
+const TrackingContainer = ({...props}) => {
+  const lots = useLots({initialSort: "date_adding_new", showOptions})
+  const templates = useTemplates({
+    entry: "bynow-trackings",
+    onFilter: lots.onFilter,
+    initialFilters: {price_new: { $gt: 0 }}
+  })
 
   return (
     <TrackingView
       {...props}
       lots={lots}
-      loading={loading}
-      formikMeta={formikMeta}
+      templates={templates}
     />
   );
 }
+
+export default TrackingContainer;

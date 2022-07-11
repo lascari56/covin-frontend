@@ -4,6 +4,8 @@ import TemplatesCreateView from './templates-create.view'
 
 import {useFiltersCreate} from "@hooks/useFiltersCreate"
 
+import { useRouter } from 'next/router'
+
 const meta = [
   {
     title: "Create Filter",
@@ -16,10 +18,10 @@ const meta = [
 ]
 
 const TrackingCreateContainer = ({...props}) => {
-  const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
-  const filtersCreate = useFiltersCreate({ onSubmit: (values) => {
-    alert(JSON.stringify(values))
+  const filtersCreate = useFiltersCreate({ entry: "templates", onSuccess: () => {
+    router.push('/cabinet/templates')
   }})
 
   const metaInfo = useMemo(() => {
@@ -31,7 +33,6 @@ const TrackingCreateContainer = ({...props}) => {
       {...props}
       filtersCreate={filtersCreate}
       metaInfo={metaInfo}
-      loading={loading}
     />
   );
 }

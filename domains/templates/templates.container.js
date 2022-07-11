@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import TemplatesView from "./templates.view"
 
+import {useLots} from "@hooks/useLots"
+import {useTemplates} from "@hooks/useTemplates"
+
 const TemplatesContainer = ({...props}) => {
-  const [selectedId, setSelectedId] = useState(null)
+  const lots = useLots()
+  const templates = useTemplates({entry: "templates", onFilter: lots.onFilter})
 
   return (
-    <TemplatesView {...props} selectedId={selectedId} onChangeSelectedId={setSelectedId} />
+    <TemplatesView
+      {...props}
+      lots={lots}
+      templates={templates}
+    />
   );
 }
 
