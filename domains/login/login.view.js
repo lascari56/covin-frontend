@@ -1,4 +1,5 @@
 import React from 'react';
+import GoogleLogin from 'react-google-login';
 
 import {Icon} from "@components"
 
@@ -6,8 +7,12 @@ import Link from 'next/link'
 
 import * as S from "./login.styled"
 
-const LoginView = ({formik, loading, validItems, isValid}) => {
+const LoginView = ({formik, loading, validItems, isValid, onLoginGoogle}) => {
   console.log("validItems", validItems);
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
 
   return (
     <S.Container>
@@ -46,7 +51,7 @@ const LoginView = ({formik, loading, validItems, isValid}) => {
         title="Log in with Google"
         IconComponent={<Icon name="google" size={22} />}
         disabled={loading}
-        onClick={formik.handleSubmit}
+        onClick={onLoginGoogle}
       />
 
       <S.SingUp>

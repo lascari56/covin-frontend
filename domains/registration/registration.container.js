@@ -12,6 +12,7 @@ import {useFormik} from 'formik';
 
 import {selectCountry} from '@store/commonReducers/commonReducer.selector';
 
+import {API} from '@configs/api';
 import {api} from '@utils/api.util';
 
 const validationSchema = yup.object().shape({
@@ -79,7 +80,7 @@ const RegistrationContainer = ({...props}) => {
           setLoading(false)
         }})
     }).catch((e) => {
-      console.log("authError", e.code);
+      console.log("authError", e);
       let message = "Something went wrong, please try again!";
 
       if (e.code === 409) message = "This user already exists";
@@ -90,8 +91,12 @@ const RegistrationContainer = ({...props}) => {
     })
   };
 
+  const handleLoginGoogle = () => {
+    window.location.href = `${API}/oauth/google`;
+  }
+
   return (
-    <RegistrationView {...props} formik={formik} county={county} loading={loading} validItems={validItems} isValid={isValid} />
+    <RegistrationView {...props} formik={formik} county={county} loading={loading} validItems={validItems} isValid={isValid} onLoginGoogle={handleLoginGoogle} />
   );
 }
 

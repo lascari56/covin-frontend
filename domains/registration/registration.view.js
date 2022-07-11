@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import * as S from "./registration.styled"
 
-const RegistrationView = ({formik, county, loading, validItems, isValid}) => {
+const RegistrationView = ({formik, county, loading, validItems, isValid, onLoginGoogle}) => {
   return (
     <S.Container>
       <S.Content>
@@ -47,7 +47,7 @@ const RegistrationView = ({formik, county, loading, validItems, isValid}) => {
         size="large"
         title="Log in with Google"
         IconComponent={<Icon name="google" size={22} />}
-        onClick={formik.handleSubmit}
+        onClick={onLoginGoogle}
       />
 
       <Link href="/">

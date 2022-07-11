@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useEffect} from 'react';
 import * as yup from 'yup';
 
 import LoginView from "./login.view"
@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 
 import {saveUser, saveToken} from '@store/authReducers/authReducer.slice';
 
+import {API} from '@configs/api';
 import {api} from '@utils/api.util';
 
 const validationSchema = yup.object().shape({
@@ -54,6 +55,19 @@ const LoginContainer = ({...props}) => {
     return res;
   }, [validItems]);
 
+  useEffect(() => {
+    api.authenticate().catch((e) => {})
+
+    api.on('authenticated', async loginResult => {
+      console.log("loginResult", loginResult);
+
+      await dispatch(saveToken(loginResult.accessToken));
+      await dispatch(saveUser(loginResult.user));
+
+      router.push('/cabinet/lots')
+    });
+  }, []);
+
   const handleSend = ({email, password}) => {
     setLoading(true);
 
@@ -88,8 +102,12 @@ const LoginContainer = ({...props}) => {
     })
   };
 
+  const handleLoginGoogle = () => {
+    window.location.href = `${API}/oauth/google`;
+  }
+
   return (
-    <LoginView {...props} formik={formik} loading={loading} validItems={validItems} isValid={isValid} />
+    <LoginView {...props} formik={formik} loading={loading} validItems={validItems} isValid={isValid} onLoginGoogle={handleLoginGoogle} />
   );
 }
 
