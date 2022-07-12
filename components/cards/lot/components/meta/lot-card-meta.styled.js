@@ -10,10 +10,6 @@ export const Container = styled.div`
 
   background: #F1F6FC;
   border-radius: ${responsiveSize(4)};
-
-  ${props => props.type === "hide" && `
-    background: #FFFFFF;
-  `}
 `;
 
 export const Label = styled.h6`

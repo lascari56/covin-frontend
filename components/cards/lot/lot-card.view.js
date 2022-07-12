@@ -8,12 +8,14 @@ import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
-const LotCardView = ({ className, data, type, renderMeta, links, onFull }) => {
+const LotCardView = ({ className, data, type, renderMeta, links, onFull, onSubmitCommentary, onSubmitHidden }) => {
   return (
    <S.Container className={className}>
      <LotCardHeader data={data} onFull={onFull} />
 
-      <S.Body type={data?.type}>
+     {/* <p>{JSON.stringify(data)}</p> */}
+
+      <S.Body isHidden={!!data?.hidden}>
         <S.Content>
           <LotCardSlider data={data} />
 
@@ -31,18 +33,23 @@ const LotCardView = ({ className, data, type, renderMeta, links, onFull }) => {
             </S.Column>
 
             <S.Column>
-              <S.Meta type={data?.type} label="Current Bid" value={`${data?.price_new} $`} />
+              <S.Meta isHidden={!!data?.hidden} label="Current Bid" value={`${data?.price_new} $`} />
               
-              {!!data?.price_future && <S.Meta type={data?.type} label="Reserve" value={data?.price_future ? `${data?.price_future} $` : "-"} />}
+              {!!data?.price_future && <S.Meta isHidden={!!data?.hidden} label="Reserve" value={data?.price_future ? `${data?.price_future} $` : "-"} />}
             </S.Column>
           </S.Wrapper>
 
         </S.Content>
         
-        <LotCardActions type={type} />
+        <LotCardActions 
+          data={data}
+          type={type} 
+          onSubmitCommentary={(form) => onSubmitCommentary({id: data?._id, form})}
+          onSubmitHidden={() => onSubmitHidden({id: data?._id})}
+        />
       </S.Body>
-      
-      {!!data?.commentary && <LotCardCommentary />}
+
+      {!!data?.comment?.message && <LotCardCommentary value={data?.comment?.message} />}
    </S.Container>
   );
 };

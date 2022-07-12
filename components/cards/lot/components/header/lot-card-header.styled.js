@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import Button from "@components/button"
-
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
@@ -12,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   background-color: #F1F6FC;
 
-  ${props => props.type === "hide" && `
+  ${props => props.isHidden && `
     background: #E4E3E4;
   `}
 `
@@ -40,7 +38,7 @@ export const Title = styled.span`
 
   color: #000000;
 
-  ${props => props.type === "hide" && `
+  ${props => props.isHidden && `
     color: #838383;
   `}
 `
@@ -65,9 +63,25 @@ export const Hide = styled.span`
   line-height: ${responsiveSize(14)};
 `
 
-export const BuyButton = styled(Button)`
+export const BuyNow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: ${responsiveSize(30)};
+  padding: 0px ${responsiveSize(30)};
   margin-left: auto;
   margin-right: ${responsiveSize(14)};
+
+  background: #3B8925;
+  border-radius: ${responsiveSize(4)};
+`
+
+export const BuyNowLabel = styled.span`
+  font-weight: 500;
+  font-size: ${responsiveSize(14)};
+  line-height: ${responsiveSize(16)};
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
 `
 
 export const Date = styled.span`

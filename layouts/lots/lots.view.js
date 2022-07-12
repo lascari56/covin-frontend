@@ -20,7 +20,9 @@ export default function LotsView({
     LeftComponent, 
     onChangePage, 
     onPageMore, 
-    onChangeFulLotId
+    onChangeFulLotId,
+    onSubmitCommentary,
+    onSubmitHidden
   }) {
   return (
     <S.Container>
@@ -44,6 +46,8 @@ export default function LotsView({
                     type={cardType}
                     key={item?._id}
                     onFull={() => onChangeFulLotId(item?._id)}
+                    onSubmitCommentary={onSubmitCommentary}
+                    onSubmitHidden={onSubmitHidden}
                   />
                 ))}
 
