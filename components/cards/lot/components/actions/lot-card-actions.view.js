@@ -7,15 +7,18 @@ import {LotNotification, LotCommentary} from "@components/lot"
 import * as S from './lot-card-actions.styled'
 
 import FavoriteSVG from "./images/favorite"
+import FavoriteActiveSVG from "./images/favorite-active"
 import CommentSVG from "./images/сomment"
 import HideSVG from "./images/hide"
-import NotificationVG from "./images/notification"
+import HideActiveSVG from "./images/hide-active"
+import NotificationSVG from "./images/notification"
+import NotificationActiveSVG from "./images/notification-active"
 
-export default function LotCardActionsView({data, showNotification, showCommentary, type, onChangeShowNotification, onChangeShowCommentary, onSubmitCommentary, onSubmitHidden}) {
+export default function LotCardActionsView({data, showNotification, showCommentary, type, onChangeShowNotification, onChangeShowCommentary, onSubmitCommentary, onSubmitHidden, onSubmitBookmarks}) {
   return (
     <S.Container>
       <S.Item >
-        <LotCardActionsItem icon={FavoriteSVG} />
+        <LotCardActionsItem icon={data?.bookmark?._id ? FavoriteActiveSVG : FavoriteSVG} onClick={onSubmitBookmarks} />
       </S.Item>
 
       <S.Item>
@@ -29,12 +32,12 @@ export default function LotCardActionsView({data, showNotification, showCommenta
       </S.Item>
 
       <S.Item>
-        <LotCardActionsItem icon={HideSVG} onClick={onSubmitHidden} />
+        <LotCardActionsItem icon={data?.hidden?._id ? HideActiveSVG : HideSVG} onClick={onSubmitHidden} />
       </S.Item>
       
       {type !== "buy-now" && (
         <S.Item>
-          <LotCardActionsItem icon={NotificationVG} onClick={() => onChangeShowNotification(!showNotification)} />
+          <LotCardActionsItem icon={NotificationSVG} onClick={() => onChangeShowNotification(!showNotification)} />
 
           {!!showNotification && (
             <S.Popup position="bottom">

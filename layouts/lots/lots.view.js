@@ -22,7 +22,8 @@ export default function LotsView({
     onPageMore, 
     onChangeFulLotId,
     onSubmitCommentary,
-    onSubmitHidden
+    onSubmitHidden,
+    onSubmitBookmarks
   }) {
   return (
     <S.Container>
@@ -48,6 +49,7 @@ export default function LotsView({
                     onFull={() => onChangeFulLotId(item?._id)}
                     onSubmitCommentary={onSubmitCommentary}
                     onSubmitHidden={onSubmitHidden}
+                    onSubmitBookmarks={onSubmitBookmarks}
                   />
                 ))}
 

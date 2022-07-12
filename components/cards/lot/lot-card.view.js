@@ -8,7 +8,7 @@ import LotCardSlider from './components/slider'
 
 import * as S from "./lot-card.styled";
 
-const LotCardView = ({ className, data, type, renderMeta, links, onFull, onSubmitCommentary, onSubmitHidden }) => {
+const LotCardView = ({ className, data, type, renderMeta, links, onFull, onSubmitCommentary, onSubmitHidden, onSubmitBookmarks }) => {
   return (
    <S.Container className={className}>
      <LotCardHeader data={data} onFull={onFull} />
@@ -45,7 +45,8 @@ const LotCardView = ({ className, data, type, renderMeta, links, onFull, onSubmi
           data={data}
           type={type} 
           onSubmitCommentary={(form) => onSubmitCommentary({id: data?._id, form})}
-          onSubmitHidden={() => onSubmitHidden({id: data?._id})}
+          onSubmitHidden={() => onSubmitHidden({id: data?._id, itemId: data?.hidden?._id})}
+          onSubmitBookmarks={() => onSubmitBookmarks({id: data?._id, itemId: data?.bookmark?._id})}
         />
       </S.Body>
 

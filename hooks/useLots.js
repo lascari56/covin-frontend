@@ -213,6 +213,16 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     setLots(_lots)
   }
 
+  const removeLot = ({id}) => {
+    const index = findIndex(lots, ["_id", id])
+
+    const _lots = [...lots]
+
+    _lots?.splice(index, 1)
+   
+    setLots(_lots)
+  }
+
   const handleSubmitCommentary = ({id, form}) => {
     const notificationId = toast.loading("Please wait...")
     setLoading(true)
@@ -238,21 +248,52 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     })
   }
 
-  const handleSubmitHidden = ({id}) => {
+  const handleSubmitHidden = ({id, itemId}) => {
     const notificationId = toast.loading("Please wait...")
     setLoading(true)
 
-    api.service("car-hidden").create({car: id}).then((res) => {
+    api.service("car-hidden")[itemId ? "remove" : 'create'](itemId ? itemId : {car: id}).then((res) => {
       toast.update(notificationId, { 
-        render: "Successfully added", 
+        render: itemId ? "Successfully removed" : "Successfully added", 
         type: "success", 
         isLoading: false, 
         autoClose: 500, 
       })
 
-      console.log(JSON.stringify(res))
-      
-      updateLot({id, data: {hidden: res}})
+      if (itemId) {
+        updateLot({id, data: {hidden: null}})
+      } else {
+        removeLot({id})
+      }
+
+      setLoading(false)
+    }).catch((e) => {
+      console.log("commentaryError", e.code);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 2000 })
+    })
+  }
+
+  const handleSubmitBookmarks = ({id, itemId}) => {
+    const notificationId = toast.loading("Please wait...")
+    setLoading(true)
+
+    api.service("car-bookmarks")[itemId ? "remove" : 'create'](itemId ? itemId : {car: id}).then((res) => {
+      toast.update(notificationId, { 
+        render: itemId ? "Successfully removed" : "Successfully added", 
+        type: "success", 
+        isLoading: false, 
+        autoClose: 500, 
+      })
+
+      if (itemId) {
+        updateLot({id, data: {bookmark: null}})
+      } else {
+        updateLot({id, data: {bookmark: res}})
+      }
 
       setLoading(false)
     }).catch((e) => {
@@ -280,6 +321,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     onPageMore: handlePageMore,
     onSubmitCommentary: handleSubmitCommentary,
     onSubmitHidden: handleSubmitHidden,
+    onSubmitBookmarks: handleSubmitBookmarks,
     onChangeFulLotId: setFulLotId
   }
 }
