@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Body = styled.div`
   display: flex;
 
-  ${props => props.type === "hide" && `
+  ${props => props.isHidden && `
     background: #F7F7F7;
   `}
 `
@@ -60,9 +60,12 @@ export const ActionButton = styled(Button)`
 
 export const Meta = styled(LotCardMeta)`
   flex: 1;
-  /* visibility: ${props => !props.show ? "hidden" : "visible"}; */
 
   &:not(:last-child) {
     margin-bottom: ${responsiveSize(8)};
   }
+
+  ${props => props.isHidden && `
+    background: #FFFFFF;
+  `}
 `

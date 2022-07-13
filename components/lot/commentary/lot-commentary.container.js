@@ -10,14 +10,15 @@ const validationSchema = yup.object().shape({
   comment: yup.string().required(),
 });
 
-const LotCommentaryContainer = ({onSubmit, ...props}) => {
+const LotCommentaryContainer = ({value, onSubmit, ...props}) => {
   const formik = useFormik({
     initialValues: {
-      comment: '',
+      comment: value || "",
     },
     validationSchema,
     onSubmit: (values) => {
       onSubmit(values?.comment)
+      props.onClose()
     },
   });
 

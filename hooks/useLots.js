@@ -3,6 +3,7 @@ import {useState, useEffect, useLayoutEffect, useMemo, useRef} from 'react';
 import {api} from '@utils/api.util';
 
 import {useFormik} from 'formik';
+import { toast } from 'react-toastify';
 
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -11,7 +12,7 @@ import {saveUnits} from '@store/commonReducers/commonReducer.slice';
 
 import {animateScroll} from 'react-scroll';
 
-import {find} from "lodash"
+import {find, findIndex} from "lodash"
 
 const sortOptions = {
   auction_date: {
@@ -200,6 +201,111 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     setIsMore(true)
   }
 
+  const updateLot = ({id, data}) => {
+    const index = findIndex(lots, ["_id", id])
+
+    const _lots = [...lots]
+
+    const item = {...lots[index], ...data}
+
+    _lots[index] = item
+
+    setLots(_lots)
+  }
+
+  const removeLot = ({id}) => {
+    const index = findIndex(lots, ["_id", id])
+
+    const _lots = [...lots]
+
+    _lots?.splice(index, 1)
+   
+    setLots(_lots)
+  }
+
+  const handleSubmitCommentary = ({id, form}) => {
+    const notificationId = toast.loading("Please wait...")
+    setLoading(true)
+
+    api.service("car-comments").create({message: form, car: id}).then((res) => {
+      toast.update(notificationId, { 
+        render: "Successfully added", 
+        type: "success", 
+        isLoading: false, 
+        autoClose: 500, 
+      })
+
+      updateLot({id, data: {comment: res}})
+
+      setLoading(false)
+    }).catch((e) => {
+      console.log("commentaryError", e.code);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 2000 })
+    })
+  }
+
+  const handleSubmitHidden = ({id, itemId}) => {
+    const notificationId = toast.loading("Please wait...")
+    setLoading(true)
+
+    api.service("car-hidden")[itemId ? "remove" : 'create'](itemId ? itemId : {car: id}).then((res) => {
+      toast.update(notificationId, { 
+        render: itemId ? "Successfully removed" : "Successfully added", 
+        type: "success", 
+        isLoading: false, 
+        autoClose: 500, 
+      })
+
+      if (itemId) {
+        updateLot({id, data: {hidden: null}})
+      } else {
+        removeLot({id})
+      }
+
+      setLoading(false)
+    }).catch((e) => {
+      console.log("commentaryError", e.code);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 2000 })
+    })
+  }
+
+  const handleSubmitBookmarks = ({id, itemId}) => {
+    const notificationId = toast.loading("Please wait...")
+    setLoading(true)
+
+    api.service("car-bookmarks")[itemId ? "remove" : 'create'](itemId ? itemId : {car: id}).then((res) => {
+      toast.update(notificationId, { 
+        render: itemId ? "Successfully removed" : "Successfully added", 
+        type: "success", 
+        isLoading: false, 
+        autoClose: 500, 
+      })
+
+      if (itemId) {
+        updateLot({id, data: {bookmark: null}})
+      } else {
+        updateLot({id, data: {bookmark: res}})
+      }
+
+      setLoading(false)
+    }).catch((e) => {
+      console.log("commentaryError", e.code);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 2000 })
+    })
+  }
+
   return {
     data: lots,
     meta,
@@ -213,6 +319,9 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     onFilter: handleFilter,
     onChangePage: hnadleHangePage,
     onPageMore: handlePageMore,
+    onSubmitCommentary: handleSubmitCommentary,
+    onSubmitHidden: handleSubmitHidden,
+    onSubmitBookmarks: handleSubmitBookmarks,
     onChangeFulLotId: setFulLotId
   }
 }
