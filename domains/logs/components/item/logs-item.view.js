@@ -6,35 +6,55 @@ import * as S from "./logs-item.styled"
 
 const LogsItemView = ({data, fileLotsLink, onOpenFile}) => {
   return (
-    <S.Container>
-      <td>
-        <S.Item>
-          <S.Date style={{width: 80}}>{moment(data?.date).format('DD.MM hh:mm')}</S.Date>
-        </S.Item>
-      </td>
+    // <S.Container>
+      <S.Content>
+        <td>
+          <S.Item>
+            <S.Date style={{width: 80}}>{moment(data?.date).format('DD.MM hh:mm')}</S.Date>
+          </S.Item>
+        </td>
 
-      <td>
-        <S.Item>
-          <S.Status status={data?.status}>{data?.status}</S.Status>
-        </S.Item>
-      </td>
+        <td>
+          <S.Item>
+            <S.Status status={data?.status}>{data?.status}</S.Status>
+          </S.Item>
+        </td>
 
-      <td>
-        <S.Item>
-          <S.Message>{data?.message}</S.Message>
-        </S.Item>
-      </td>
+        <td>
+          <S.Item>
+            <S.Message>{data?.message}</S.Message>
+          </S.Item>
+        </td>
 
-      {fileLotsLink && <td>
-        <S.Item>
-          <S.Action
-            size="small"
-            title="View File"
-            onClick={onOpenFile}
-          />
-        </S.Item>
-      </td>}
-    </S.Container>
+        <td>
+          <S.Item>
+            <S.Message>{data?.api}</S.Message>
+          </S.Item>
+        </td>
+
+        <td>
+          <S.Item>
+            <S.Message>{data?.client}</S.Message>
+          </S.Item>
+        </td>
+
+        <td>
+          <S.Item>
+            <S.Message>{data?.vin}</S.Message>
+          </S.Item>
+        </td>
+
+        {fileLotsLink && <td>
+          <S.Item>
+            <S.Action
+              size="small"
+              title="View File"
+              onClick={onOpenFile}
+            />
+          </S.Item>
+        </td>}
+      </S.Content>
+    // </S.Container>
   );
 }
 
