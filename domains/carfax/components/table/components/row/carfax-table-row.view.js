@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import CarfaxTableRowReport from "./components/report"
 
@@ -6,29 +7,32 @@ import {TableLink} from "@components/table"
 
 import * as S from "./carfax-table-row.styled"
 
-const CarfaxTableRowView = ({data}) => {
+const CarfaxTableRowView = ({data, onView}) => {
   return (
     <tr>
       <td>
         <S.Item>
-          <S.Date>{data?.date}</S.Date>
+          <S.Date>{moment(data?.date).format("DD.MM.YYYY")}</S.Date>
         </S.Item>
       </td>
+      
       <td>
         <S.Item>
           {data?.vin}
         </S.Item>
       </td>
-      <td>
+
+      {data?.file && <td>
         <S.Item>
-          <CarfaxTableRowReport />
+          <CarfaxTableRowReport data={data} />
         </S.Item>
-      </td>
-      <td>
-        <S.Item>
+      </td>}
+
+      {!!data?.bonusSticker && <td>
+        <S.Item onClick={() => onView(data?.bonusSticker)}>
           <TableLink>Sticker</TableLink>
         </S.Item>
-      </td>
+      </td>}
     </tr>
   );
 }

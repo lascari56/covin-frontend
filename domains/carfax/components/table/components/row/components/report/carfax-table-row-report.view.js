@@ -4,14 +4,14 @@ import {TableLink} from "@components/table"
 
 import * as S from "./carfax-table-row-report.styled"
 
-const CarfaxTableRowReportView = () => {
+const CarfaxTableRowReportView = ({data, onView}) => {
   return (
     <S.Container>
-      <TableLink>View</TableLink>
+      <TableLink onClick={() => onView(data?.file)}>View</TableLink>
 
-      <S.Hr />
+      {/* <S.Hr />
 
-      <TableLink>PDF</TableLink>
+      <TableLink>PDF</TableLink> */}
     </S.Container>
   );
 }

@@ -19,7 +19,7 @@ const ContainerRootView = ({children}) => {
   // const user = useSelector(selectUser);
 
   useEffect(() => {
-    api.authenticate().then((res) => {
+    api.reAuthenticate().then((res) => {
       dispatch(saveUser(res.user))
     }).catch(() => {
       dispatch(logout())
