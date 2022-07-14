@@ -4,7 +4,7 @@ import moment from "moment"
 
 import * as S from "./logs-item.styled"
 
-const LogsItemView = ({data, fileLotsLink, onOpenFile}) => {
+const LogsItemView = ({data, fileLotsLink, fileLotsSeledLink, onOpenFile}) => {
   return (
     // <S.Container>
       <S.Content>
@@ -44,15 +44,27 @@ const LogsItemView = ({data, fileLotsLink, onOpenFile}) => {
           </S.Item>
         </td>
 
-        {fileLotsLink && <td>
-          <S.Item>
-            <S.Action
-              size="small"
-              title="View File"
-              onClick={onOpenFile}
-            />
-          </S.Item>
-        </td>}
+        <td>
+          {fileLotsLink && 
+            <S.Item>
+              <S.Action
+                size="small"
+                title="View Lots"
+                onClick={onOpenFile}
+              />
+            </S.Item>
+          }
+          
+          {fileLotsSeledLink && 
+            <S.Item style={{marginTop: 10}}>
+              <S.Action
+                size="small"
+                title="View Seled"
+                onClick={() => onOpenFile(true)}
+              />
+            </S.Item>
+          }
+        </td>
       </S.Content>
     // </S.Container>
   );
