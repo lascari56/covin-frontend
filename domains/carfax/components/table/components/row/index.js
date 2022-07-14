@@ -1,1 +1,1 @@
-export {default} from "./carfax-table-row.view"
+export {default} from "./carfax-table-row.container"
