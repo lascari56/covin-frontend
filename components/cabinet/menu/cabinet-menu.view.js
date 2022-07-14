@@ -9,7 +9,7 @@ const items = [
   {label: "Buy Now Tracking", value: "tracking", route: "/cabinet/tracking"},
   {label: "Templates", value: "templates", route: "/cabinet/templates"},
   {label: "Bookmarks", value: "bookmarks", route: "/cabinet/bookmarks"},
-  {label: "Notification settings", value: "notification", route: "/cabinet/tracking/create"},
+  // {label: "Notification settings", value: "notification", route: "/cabinet/tracking/create"},
 ]
 
 export default function CabinetMenuView({activeRoute}) {
