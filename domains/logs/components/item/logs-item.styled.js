@@ -20,10 +20,15 @@ export const Content = styled.tr`
   flex: 1;
 
   /* overflow: scroll; */
+
+  td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 `
 
 export const Item = styled.div`
-  min-height: ${responsiveSize(72)};
+  /* min-height: ${responsiveSize(72)}; */
   display: flex;
   align-items: center;
 `
@@ -62,5 +67,5 @@ export const Message = styled.span`
 `
 
 export const Action = styled(Button)`
-  width: 100px;
+  width: 110px;
 `
