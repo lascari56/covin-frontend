@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import CarfaxTableRowReport from "./components/report"
 
@@ -11,24 +12,27 @@ const CarfaxTableRowView = ({data}) => {
     <tr>
       <td>
         <S.Item>
-          <S.Date>{data?.date}</S.Date>
+          <S.Date>{moment(data?.date).format("DD.MM.YYYY")}</S.Date>
         </S.Item>
       </td>
+      
       <td>
         <S.Item>
           {data?.vin}
         </S.Item>
       </td>
-      <td>
+
+      {data?.file && <td>
         <S.Item>
-          <CarfaxTableRowReport />
+          <CarfaxTableRowReport data={data} />
         </S.Item>
-      </td>
-      <td>
+      </td>}
+
+      {!!data?.bonusSticker && <td>
         <S.Item>
           <TableLink>Sticker</TableLink>
         </S.Item>
-      </td>
+      </td>}
     </tr>
   );
 }

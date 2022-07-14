@@ -5,7 +5,7 @@ import LogsItemView from './logs-item.view';
 
 export default function LogsContainer({navigation, ...props}) {
   const fileLotsLink = useMemo(() => {
-    if (props.data.message.indexOf("File name saved:") === -1) return null;
+    if (!props.data.message || props.data.message.indexOf("File name saved:") === -1) return null;
 
     let item = props.data.message.split("File name saved:")[1].slice(1);
 

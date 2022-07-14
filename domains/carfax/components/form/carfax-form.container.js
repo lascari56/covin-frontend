@@ -27,33 +27,35 @@ const CarfaxFormContainer = ({...props}) => {
     },
   });
 
-  const handleSend = (values) => {
+  const handleSend = ({vin}) => {
     setLoading(true);
 
     const notificationId = toast.loading("Please wait...")
 
-    // api.service('users').update({
-    //   id: user?.id,
-    //   email: values.email,
-    //   phone: values.phone,
-    //   name: values.name,
-    // }).then(async (res) => {
-    //   setLoading(false)
+    // console.log("values", values);
 
-    //   toast.update(notificationId, { 
-    //     render: "Personal information updated successfully", 
-    //     type: "success", 
-    //     isLoading: false , 
-    //     autoClose: 500, 
-    //   })
-    // }).catch((e) => {
-    //   console.log("user-update-err", e);
-    //   let message = "Something went wrong, please try again!";
+    api.service('report').create({
+      vin,
+      source_group: 'carfax',
+    }).then(async (res) => {
+      setLoading(false)
 
-    //   setLoading(false)
+      props.onRefreshData();
 
-    //   toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 1000 })
-    // })
+      toast.update(notificationId, { 
+        render: "Carfax successfully purchased", 
+        type: "success", 
+        isLoading: false , 
+        autoClose: 500, 
+      })
+    }).catch((e) => {
+      console.log("carfax-buy-err", e);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 1000 })
+    })
   };
 
   return (
