@@ -10,8 +10,6 @@ export default function CarfaxContainer({navigation, ...props}) {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  console.log("11111111page", page);
-
   const pageCount = useMemo(() => {
     return Math.ceil(reports?.total / reports?.limit);
   }, [reports?.total, reports?.limit]);
