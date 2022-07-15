@@ -32,9 +32,10 @@ const sortOptions = {
 const baseShowOptions = [
   {label: "All", value: "all"},
   {label: "Buy Now", value: "buy_now"},
-  {label: "Notification lots", value: "notification_lots"},
-  {label: "Commented lots", value: "commented_lots"},
-  {label: "Hide lots", value: "hide_lots"},
+  {label: "Notification lots", value: "notifications"},
+  {label: "Bookmark lots", value: "bookmarks"},
+  {label: "Commented lots", value: "comments"},
+  {label: "Hide lots", value: "hidden"},
   {label: "Purchased reports", value: "purchased_reports"},
 ]
 
@@ -141,6 +142,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
 
     if (formikMeta?.values?.show === 'buy_now') {
       query.price_new = { $gt: 0 }
+    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications' && formikMeta?.values?.show !== 'purchased_reports') {
+      query.filter = formikMeta?.values?.show;
+
+      console.log("query.filter", query.filter);
     }
 
     const res = await api.service('cars').find({

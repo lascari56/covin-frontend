@@ -5,33 +5,10 @@ import TrackingView from "./tracking.view"
 import {useLots} from "@hooks/useLots"
 import {useTemplates} from "@hooks/useTemplates"
 
-import {find} from "lodash"
-
-const templates = [
-  {
-    "_id": 1,
-    "filters": {
-      "make": [
-        "ACURA"
-      ]
-    },
-    "name": "ACURA"
-  },
-  {
-    "_id": 2,
-    "filters": {
-      "make": [
-        "ALFA ROMEO",
-      ]
-    },
-    "name": "ALFA ROMEO"
-  }
-]
-
 const showOptions = [
   {label: "All", value: "all"},
-  {label: "Commented lots", value: "commented_lots"},
-  {label: "Hide lots", value: "hide_lots"},
+  {label: "Commented lots", value: "comments"},
+  {label: "Hide lots", value: "hidden"},
   {label: "Purchased reports", value: "purchased_reports"},
 ]
 

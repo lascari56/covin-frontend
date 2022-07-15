@@ -15,7 +15,7 @@ const TrackingView = ({lots, templates}) => {
         <LotsFilters {...templates} />
       } 
     >
-      {!lots?.loading && !lots?.data?.length && <Empty title="Not chosen" description="Choose a template for viewing lots" />}
+      {!lots?.loading && !lots?.data?.length && !templates?.value && <Empty title="Not chosen" description="Choose a template for viewing lots" />}
     </LayoutLots>
   );
 };
