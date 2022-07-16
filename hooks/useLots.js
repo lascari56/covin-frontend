@@ -229,7 +229,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     setLots(_lots)
   }
 
-  const handleSubmitCommentary = ({id, form}) => {
+  const handleSubmitCommentary = ({id, itemId, form}) => {
     const notificationId = toast.loading("Please wait...")
     setLoading(true)
 
@@ -266,10 +266,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
         autoClose: 500, 
       })
 
-      if (itemId) {
-        updateLot({id, data: {hidden: null}})
-      } else {
+      if (!itemId || formikMeta.values.show === "hidden") {
         removeLot({id})
+      } else {
+        updateLot({id, data: {hidden: null}})
       }
 
       setLoading(false)
@@ -295,10 +295,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
         autoClose: 500, 
       })
 
-      if (itemId) {
-        updateLot({id, data: {bookmark: null}})
+      if (formikMeta.values.show === "bookmarks") {
+        removeLot({id})
       } else {
-        updateLot({id, data: {bookmark: res}})
+        updateLot({id, data: {bookmark: itemId ? null : res}})
       }
 
       setLoading(false)
