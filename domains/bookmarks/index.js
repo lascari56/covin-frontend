@@ -1,1 +1,1 @@
-export { default } from "./bookmarks.view";
+export { default } from "./bookmarks.container";

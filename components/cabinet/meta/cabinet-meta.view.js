@@ -37,14 +37,16 @@ const CabinetMetaView = ({className, formik, showOptions}) => {
         onChange={value => formik.setFieldValue('search', value)}
       />
 
-      <S.Select 
-        displayType="left"
-        label="Show"
-        size="big"
-        options={showOptions}
-        value={formik?.values?.show}
-        onChange={value => formik.setFieldValue('show', value)}
-      />
+      {!!showOptions?.length && (
+        <S.Select 
+          displayType="left"
+          label="Show"
+          size="big"
+          options={showOptions}
+          value={formik?.values?.show}
+          onChange={value => formik.setFieldValue('show', value)}
+        />
+      )}
 
       <S.Select
         displayType="left"

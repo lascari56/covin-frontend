@@ -55,7 +55,7 @@ export default function LotsView({
 
                 {!data?.length && !loading && <Empty />}
 
-                {!!data?.length && (
+                {!!data?.length && pageCount > 1 && (
                   <Padination value={page} total={meta?.total} pageCount={pageCount} onChange={onChangePage}>
                     <Button title="Show 10 more" disabled={page >= pageCount} onClick={onPageMore} />
                   </Padination>
