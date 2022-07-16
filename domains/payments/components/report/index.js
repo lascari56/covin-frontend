@@ -1,1 +1,1 @@
-export {default} from './payments-report.view'
+export {default} from './payments-report.container'

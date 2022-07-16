@@ -18,6 +18,7 @@ import ArrowLeftSVG from './images/arrow-left';
 import ArrRightSVG from './images/arr-right';
 import ArrLeftSVG from './images/arr-left';
 import GoogleSVG from './images/google';
+import CloseSVG from './images/close';
 
 export const icons = {
   copy: CopySVG,
@@ -39,5 +40,6 @@ export const icons = {
   "arrow-left": ArrowLeftSVG,
   "arr-left": ArrLeftSVG,
   "arr-right": ArrRightSVG,
-  google: GoogleSVG
+  google: GoogleSVG,
+  close: CloseSVG,
 };

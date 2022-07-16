@@ -21,7 +21,7 @@ export default function CabinetContainer({...props}) {
   const user = useSelector(selectUser);
 
   const isFull = useMemo(() => {
-    const routes = ["/cabinet/lots", "/cabinet/tracking", "/cabinet/templates"]
+    const routes = ["/cabinet/lots", "/cabinet/tracking", "/cabinet/templates", "/cabinet/bookmarks"]
 
     if (routes?.indexOf(router.pathname) !== -1) {
       return false

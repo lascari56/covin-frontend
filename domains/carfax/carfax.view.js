@@ -11,16 +11,19 @@ export default function СarfaxView({reports, page, pageCount, loading, onChange
     <CabinetPage>
       <S.Form onRefreshData={onRefreshData} />
 
-      <CarfaxTable
-        data={reports?.data}
-        // columns={columns}
-        // renderItem={renderItem}
-        page={page}
-        total={reports?.total}
-        pageCount={pageCount}
-        loading={loading}
-        onChangePage={onChangePage}
-      />
+      {!!reports?.data?.length && (
+        <CarfaxTable
+          data={reports?.data}
+          // columns={columns}
+          // renderItem={renderItem}
+          page={page}
+          total={reports?.total}
+          pageCount={pageCount}
+          loading={loading}
+          onChangePage={onChangePage}
+        />
+      )}
+      
     </CabinetPage>
   )
 }

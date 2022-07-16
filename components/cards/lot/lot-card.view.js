@@ -44,13 +44,18 @@ const LotCardView = ({ className, data, type, renderMeta, links, onFull, onSubmi
         <LotCardActions 
           data={data}
           type={type} 
-          onSubmitCommentary={(form) => onSubmitCommentary({id: data?._id, form})}
+          onSubmitCommentary={(form) => onSubmitCommentary({id: data?._id, itemId: data?.comment?._id, form})}
           onSubmitHidden={() => onSubmitHidden({id: data?._id, itemId: data?.hidden?._id})}
           onSubmitBookmarks={() => onSubmitBookmarks({id: data?._id, itemId: data?.bookmark?._id})}
         />
       </S.Body>
 
-      {!!data?.comment?.message && <LotCardCommentary value={data?.comment?.message} />}
+      {!!data?.comment?.message && (
+        <LotCardCommentary 
+          value={data?.comment?.message}
+          onRemove={() => onSubmitCommentary({id: data?._id, itemId: data?.comment?._id, isRemove: true})}
+        />
+      )}
    </S.Container>
   );
 };

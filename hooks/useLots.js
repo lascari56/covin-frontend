@@ -32,13 +32,14 @@ const sortOptions = {
 const baseShowOptions = [
   {label: "All", value: "all"},
   {label: "Buy Now", value: "buy_now"},
-  {label: "Notification lots", value: "notification_lots"},
-  {label: "Commented lots", value: "commented_lots"},
-  {label: "Hide lots", value: "hide_lots"},
+  {label: "Notification lots", value: "notifications"},
+  {label: "Bookmark lots", value: "bookmarks"},
+  {label: "Commented lots", value: "comments"},
+  {label: "Hide lots", value: "hidden"},
   {label: "Purchased reports", value: "purchased_reports"},
 ]
 
-export const useLots = ({isInitialLoad = false, initialSort = "auction_date", showOptions = baseShowOptions } = {}) => {
+export const useLots = ({isInitialLoad = false, initialSort = "auction_date", initialShow = "all", showOptions = baseShowOptions } = {}) => {
   const dispatch = useDispatch();
 
   const [lots, setLots] = useState(null);
@@ -55,7 +56,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
 
   const formikMeta = useFormik({
     initialValues: {
-      show: "all",
+      show: initialShow,
       search: '',
       speed: units.speed,
       sort: initialSort
@@ -74,9 +75,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     }
   }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search, formikMeta?.values?.show]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!didMount.current && isInitialLoad) {
-      handleLoadLots();
+      // handleLoadLots();
+      handleGetLots();
 
       didMount.current = true;
     }
@@ -106,7 +108,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
   };
 
   const handleGetLots = async () => {
-    if (loading) return;
+    // if (loading) return;
 
     let currentPage = page; 
   
@@ -141,6 +143,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
 
     if (formikMeta?.values?.show === 'buy_now') {
       query.price_new = { $gt: 0 }
+    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications' && formikMeta?.values?.show !== 'purchased_reports') {
+      query.filter = formikMeta?.values?.show;
+
+      console.log("query.filter", query.filter);
     }
 
     const res = await api.service('cars').find({
@@ -166,11 +172,11 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
       })
     }
 
-    if (!isInitialLoad) {
-      requestAnimationFrame(() => {
-        setMeta({total: res?.total, limit: res?.limit, filters: res?.filters})
-      })
-    }
+    // if (!isInitialLoad) {
+    requestAnimationFrame(() => {
+      setMeta({total: res?.total, limit: res?.limit, filters: res?.filters})
+    })
+    // }
     
     setLoading(false)
   };
@@ -223,19 +229,32 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
     setLots(_lots)
   }
 
-  const handleSubmitCommentary = ({id, form}) => {
+  const handleSubmitCommentary = ({id, itemId, isRemove, form}) => {
     const notificationId = toast.loading("Please wait...")
+
     setLoading(true)
 
-    api.service("car-comments").create({message: form, car: id}).then((res) => {
+    let entry = itemId ? "patch" : "create"
+    let body = itemId ? [itemId, { message: form }] : [{message: form, car: id}]
+
+    if (isRemove) {
+      entry = "remove"
+      body = [itemId]
+    }
+
+    api.service("car-comments")[entry](...body).then((res) => {
       toast.update(notificationId, { 
-        render: "Successfully added", 
+        render: isRemove ? "Successfully removed" : "Successfully added", 
         type: "success", 
         isLoading: false, 
         autoClose: 500, 
       })
 
-      updateLot({id, data: {comment: res}})
+      if (formikMeta.values.show === "comments" && isRemove) {
+        removeLot({id})
+      } else {
+        updateLot({id, data: {comment: isRemove ? null : res}})
+      }
 
       setLoading(false)
     }).catch((e) => {
@@ -260,10 +279,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
         autoClose: 500, 
       })
 
-      if (itemId) {
-        updateLot({id, data: {hidden: null}})
-      } else {
+      if (!itemId || formikMeta.values.show === "hidden") {
         removeLot({id})
+      } else {
+        updateLot({id, data: {hidden: null}})
       }
 
       setLoading(false)
@@ -289,10 +308,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", sh
         autoClose: 500, 
       })
 
-      if (itemId) {
-        updateLot({id, data: {bookmark: null}})
+      if (formikMeta.values.show === "bookmarks") {
+        removeLot({id})
       } else {
-        updateLot({id, data: {bookmark: res}})
+        updateLot({id, data: {bookmark: itemId ? null : res}})
       }
 
       setLoading(false)

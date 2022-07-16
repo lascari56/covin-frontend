@@ -1,10 +1,19 @@
 import React from 'react'
 
-import { CabinetPage } from "@components/cabinet";
+// import {Empty} from "@components"
 
-export default function BookmarksView() {
+import LayoutLots from "@layouts/lots"
+
+// import TemplatesFilters from "./components/filters"
+
+export default function BookmarksView({templates, lots}) {
   return (
-    <CabinetPage>
-    </CabinetPage>
+    <LayoutLots 
+      {...lots}
+      LeftComponent={
+        <p></p>
+        // <TemplatesFilters {...templates} />
+      }
+    />
   )
 }

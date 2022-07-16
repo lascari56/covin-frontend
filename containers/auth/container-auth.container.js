@@ -14,6 +14,7 @@ const protectedRoutes = [
   "/cabinet/sticker",
   "/cabinet/lots",
   "/cabinet/tracking",
+  "/cabinet/bookmarks",
   "/cabinet/tracking/create",
   "/cabinet/templates",
   "/cabinet/templates/create",
