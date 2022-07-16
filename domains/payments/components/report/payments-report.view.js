@@ -8,12 +8,12 @@ import PaymentsReportWarning from './components/warning'
 
 import * as S from './payments-report.styled'
 
-export default function PaymentsReportView({ className }) {
+export default function PaymentsReportView({ className, formik, data }) {
   return (
     <CabinetCard className={className} title="Buy Report" icon="/images/payments2.svg">
       <PaymentsReportAmount/>
 
-      <PaymentsReportForm/>
+      <PaymentsReportForm formik={formik} />
 
       <PaymentsReportWarning/>
 
