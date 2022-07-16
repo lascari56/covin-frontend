@@ -229,19 +229,32 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     setLots(_lots)
   }
 
-  const handleSubmitCommentary = ({id, itemId, form}) => {
+  const handleSubmitCommentary = ({id, itemId, isRemove, form}) => {
     const notificationId = toast.loading("Please wait...")
+
     setLoading(true)
 
-    api.service("car-comments").create({message: form, car: id}).then((res) => {
+    let entry = itemId ? "patch" : "create"
+    let body = itemId ? [itemId, { message: form }] : [{message: form, car: id}]
+
+    if (isRemove) {
+      entry = "remove"
+      body = [itemId]
+    }
+
+    api.service("car-comments")[entry](...body).then((res) => {
       toast.update(notificationId, { 
-        render: "Successfully added", 
+        render: isRemove ? "Successfully removed" : "Successfully added", 
         type: "success", 
         isLoading: false, 
         autoClose: 500, 
       })
 
-      updateLot({id, data: {comment: res}})
+      if (formikMeta.values.show === "comments" && isRemove) {
+        removeLot({id})
+      } else {
+        updateLot({id, data: {comment: isRemove ? null : res}})
+      }
 
       setLoading(false)
     }).catch((e) => {
