@@ -4,7 +4,7 @@ import * as S from './payments.styled'
 
 import PaymentsInfo from './components/info'
 
-const LotsView = () => {
+const LotsView = ({data, page, pageCount, loading, onChangePage}) => {
   return (
     <S.Container>
       <S.Content>
@@ -15,7 +15,14 @@ const LotsView = () => {
 
       <PaymentsInfo />
 
-      <S.Table />
+      <S.Table
+        data={data.data}
+        page={page}
+        total={data?.total}
+        pageCount={pageCount}
+        loading={loading}
+        onChangePage={onChangePage}
+      />
     </S.Container>
   );
 };

@@ -7,7 +7,7 @@ import LayoutCabinet from "../../layouts/cabinet"
 
 function AutocheckScreen(props) {
   return (
-    <Сarfax {...props} />
+    <Сarfax {...props} type="autocheck" />
   );
 }
 

@@ -5,11 +5,11 @@ import {CabinetCard} from "@components/cabinet"
 
 import * as S from "./carfax-form.styled"
 
-const CarfaxFormView = ({className, formik, loading}) => {
+const CarfaxFormView = ({className, formik, title, loading, type, user}) => {
   return (
     <CabinetCard 
       className={className} 
-      title="Buy Carfax" 
+      title={`Buy ${title}`} 
       IconComponent={<Icon size={26} name="carfax" />}
       RightComponent={<S.Logo src="/images/carfax.jpg" />}
     >
@@ -22,7 +22,7 @@ const CarfaxFormView = ({className, formik, loading}) => {
           onChange={value => formik.setFieldValue('vin', value)}
         />
 
-        <Button title="BUY for 0.1$" disabled={loading} onClick={formik.handleSubmit} />
+        <Button title={`BUY for ${user?.price?.carfax || 1.5} $`} disabled={loading} onClick={formik.handleSubmit} />
       </S.Container>
     </CabinetCard>
   );

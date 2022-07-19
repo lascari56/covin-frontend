@@ -1,1 +1,1 @@
-export {default} from "./payments-table-row.view"
+export {default} from "./payments-table-row.container"

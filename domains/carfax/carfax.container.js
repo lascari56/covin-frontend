@@ -1,10 +1,15 @@
 import React, {useState, useEffect, useMemo} from 'react';
 
+import {useSelector} from 'react-redux';
+import {selectUser} from '@store/authReducers/authReducer.selector';
+
 import {api} from '../../utils/api.util';
 
 import CarfaxView from './carfax.view';
 
 export default function CarfaxContainer({navigation, ...props}) {
+  const user = useSelector(selectUser);
+
   const [reports, setReports] = useState({});
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -24,18 +29,19 @@ export default function CarfaxContainer({navigation, ...props}) {
 
     const res = await api.service('report').find({
       query: {
+        source_group: props.type,
         $sort: {
           date: -1
         },
         $skip: (page - 1) * 20,
         $limit: 20,
-        vin: {
-          $search: search,
-        }
+        // vin: {
+        //   $search: search,
+        // }
       }
     });
 
-    console.log("res", res);
+    // console.log("res", res);
 
     setReports({...res})
     setLoading(false)
@@ -48,6 +54,7 @@ export default function CarfaxContainer({navigation, ...props}) {
   return (
     <CarfaxView
       {...props}
+      user={user}
       reports={reports}
       page={page}
       pageCount={pageCount}

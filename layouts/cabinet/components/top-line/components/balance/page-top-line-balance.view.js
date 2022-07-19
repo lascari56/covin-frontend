@@ -11,7 +11,7 @@ export default function PageTopLineBalanceView({value}) {
 
       <S.Title>Your balance:</S.Title>
 
-      <S.Balance>{value} $</S.Balance>
+      <S.Balance>{value.toFixed(2)} $</S.Balance>
 
       <S.Add>
         <Icon name="plus" size={14} />  
