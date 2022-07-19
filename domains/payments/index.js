@@ -1,1 +1,1 @@
-export { default } from "./payments.view";
+export { default } from "./payments.container";

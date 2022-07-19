@@ -6,7 +6,7 @@ import LayoutCabinet from "../../layouts/cabinet"
 
 function СarfaxScreen(props) {
   return (
-    <Сarfax {...props} />
+    <Сarfax {...props} type="carfax" />
   );
 }
 

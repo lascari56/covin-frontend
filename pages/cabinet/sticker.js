@@ -7,7 +7,7 @@ import LayoutCabinet from "../../layouts/cabinet"
 
 function StickerScreen(props) {
   return (
-    <Сarfax {...props} />
+    <Сarfax {...props} type="sticker" />
   );
 }
 

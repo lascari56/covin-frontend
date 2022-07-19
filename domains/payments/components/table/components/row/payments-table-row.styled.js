@@ -24,7 +24,15 @@ export const Amount = styled.span`
 `
 
 export const Status = styled.span`
-  color: #FFAF36;
+  ${props => (props.status === "Cancelled" && `
+    color: #FF0E0E;
+  `)};
+
+  ${props => (props.status === "Success" && `color: #2DC946;`)};
+  ${props => (props.status === "In processed") && `color: #FFAF36;`};
+  /* color: #FFAF36;
+
+  ${(props => props.status === "Cancelled")}  */
 `
 
 export const Info = styled.span`

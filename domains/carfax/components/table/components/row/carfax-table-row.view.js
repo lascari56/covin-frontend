@@ -7,7 +7,7 @@ import {TableLink} from "@components/table"
 
 import * as S from "./carfax-table-row.styled"
 
-const CarfaxTableRowView = ({data, onView}) => {
+const CarfaxTableRowView = ({data, type, onView}) => {
   return (
     <tr>
       <td>
@@ -28,7 +28,7 @@ const CarfaxTableRowView = ({data, onView}) => {
         </S.Item>
       </td>}
 
-      {!!data?.bonusSticker && <td>
+      {type === "carfax" && !!data?.bonusSticker && <td>
         <S.Item onClick={() => onView(data?.bonusSticker)}>
           <TableLink>Sticker</TableLink>
         </S.Item>

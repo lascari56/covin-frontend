@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 
 import CarfaxFormView from "./carfax-form.view"
 
@@ -8,13 +8,20 @@ import * as yup from 'yup';
 
 import { toast } from 'react-toastify';
 
+import {useDispatch} from 'react-redux';
+
+import {getUser} from '@store/authReducers/authReducer.thunk';
+
 import {api} from '@utils/api.util';
+import type from 'domains/payments/components/subscription/components/type';
 
 const validationSchema = yup.object().shape({
   vin: yup.string().min(17).max(17).required(),
 });
 
 const CarfaxFormContainer = ({...props}) => {
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -27,7 +34,13 @@ const CarfaxFormContainer = ({...props}) => {
     },
   });
 
+  const title = useMemo(() => {
+    return props.type.slice(0, 1).toUpperCase() + props.type.slice(1);
+  }, [props.type])
+
   const handleSend = ({vin}) => {
+    // if (props.user.balance)
+
     setLoading(true);
 
     const notificationId = toast.loading("Please wait...")
@@ -36,11 +49,15 @@ const CarfaxFormContainer = ({...props}) => {
 
     api.service('report').create({
       vin,
-      source_group: 'carfax',
+      source_group: props.type,
     }).then(async (res) => {
       setLoading(false)
 
+      formik.resetForm()
+
       props.onRefreshData();
+
+      await dispatch(getUser())
 
       toast.update(notificationId, { 
         render: "Carfax successfully purchased", 
@@ -59,7 +76,7 @@ const CarfaxFormContainer = ({...props}) => {
   };
 
   return (
-    <CarfaxFormView {...props} formik={formik} loading={loading} />
+    <CarfaxFormView {...props} title={title} formik={formik} loading={loading} />
   );
 }
 

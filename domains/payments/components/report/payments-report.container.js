@@ -95,7 +95,7 @@ export default function PaymentsReportContainer({navigation, ...props}) {
       dataForm.submit()
 
       toast.update(notificationId, { 
-        render: "Carfax successfully purchased", 
+        // render: "Carfax successfully purchased", 
         type: "success", 
         isLoading: false , 
         autoClose: 500, 
