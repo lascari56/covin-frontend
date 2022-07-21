@@ -77,10 +77,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
   useEffect(() => {
     if (!didMount.current && isInitialLoad) {
-      // handleLoadLots();
-      handleGetLots();
-
-      didMount.current = true;
+      handleLoadLots();
     }
   }, [isInitialLoad]);
 
@@ -174,7 +171,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     // if (!isInitialLoad) {
     requestAnimationFrame(() => {
-      setMeta({total: res?.total, limit: res?.limit, filters: res?.filters})
+      setMeta({...meta, total: res?.total, limit: res?.limit})
     })
     // }
     
@@ -200,6 +197,8 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     })
 
     setLoading(false)
+
+    didMount.current = true;
   };
   
   const handlePageMore = () => {
