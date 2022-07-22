@@ -140,7 +140,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     if (formikMeta?.values?.show === 'buy_now') {
       query.price_new = { $gt: 0 }
-    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications' && formikMeta?.values?.show !== 'purchased_reports') {
+    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications') {
       query.filter = formikMeta?.values?.show;
 
       console.log("query.filter", query.filter);
@@ -243,7 +243,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     api.service("car-comments")[entry](...body).then((res) => {
       toast.update(notificationId, { 
-        render: isRemove ? "Successfully removed" : "Successfully added", 
+        render: isRemove ? "Successfully removed" : itemId ? "Successfully updated" : "Successfully added", 
         type: "success", 
         isLoading: false, 
         autoClose: 500, 
@@ -272,10 +272,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     api.service("car-hidden")[itemId ? "remove" : 'create'](itemId ? itemId : {car: id}).then((res) => {
       toast.update(notificationId, { 
-        render: itemId ? "Successfully removed" : "Successfully added", 
+        render: itemId ? "Successfully removed" : "Successfully hidden", 
         type: "success", 
         isLoading: false, 
-        autoClose: 500, 
+        autoClose: 3000, 
       })
 
       if (!itemId || formikMeta.values.show === "hidden") {
