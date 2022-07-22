@@ -31,6 +31,10 @@ export default function CabinetContainer({...props}) {
   }, [router.pathname])
 
   // useEffect(() => {
+  //   console.log("122")
+  // }, [])
+
+  // useEffect(() => {
   //   if (!user) {
   //     router.push('/')
   //   }

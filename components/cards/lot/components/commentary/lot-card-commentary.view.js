@@ -4,13 +4,17 @@ import {Icon} from "@components"
 
 import * as S from './lot-card-commentary.styled'
 
-export default function LotCardCommentaryView({value, onRemove}) {
+export default function LotCardCommentaryView({value, onChangeValue, onRemove, onSubmitCommentary}) {
   return (
     <S.Container>
       <S.Content>
-        <S.Title>Commentary</S.Title>
+        <S.Title>Comment:</S.Title>
 
-        <S.Description>{value}</S.Description>
+        <S.Input
+          value={value}
+          onChange={(data) => onChangeValue(data.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && onSubmitCommentary(value)}
+        />
       </S.Content>
 
       <S.Close onClick={onRemove}>

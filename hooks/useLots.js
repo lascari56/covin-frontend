@@ -51,6 +51,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
   const [fulLotId, setFulLotId] = useState(null)
 
   const didMount = useRef(false);
+  const didMountFull = useRef(false);
 
   const units = useSelector(selectUnits);
 
@@ -71,18 +72,20 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
   useEffect(() => {
     if (didMount.current) {
+
+      console.log("!!!!!");
       handleGetLots();
     }
   }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search, formikMeta?.values?.show]);
 
   useEffect(() => {
-    if (!didMount.current && isInitialLoad) {
-      // handleLoadLots();
-      handleGetLots();
+    if (!didMountFull.current && isInitialLoad) {
+      console.log("111111111");
+      didMountFull.current = true;
 
-      didMount.current = true;
+      handleLoadLots();
     }
-  }, [isInitialLoad]);
+  }, []);
 
   useEffect(() => {
     if (formikMeta.values.speed !== units.speed) {
@@ -143,7 +146,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     if (formikMeta?.values?.show === 'buy_now') {
       query.price_new = { $gt: 0 }
-    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications' && formikMeta?.values?.show !== 'purchased_reports') {
+    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications') {
       query.filter = formikMeta?.values?.show;
 
       console.log("query.filter", query.filter);
@@ -174,7 +177,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     // if (!isInitialLoad) {
     requestAnimationFrame(() => {
-      setMeta({total: res?.total, limit: res?.limit, filters: res?.filters})
+      setMeta({...meta, total: res?.total, limit: res?.limit})
     })
     // }
     
@@ -200,6 +203,8 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     })
 
     setLoading(false)
+
+    didMount.current = true;
   };
   
   const handlePageMore = () => {
@@ -244,7 +249,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     api.service("car-comments")[entry](...body).then((res) => {
       toast.update(notificationId, { 
-        render: isRemove ? "Successfully removed" : "Successfully added", 
+        render: isRemove ? "Successfully removed" : itemId ? "Successfully updated" : "Successfully added", 
         type: "success", 
         isLoading: false, 
         autoClose: 500, 
@@ -273,10 +278,10 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     api.service("car-hidden")[itemId ? "remove" : 'create'](itemId ? itemId : {car: id}).then((res) => {
       toast.update(notificationId, { 
-        render: itemId ? "Successfully removed" : "Successfully added", 
+        render: itemId ? "Successfully removed" : "Successfully hidden", 
         type: "success", 
         isLoading: false, 
-        autoClose: 500, 
+        autoClose: 3000, 
       })
 
       if (!itemId || formikMeta.values.show === "hidden") {

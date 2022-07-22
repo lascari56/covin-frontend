@@ -16,7 +16,9 @@ const LotCommentaryView = ({formik, onClose}) => {
         value={formik.values.comment}
         placeholder="Enter commentary"
         isValid={!formik.touched.comment || !formik.errors.comment}
+        autoFocus
         onChange={value => formik.setFieldValue('comment', value)}
+        onKeyDown={(e) => e.key === "Enter" && formik.handleSubmit()}
       />
     </Popup>
   );

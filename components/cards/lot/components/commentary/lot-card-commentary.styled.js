@@ -5,7 +5,7 @@ import { responsiveSize } from "@utils/responsive";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  padding: ${responsiveSize(24)} ${responsiveSize(20)};
+  padding: 0 ${responsiveSize(20)};
 
   background-color: #FFF8E6;
   border-radius: 0px 0px ${responsiveSize(3)} ${responsiveSize(3)};
@@ -14,10 +14,15 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   flex: 1;
+
+  display: flex;
+  align-items: center;
+  /* flex-direction: row; */
 `
 
 export const Title = styled.p`
-  margin-bottom: ${responsiveSize(15)};
+  margin-right ${responsiveSize(10)};
+  /* margin-bottom: ${responsiveSize(15)}; */
 
   font-size: ${responsiveSize(13)};
   line-height: ${responsiveSize(15)};
@@ -25,7 +30,13 @@ export const Title = styled.p`
   color: #959090;
 `
 
-export const Description = styled.p`
+export const Input = styled.input`
+  padding: ${responsiveSize(5)} 0;
+
+  background-color: #FFF8E6;
+
+  flex: 1;
+
   font-size: ${responsiveSize(14)};
   line-height: ${responsiveSize(16)};
   letter-spacing: 0.02em;

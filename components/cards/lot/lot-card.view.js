@@ -53,6 +53,7 @@ const LotCardView = ({ className, data, type, renderMeta, links, onFull, onSubmi
       {!!data?.comment?.message && (
         <LotCardCommentary 
           value={data?.comment?.message}
+          onSubmitCommentary={(form) => onSubmitCommentary({id: data?._id, itemId: data?.comment?._id, form})}
           onRemove={() => onSubmitCommentary({id: data?._id, itemId: data?.comment?._id, isRemove: true})}
         />
       )}
