@@ -77,6 +77,9 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
   useEffect(() => {
     if (!didMount.current && isInitialLoad) {
+      didMount.current = true;
+
+      console.log("111111111");
       handleLoadLots();
     }
   }, [isInitialLoad]);
@@ -99,9 +102,9 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     setPage(1);
     setFilters(value);
 
-    if (!didMount.current) {
-      didMount.current = true;
-    }
+    // if (!didMount.current) {
+    //   didMount.current = true;
+    // }
   };
 
   const handleGetLots = async () => {
@@ -198,7 +201,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     setLoading(false)
 
-    didMount.current = true;
+    // didMount.current = true;
   };
   
   const handlePageMore = () => {
