@@ -6,7 +6,7 @@ import CarfaxTableRow from "./components/row"
 
 import * as S from './carfax-table.styled'
 
-const CarfaxTableView = ({type, data, page, total, pageCount, onChangePage}) => {
+const CarfaxTableView = ({type, data, page, total, pageCount, onChangePage, onSearch}) => {
   const renderItem = (item) => <CarfaxTableRow data={item} key={item?.id} type={type} />
 
   const columns = useMemo(() => {
@@ -27,7 +27,7 @@ const CarfaxTableView = ({type, data, page, total, pageCount, onChangePage}) => 
         total={total}
         pageCount={pageCount}
         onChangePage={onChangePage}
-        onSearch={() => {}}
+        onSearch={onSearch}
       />
     </S.Container>
   );

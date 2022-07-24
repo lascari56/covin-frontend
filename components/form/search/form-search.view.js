@@ -17,7 +17,13 @@ function FormSearchView({className, size, autofocus, isIcon, onChange, ...props}
     <S.Container className={className} size={size}>
       {isIcon && <S.Icon src="/images/search.svg" />}
 
-      <S.Inner {...props} ref={innerRef} placeholder="Search..." isIcon={isIcon} onChange={(e) => onChange(e.target.value)} />
+      <S.Inner
+        {...props}
+        ref={innerRef}
+        placeholder="Search..."
+        isIcon={isIcon}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </S.Container>
   )
 }
