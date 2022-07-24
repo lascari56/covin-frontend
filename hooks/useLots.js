@@ -51,6 +51,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
   const [fulLotId, setFulLotId] = useState(null)
 
   const didMount = useRef(false);
+  const didMountFull = useRef(false);
 
   const units = useSelector(selectUnits);
 
@@ -71,15 +72,20 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
   useEffect(() => {
     if (didMount.current) {
+
+      console.log("!!!!!");
       handleGetLots();
     }
   }, [filters, page, formikMeta?.values?.sort, formikMeta?.values?.search, formikMeta?.values?.show]);
 
   useEffect(() => {
-    if (!didMount.current && isInitialLoad) {
+    if (!didMountFull.current && isInitialLoad) {
+      console.log("111111111");
+      didMountFull.current = true;
+
       handleLoadLots();
     }
-  }, [isInitialLoad]);
+  }, []);
 
   useEffect(() => {
     if (formikMeta.values.speed !== units.speed) {
