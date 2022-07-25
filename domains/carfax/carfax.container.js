@@ -24,10 +24,7 @@ export default function CarfaxContainer({navigation, ...props}) {
   }, [page, search]);
 
   const handleLoadLogs = async () => {
-    console.log("page", page);
     setLoading(true)
-
-    console.log("search11". search);
 
     let query = {
       source_group: props.type,
@@ -42,13 +39,9 @@ export default function CarfaxContainer({navigation, ...props}) {
       $search: search
     }
 
-    console.log("query", query);
-
     const res = await api.service('report').find({
       query
     });
-
-    // console.log("res", res);
 
     setReports({...res})
     setLoading(false)

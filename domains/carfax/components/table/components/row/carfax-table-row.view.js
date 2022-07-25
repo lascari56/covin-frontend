@@ -7,7 +7,7 @@ import {TableLink} from "@components/table"
 
 import * as S from "./carfax-table-row.styled"
 
-const CarfaxTableRowView = ({data, type, onView}) => {
+const CarfaxTableRowView = ({data, type, status, onView}) => {
   return (
     <tr>
       <td>
@@ -19,6 +19,12 @@ const CarfaxTableRowView = ({data, type, onView}) => {
       <td>
         <S.Item>
           {data?.vin}
+        </S.Item>
+      </td>
+
+      <td>
+        <S.Item>
+          <S.Status status={data?.status}>{data?.status}</S.Status>
         </S.Item>
       </td>
 
