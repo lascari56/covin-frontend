@@ -119,3 +119,8 @@ input {
     outline: none;
   }
 }
+
+.Toastify__toast-container--top-center {
+  top: 50% !important;
+  transform: translateX(-50%) translateY(-50%);
+}

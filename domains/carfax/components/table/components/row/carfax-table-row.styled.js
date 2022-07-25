@@ -14,3 +14,13 @@ export const Date = styled.span`
   line-height: 150%;
   color: #7C8DB5;
 `
+
+export const Status = styled.span`
+  ${props => (props.status === "error") && `
+    color: #FF0E0E;
+    font-weight: 600;
+  `}
+
+  ${props => (props.status === "Success" || props.status === "SUCCESS") && `color: #2DC946;`}
+  ${props => (props.status === "pending") && `color: #FFAF36;`}
+`

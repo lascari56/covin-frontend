@@ -24,24 +24,24 @@ export default function CarfaxContainer({navigation, ...props}) {
   }, [page, search]);
 
   const handleLoadLogs = async () => {
-    console.log("page", page);
     setLoading(true)
 
-    const res = await api.service('report').find({
-      query: {
-        source_group: props.type,
-        $sort: {
-          date: -1
-        },
-        $skip: (page - 1) * 20,
-        $limit: 20,
-        // vin: {
-        //   $search: search,
-        // }
-      }
-    });
+    let query = {
+      source_group: props.type,
+      $sort: {
+        date: -1
+      },
+      $skip: (page - 1) * 20,
+      $limit: 20,
+    }
 
-    // console.log("res", res);
+    if (search) query.vin = {
+      $search: search
+    }
+
+    const res = await api.service('report').find({
+      query
+    });
 
     setReports({...res})
     setLoading(false)
@@ -49,6 +49,11 @@ export default function CarfaxContainer({navigation, ...props}) {
   
   const handleChangePage = (value) => {
     setPage(value)
+  }
+
+  const handleChangeSearch = (value) => {
+    setPage(1);
+    setSearch(value);
   }
 
   return (
@@ -59,8 +64,9 @@ export default function CarfaxContainer({navigation, ...props}) {
       page={page}
       pageCount={pageCount}
       loading={loading}
+      search={search}
       onChangePage={handleChangePage}
-      onChangeSearch={setSearch}
+      onSearch={handleChangeSearch}
       onRefreshData={handleLoadLogs}
     />
   );

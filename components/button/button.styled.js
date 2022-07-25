@@ -60,6 +60,10 @@ export const Container = styled.div`
     background: #E3EAFF;
   `}
 
+  ${props => props.theme === "red" && `
+    background: #E03B4B;
+  `}
+
   ${props => props.disabled && `opacity: 0.5;`}
 
   ${props => !props.disabled && `
@@ -80,7 +84,7 @@ export const Title = styled.span`
 
   color: #216DD1;
 
-  ${props => (props.theme === "green" || props.theme === "blue") && `
+  ${props => (props.theme === "green" || props.theme === "blue" || props.theme === "red") && `
     color: #ffffff;
   `}
 
