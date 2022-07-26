@@ -1,1 +1,1 @@
-export {default} from "./table-search.view"
+export {default} from "./table-search.container"

@@ -6,13 +6,13 @@ import CarfaxTableRow from "./components/row"
 
 import * as S from './carfax-table.styled'
 
-const CarfaxTableView = ({type, data, page, total, pageCount, onChangePage}) => {
+const CarfaxTableView = ({type, data, page, total, pageCount, onChangePage, onSearch}) => {
   const renderItem = (item) => <CarfaxTableRow data={item} key={item?.id} type={type} />
 
   const columns = useMemo(() => {
-    let res = [{label: "Date"}, {label: "VIN"}, {label: "Report"}];
+    let res = [{label: "Date"}, {label: "VIN"}, {label: "Status"}, {label: "Report"}];
 
-    if (type === "carfax") res.push({label: "Free Sticker"});
+    if (type === "carfax") res.push({label: "Sticker"});
 
     return res;
   }, [type])
@@ -27,7 +27,7 @@ const CarfaxTableView = ({type, data, page, total, pageCount, onChangePage}) => 
         total={total}
         pageCount={pageCount}
         onChangePage={onChangePage}
-        onSearch={() => {}}
+        onSearch={onSearch}
       />
     </S.Container>
   );

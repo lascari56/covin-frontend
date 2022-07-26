@@ -6,12 +6,12 @@ import CarfaxTable from "./components/table"
 
 import * as S from "./carfax.styled"
 
-export default function СarfaxView({type, user, reports, page, pageCount, loading, onChangePage, onRefreshData}) {
+export default function СarfaxView({type, user, reports, page, pageCount, loading, search, onChangePage, onRefreshData, onSearch}) {
   return (
     <CabinetPage>
       <S.Form type={type} user={user} onRefreshData={onRefreshData} />
 
-      {!!reports?.data?.length && (
+      {(!!reports?.data?.length || (!reports?.data?.length && search)) && (
         <CarfaxTable 
           type={type}
           data={reports?.data}
@@ -22,6 +22,7 @@ export default function СarfaxView({type, user, reports, page, pageCount, loadi
           pageCount={pageCount}
           loading={loading}
           onChangePage={onChangePage}
+          onSearch={onSearch}
         />
       )}
       

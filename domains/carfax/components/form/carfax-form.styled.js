@@ -7,6 +7,10 @@ import { responsiveSize } from "@utils/responsive";
 export const Container = styled.div`
   display: flex;
   align-items: center;
+
+  .Toastify__toast-container--top-center {
+    top: 50%;
+  }
 `
 
 export const Input = styled(FormInput)`
