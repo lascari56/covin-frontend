@@ -24,7 +24,7 @@ const CarfaxTableRowView = ({data, type, status, onView}) => {
 
       <td>
         <S.Item>
-          <S.Status status={data?.status}>{data?.status}</S.Status>
+          <S.Status status={data?.status}>{status}</S.Status>
         </S.Item>
       </td>
 
