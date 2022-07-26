@@ -10,7 +10,7 @@ export default function LotCardHeaderView({data, date, onFull}) {
       <S.Title isHidden={!!data?.hidden}>
         {data?.title}
 
-        <S.Link onClick={onFull}>(view all photo)</S.Link>
+        <S.Link onClick={onFull}>(HD Photo)</S.Link>
 
         {!!data?.hidden && <S.Hide>(hide)</S.Hide>}
       </S.Title>
