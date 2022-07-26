@@ -23,9 +23,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: ${responsiveSize(20)};
-
-  border-bottom: 1px solid #DFE7F0;
+  padding-bottom: ${responsiveSize(5)};
 `
 
 export const Title = styled.h6`
@@ -37,15 +35,11 @@ export const Title = styled.h6`
 export const Footer = styled.div`
   display: flex;
   align-items: center;
-  padding-top: ${responsiveSize(15)};
+  justify-content: flex-end;
 `
 
 export const Icon = styled(FiltersCreateIcon)`
   &:not(:last-child) {
     margin-right: ${responsiveSize(4)};
-  }
-
-  &:last-child {
-    margin-left: auto;
   }
 `
