@@ -5,13 +5,19 @@ import {CabinetCard} from "@components/cabinet"
 
 import * as S from "./carfax-form.styled"
 
+const images = {
+  "carfax": "/images/carfax.jpg",
+  "autocheck": "/images/autocheck.png",
+  "sticker": "/images/sticker.png"
+}
+
 const CarfaxFormView = ({className, formik, title, loading, type, user}) => {
   return (
     <CabinetCard 
       className={className} 
       title={`Buy ${title}`} 
-      IconComponent={<Icon size={26} name="carfax" />}
-      RightComponent={<S.Logo src="/images/carfax.jpg" />}
+      IconComponent={<Icon size={26} name={type} />}
+      RightComponent={<S.Logo type={type} src={images[type]} />}
     >
       <S.Container>
         <S.Input
