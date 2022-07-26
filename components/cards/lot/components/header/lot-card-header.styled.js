@@ -1,6 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes} from "styled-components";
 
 import { responsiveSize } from "@utils/responsive";
+
+const breatheAnimation = keyframes`
+ 0% { opacity: 1 }
+ 50% { opacity: 0.5 }
+ 100% { opacity: 1 }
+`
+
 
 export const Container = styled.div`
   padding: ${responsiveSize(9)} ${responsiveSize(20)};
@@ -92,6 +99,14 @@ export const Date = styled.span`
   letter-spacing: 0.02em;
 
   color: ${props => props.theme === "green" ? "green" : "#7C8DB5"};
+
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: ${breatheAnimation};
+
+  ${props => props.theme !== "green" && `
+    animation-name: none;
+  `}
 `
 
 export const CalendarIcon = styled.img`
