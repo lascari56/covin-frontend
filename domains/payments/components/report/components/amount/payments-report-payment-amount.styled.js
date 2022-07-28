@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
+  max-width: 50%;
+  
   display: flex;
   align-items: flex-end;
 `

@@ -7,6 +7,7 @@ import { responsiveSize } from "@utils/responsive";
 
 export const Container = styled.div`
   margin-top: ${responsiveSize(20)};
+  max-width: 50%;
 
   display: flex;
 `
