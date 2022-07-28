@@ -19,23 +19,28 @@ const timeOptions = [
   {label: "40 min", value: 40},
 ]
 
-const LotNoticationView = ({onClose}) => {
+const LotNoticationView = ({formik, onClose}) => {
   return (
     <Popup 
       title="Send notification if:"
       paddingHorizontal={5.5}
-      FooterComponent={<Button title="Save" size="small" />}
+      FooterComponent={<Button title="Save" size="small" onClick={formik.handleSubmit} />}
       onClose={onClose}
     >
-      <FormCheckbox value={["auction"]} options={appearOptions} onChange={() => {}} />
+      <FormCheckbox
+        value={formik.values.type}
+        options={appearOptions}
+        onChange={value => formik.setFieldValue('type', value)}
+      />
 
       <S.Content>
         <FormCheckboxItem
           label="before the auction start"
           LeftComponent={
             <FormSelect
+              value={formik.values.time}
               options={timeOptions}
-              onChange={() => {}}
+              onChange={value => formik.setFieldValue('time', value)}
             />
           }
         />

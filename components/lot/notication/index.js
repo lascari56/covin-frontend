@@ -1,1 +1,1 @@
-export {default} from "./lot-notication.view"
+export {default} from "./lot-notication.container"

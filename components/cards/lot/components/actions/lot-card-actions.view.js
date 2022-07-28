@@ -14,7 +14,7 @@ import HideActiveSVG from "./images/hide-active"
 import NotificationSVG from "./images/notification"
 import NotificationActiveSVG from "./images/notification-active"
 
-export default function LotCardActionsView({data, showNotification, showCommentary, type, onChangeShowNotification, onChangeShowCommentary, onSubmitCommentary, onSubmitHidden, onSubmitBookmarks}) {
+export default function LotCardActionsView({data, showNotification, showCommentary, type, onChangeShowNotification, onChangeShowCommentary, onSubmitNotification, onSubmitCommentary, onSubmitHidden, onSubmitBookmarks}) {
   return (
     <S.Container>
       <S.Item >
@@ -41,7 +41,7 @@ export default function LotCardActionsView({data, showNotification, showCommenta
 
           {!!showNotification && (
             <S.Popup position="bottom">
-              <LotNotification onClose={() => onChangeShowNotification(false)} />  
+              <LotNotification onClose={() => onChangeShowNotification(false)} onSubmit={onSubmitNotification} />  
             </S.Popup>
           )}
         </S.Item>

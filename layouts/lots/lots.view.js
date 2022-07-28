@@ -21,6 +21,7 @@ export default function LotsView({
     onChangePage, 
     onPageMore, 
     onChangeFulLotId,
+    onSubmitNotification,
     onSubmitCommentary,
     onSubmitHidden,
     onSubmitBookmarks
@@ -47,6 +48,7 @@ export default function LotsView({
                     type={cardType}
                     key={item?._id}
                     onFull={() => onChangeFulLotId(item?._id)}
+                    onSubmitNotification={onSubmitNotification}
                     onSubmitCommentary={onSubmitCommentary}
                     onSubmitHidden={onSubmitHidden}
                     onSubmitBookmarks={onSubmitBookmarks}

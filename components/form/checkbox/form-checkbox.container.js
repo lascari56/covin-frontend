@@ -5,6 +5,8 @@ import FormCheckboxView from "./form-checkbox.view"
 const FormCheckboxContainer = ({value, onChange, ...props}) => {
 
   const values = useMemo(() => {
+    if (typeof value !== 'object') return;
+
     const res = {};
     
     console.log(value)
@@ -15,6 +17,12 @@ const FormCheckboxContainer = ({value, onChange, ...props}) => {
   }, [value])
 
   const handleChange = (item) => {
+    if (typeof value !== 'object') {
+      onChange(item);
+
+      return;
+    }
+
     const _value = [...value]
 
     const index = _value?.indexOf(item)
@@ -29,7 +37,7 @@ const FormCheckboxContainer = ({value, onChange, ...props}) => {
   }
 
   return (
-    <FormCheckboxView {...props} values={values} onChange={handleChange} />
+    <FormCheckboxView {...props} values={values} value={value} onChange={handleChange} />
   );
 }
 

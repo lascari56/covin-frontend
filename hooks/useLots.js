@@ -146,7 +146,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
 
     if (formikMeta?.values?.show === 'buy_now') {
       query.price_new = { $gt: 0 }
-    } else if (formikMeta?.values?.show !== 'all' && formikMeta?.values?.show !== 'notifications') {
+    } else if (formikMeta?.values?.show !== 'all') {
       query.filter = formikMeta?.values?.show;
 
       console.log("query.filter", query.filter);
@@ -232,6 +232,44 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     _lots?.splice(index, 1)
    
     setLots(_lots)
+  }
+
+  const handleSubmitNotification = ({id, itemId, isRemove, form}) => {
+    const notificationId = toast.loading("Please wait...")
+
+    setLoading(true)
+
+    let entry = itemId ? "patch" : "create"
+    let body = itemId ? [itemId, form] : [{...form, car: id}]
+
+    if (isRemove) {
+      entry = "remove"
+      body = [itemId]
+    }
+
+    api.service("car-notifications")[entry](...body).then((res) => {
+      toast.update(notificationId, { 
+        render: isRemove ? "Successfully removed" : itemId ? "Successfully updated" : "Successfully added", 
+        type: "success", 
+        isLoading: false, 
+        autoClose: 500, 
+      })
+
+      // if (formikMeta.values.show === "comments" && isRemove) {
+      //   removeLot({id})
+      // } else {
+      //   updateLot({id, data: {comment: isRemove ? null : res}})
+      // }
+
+      setLoading(false)
+    }).catch((e) => {
+      console.log("commentaryError", e.code);
+      let message = "Something went wrong, please try again!";
+
+      setLoading(false)
+
+      toast.update(notificationId, { render: message, type: "error", isLoading: false, autoClose: 2000 })
+    })
   }
 
   const handleSubmitCommentary = ({id, itemId, isRemove, form}) => {
@@ -343,6 +381,7 @@ export const useLots = ({isInitialLoad = false, initialSort = "auction_date", in
     onFilter: handleFilter,
     onChangePage: hnadleHangePage,
     onPageMore: handlePageMore,
+    onSubmitNotification: handleSubmitNotification,
     onSubmitCommentary: handleSubmitCommentary,
     onSubmitHidden: handleSubmitHidden,
     onSubmitBookmarks: handleSubmitBookmarks,
