@@ -11,10 +11,16 @@ export const Content = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  
 `;
 
 export const Children = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   /* flex: 1; */
+  /* min-height: 100%; */
   padding: ${responsiveSize(25)} ${responsiveSize(22)};
   max-width: ${responsiveSize(687)};
   width: 100%;
