@@ -5,13 +5,15 @@ import * as S from "./cabinet-card.styled"
 export default function CabinetCardView({className, children, title, IconComponent, RightComponent}) {
   return (
     <S.Container className={className}>
-      <S.Header>
-        {!!IconComponent && <S.Icon>{IconComponent}</S.Icon>}
+      {!!title && (
+        <S.Header>
+          {!!IconComponent && <S.Icon>{IconComponent}</S.Icon>}
 
-        <S.Title>{title}</S.Title>
+          <S.Title>{title}</S.Title>
 
-        {RightComponent}
-      </S.Header>
+          {RightComponent}
+        </S.Header>
+      )}
 
       <S.Content>
         {children}

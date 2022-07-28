@@ -1,8 +1,10 @@
 import React from 'react'
 
-import * as S from './payments.styled'
+import { CabinetPage } from "@components/cabinet";
 
 import PaymentsInfo from './components/info'
+
+import * as S from './payments.styled'
 
 const LotsView = ({data, page, pageCount, loading, onChangePage}) => {
   return (
@@ -10,7 +12,7 @@ const LotsView = ({data, page, pageCount, loading, onChangePage}) => {
       <S.Content>
         <S.Report />
 
-        <S.Subscription />
+        {/* <S.Subscription /> */}
       </S.Content>
 
       <PaymentsInfo />

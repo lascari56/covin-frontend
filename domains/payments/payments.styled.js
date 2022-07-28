@@ -26,4 +26,5 @@ export const Subscription = styled(PaymentsSubscription)`
 
 export const Table = styled(PaymentsTable)`
   margin-top: ${responsiveSize(14)};
+  
 `
